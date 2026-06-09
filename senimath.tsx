@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Menu, X, Home, BookOpen, Play, Info, ShoppingBag, 
-  Settings, User, CheckCircle, XCircle, Lightbulb, 
+import {
+  Menu, X, Home, BookOpen, Play, Info, ShoppingBag,
+  Settings, User, CheckCircle, XCircle, Lightbulb,
   ChevronRight, ArrowRight, Instagram, MessageCircle, Lock, ChevronLeft, Book, ChevronDown
 } from 'lucide-react';
 
@@ -189,8 +189,228 @@ const MOCK_COURSES = {
     }
   },
   SMA: {
-    'Fungsi Kuadrat': {
-      'Grafik Fungsi': { materi: "Materi Grafik Fungsi", latihan: [] }
+    'Modul 1: Aljabar & Sistem Persamaan - Sistem Persamaan Linier': {
+      'Persamaan dan Fungsi Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Sistem Persamaan Linier dengan Dua Variabel': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Sistem Persamaan Linier dengan Tiga Variabel': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Penerapan Sistem Persamaan Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 1: Aljabar & Sistem Persamaan - Persamaan dan Fungsi Kuadrat': {
+      'Menyelesaikan Persamaan Kuadrat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Sifat-Sifat Akar Persamaan Kuadrat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Grafik Fungsi Kuadrat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Sistem Persamaan Linier dan Kuadrat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Penerapan Persamaan dan Fungsi Kuadrat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 1: Aljabar & Sistem Persamaan - Pertidaksamaan Satu Variabel': {
+      'Pertidaksamaan Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pertidaksamaan Kuadrat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pertidaksamaan Pecahan (Rasional)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pertidaksamaan Bentuk Akar (Irrasional)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pertidaksamaan Pangkat Tinggi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 1: Aljabar & Sistem Persamaan - Persamaan dan Pertidaksamaan Nilai Mutlak': {
+      'Persamaan Nilai mutlak': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pertidaksamaan Nilai mutlak': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Fungsi Nilai mutlak': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 1: Aljabar & Sistem Persamaan - Sistem Pertidaksamaan Linier dan Kuadrat': {
+      'Sistem Pertidaksamaan Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Sistem Pertidaksamaan Linier dan Kuadrat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Sistem Pertidaksamaan Kuadrat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 1: Aljabar & Sistem Persamaan - Program Linier': {
+      'Sistem Pertidaksamaan Linier dua Variabel': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Fungsi Sasaran dan Kendala dalam Prog Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Nilai Optimum Suatu Fungsi Sasaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menafsirkan Nilai Optimum dalam Program Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 1: Aljabar & Sistem Persamaan - Polinomial': {
+      'Pengertian Polinomial': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Operasi Aljabar pada Polinomial': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Operasi Pembagian pada Polinomial': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Teorema Sisa': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Teorema Faktor': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 2: Fungsi, Eksponen & Logaritma - Relasi dan Fungsi': {
+      'Pengertian Relasi dan Fungsi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Macam-Macam Fungsi (Fungsi Linier)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Macam-Macam Fungsi (Fungsi Kuadrat)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Macam-Macam Fungsi (Fungsi Pecahan)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Operasi Aljabar Fungsi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 2: Fungsi, Eksponen & Logaritma - Komposisi Fungsi dan Invers Fungsi': {
+      'Komposisi Fungsi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Invers Fungsi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 2: Fungsi, Eksponen & Logaritma - Eksponen dan Logaritma': {
+      'Bentuk Eksponen dengan Pangkat Bulat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Bentuk Akar': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Bentuk Eksponen dengan Pangkat Pecahan': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Logaritma': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 2: Fungsi, Eksponen & Logaritma - Persamaan dan Fungsi Eksponen Serta Logaritma': {
+      'Persamaan Eksponen': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Fungsi Eksponen': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Persamaan Logaritma': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Fungsi Logaritma': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pertidaksamaan Eksponen': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pertidaksamaan Logaritma': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 3: Geometri, Transformasi & Vektor - Vektor': {
+      'Tinjauan Geometris Vektor': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Tinjauan Analitis Vektor': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Perbandingan Vektor': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Perkalian Skalar Dua Vektor': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Proyeksi Ortogonal Suatu Vektor': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Penerapan Vektor pada Geometri Bidang': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 3: Geometri, Transformasi & Vektor - Geometri Bidang': {
+      'Garis dan Sudut': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Dalil Segmen Garis': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Dalil-Dalil Pada Segitiga': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Bangun-bangun pada Geometri Bidang': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Lingkaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Sifat-Sifat Pada Lingkaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 3: Geometri, Transformasi & Vektor - Lingkaran': {
+      'Persamaan-persamaan Lingkaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Kedudukan Titik dan Garis Terhadap Lingkaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Persamaan Garis Singgung Lingkaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Kedudukan Dua Lingkaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 3: Geometri, Transformasi & Vektor - Irisan Kerucut': {
+      'Rencana Pembelajaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Parabola': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Elips': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Hiperbola': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 3: Geometri, Transformasi & Vektor - Geometri Ruang': {
+      'Beberapa Benda Ruang': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Kedudukan titik, garis dan bidang dalam ruang': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menggambar dan Menghitung Jarak': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menggambar dan Menghitung Sudut': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menggambar Kubus dan Balok': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menggambar Bidang Irisan': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 3: Geometri, Transformasi & Vektor - Transformasi': {
+      'Rencana Pembelajaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Translasi dan Rotasi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Refleksi dan Dilatasi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Komposisi Transformasi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Transformasi pada Garis dan Kurva': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 4: Trigonometri - Perbandingan dan Fungsi Trigonometri': {
+      'Ukuran Sudut': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Perbandingan-perbandingan trigonometri': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Perbandingan Trigonometri Sudut Istimewa': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Perbandingan Trigonometri di Semua Kuadran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Identitas Trigonometri': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Fungsi Trigonometri': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 4: Trigonometri - Rumus-Rumus Segitiga': {
+      'Aturan Sinus': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Aturan Cosinus': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Luas Segitiga': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Garis-Garis pada Segitiga': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 4: Trigonometri - Rumus-Rumus Trigonometri': {
+      'Rumus Jumlah dan Selisih Dua Sudut': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Rumus Sudut Ganda dan Sudut Tengahan': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Rumus Hasil Kali Sinus dan Cosinus': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Rumus Jumlah dan Selisih Sinus dan Cosinus': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Persamaan Trigonometri': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 5: Kalkulus - Limit Fungsi': {
+      'Limit berhingga fungsi Aljabar': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Teorema Limit': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Limit Fungsi Aljabar di Tak Berhingga': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Limit Fungsi Trigonometri': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Asimptot Datar dan Tegak Suatu Fungsi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 5: Kalkulus - Turunan Fungsi': {
+      'Aturan Dasar Turunan fungsi Aljabar': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pengembangan Rumus Turunan Fungsi Aljabar': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Persamaan Garis Singgung Kurva': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Turunan Fungsi Trigonometri': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Fungsi Naik dan Fungsi Turun': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menggambar Grafik Fungsi Polinom': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Aplikasi Turunan': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 5: Kalkulus - Integral Fungsi': {
+      'Integral Tak Tentu Fungsi Aljabar': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Penerapan Integral Tak Tentu': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Integral Tentu Fungsi Aljabar': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Integral Fungsi Trigonometri': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pengintegralan dengan Aturan Substitusi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pengintegralan dengan Aturan Parsial': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menghitung Luas suatu Daerah': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menghitung Volume Benda Putar': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Integral Fungsi Eksponen dan Logaritma': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menentukan Panjang Lintasam Suatu Kurva': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 6: Matriks, Diskrit & Keuangan - Matriks': {
+      'Mengenal Matriks': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Penjumlahan dan Pengurangan Matriks': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Perkalian Matriks': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Invers Perkalian Matriks Ordo 2x2': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Invers Perkalian Matriks Ordo (3x3)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menyelesaikan Persamaan Matriks': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 6: Matriks, Diskrit & Keuangan - Matematika Keuangan': {
+      'Rencana Pembelajaran': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Bunga Majemuk': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Angsuran dan Anuitas': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Obligasi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 6: Matriks, Diskrit & Keuangan - Induksi Matematika': {
+      'Induksi Matematika Pada Pembuktian Rumus': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Induksi Matematika pada Barisan dan deret': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 6: Matriks, Diskrit & Keuangan - Barisan dan Deret': {
+      'Pola Bilangan sebagai Barisan dan Deret': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Barisan dan Deret Aritmatika': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Barisan dan Deret Geometri': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Deret Geometri Tak Hingga': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Aplikasi Barisan dan Deret': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Notasi Sigma': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 6: Matriks, Diskrit & Keuangan - Logika Matematika': {
+      'Pernyataan, Kalimat terbuka dan negasinya': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pernyataan majemuk': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Ekivalensi, Tautologi dan Kontradiksi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Konvers, invers dan Kontraposisi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Pernyataan Berkuantor': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Penarikan Kesimpulan': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 6: Matriks, Diskrit & Keuangan - Teori Bilangan': {
+      'Macam-Macam Bilangan': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Keterbagian pada Bilangan': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Aritmatika Modulo': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Bilangan Basis': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Bilangan Kompleks': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Operasi Aljabar pada Bilangan Kompleks': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 7: Statistika & Peluang - Statistika': {
+      'Ukuran Pemusatan Data': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Ukuran Letak Data': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Ukuran Penyebaran Data': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menghitung Ukuran Data Berkelompok': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Menyajikan Data dalam Bentuk Diagram': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Ukuran Kemiringan dan Keruncingan Data': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Statistik Regresi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
+    },
+    'Modul 7: Statistika & Peluang - Peluang': {
+      'Rencana Pembelajaran (Mat Umum)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Rencana Pembelajaran (Mat Lanjut)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Aturan Pengisian Tempat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Aturan permutasi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Aturan Kombinasi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Peluang Suatu Kejadian': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Peluang Kejadian Majemuk': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Fungsi Distribusi Peluang': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Distribusi Binomial': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Distribusi Normal': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
     }
   }
 };
@@ -202,29 +422,29 @@ const MOCK_ARTICLES = [
 ];
 
 const MOCK_PRODUCTS = [
-  { 
-    id: 1, 
-    category: "SMP", 
-    title: "100 Latihan Soal Bilangan Bulat", 
-    variants: [ { id: '1a', type: "Biasa", link: "https://lynk.id/" }, { id: '1b', type: "Cerita", link: "https://lynk.id/" } ] 
+  {
+    id: 1,
+    category: "SMP",
+    title: "100 Latihan Soal Bilangan Bulat",
+    variants: [{ id: '1a', type: "Biasa", link: "https://lynk.id/" }, { id: '1b', type: "Cerita", link: "https://lynk.id/" }]
   },
-  { 
-    id: 2, 
-    category: "SMP", 
-    title: "100 Latihan Soal Aljabar Dasar", 
-    variants: [ { id: '2a', type: "Biasa", link: "https://lynk.id/" }, { id: '2b', type: "Cerita", link: "https://lynk.id/" } ] 
+  {
+    id: 2,
+    category: "SMP",
+    title: "100 Latihan Soal Aljabar Dasar",
+    variants: [{ id: '2a', type: "Biasa", link: "https://lynk.id/" }, { id: '2b', type: "Cerita", link: "https://lynk.id/" }]
   },
-  { 
-    id: 3, 
-    category: "SMA", 
-    title: "100 Latihan Soal Fungsi Kuadrat", 
-    variants: [ { id: '3a', type: "Biasa", link: "https://lynk.id/" }, { id: '3b', type: "Cerita", link: "https://lynk.id/" } ] 
+  {
+    id: 3,
+    category: "SMA",
+    title: "100 Latihan Soal Fungsi Kuadrat",
+    variants: [{ id: '3a', type: "Biasa", link: "https://lynk.id/" }, { id: '3b', type: "Cerita", link: "https://lynk.id/" }]
   },
-  { 
-    id: 4, 
-    category: "SMA", 
-    title: "100 Latihan Soal Trigonometri", 
-    variants: [ { id: '4a', type: "Biasa", link: "https://lynk.id/" }, { id: '4b', type: "Cerita", link: "https://lynk.id/" } ] 
+  {
+    id: 4,
+    category: "SMA",
+    title: "100 Latihan Soal Trigonometri",
+    variants: [{ id: '4a', type: "Biasa", link: "https://lynk.id/" }, { id: '4b', type: "Cerita", link: "https://lynk.id/" }]
   }
 ];
 
@@ -236,7 +456,7 @@ export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [navPath, setNavPath] = useState([]);
-  
+
   // Referensi untuk kontainer scroll
   const scrollContainerRef = useRef(null);
 
@@ -267,18 +487,18 @@ export default function App() {
   };
 
   const MENU_ITEMS = [
-    { id: 'home', icon: <Home size={20}/>, label: 'Home' },
-    { id: 'panduan', icon: <BookOpen size={20}/>, label: 'Panduan' },
-    { id: 'mulai', icon: <Play size={20}/>, label: 'Mulai Belajar' },
-    { id: 'info', icon: <Info size={20}/>, label: 'Info' },
-    { id: 'toko', icon: <ShoppingBag size={20}/>, label: 'Toko' },
-    { id: 'pengaturan', icon: <Settings size={20}/>, label: 'Pengaturan' },
-    { id: 'tentang', icon: <User size={20}/>, label: 'Tentang Kami' },
+    { id: 'home', icon: <Home size={20} />, label: 'Home' },
+    { id: 'panduan', icon: <BookOpen size={20} />, label: 'Panduan' },
+    { id: 'mulai', icon: <Play size={20} />, label: 'Mulai Belajar' },
+    { id: 'info', icon: <Info size={20} />, label: 'Info' },
+    { id: 'toko', icon: <ShoppingBag size={20} />, label: 'Toko' },
+    { id: 'pengaturan', icon: <Settings size={20} />, label: 'Pengaturan' },
+    { id: 'tentang', icon: <User size={20} />, label: 'Tentang Kami' },
   ];
 
   return (
     <div className={`min-h-screen flex transition-colors duration-300 ${themeClasses.bg} ${themeClasses.text}`} style={{ fontSize: `${fontSize}px` }}>
-      
+
       {/* CSS for Marquee */}
       <style>{`
         @keyframes marquee {
@@ -332,14 +552,14 @@ export default function App() {
 
         {/* Content Area */}
         <div ref={scrollContainerRef} className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
-          
+
           {/* Breadcrumbs */}
           {navPath.length > 0 && currentPage === 'materi' && (
             <div className={`flex flex-wrap items-center gap-2 mb-6 text-sm opacity-70`}>
               {navPath.map((step, idx) => (
                 <React.Fragment key={idx}>
                   <span className={idx === navPath.length - 1 ? 'font-bold opacity-100' : 'cursor-pointer hover:underline'} onClick={() => {
-                    if(idx < navPath.length - 1) setNavPath(navPath.slice(0, idx + 1));
+                    if (idx < navPath.length - 1) setNavPath(navPath.slice(0, idx + 1));
                   }}>
                     {step}
                   </span>
@@ -413,38 +633,38 @@ function PageHome({ navigateTo, themeClasses }) {
           Senimath merupakan sebuah website pembelajaran matematika untuk jenjang SMP-SMA. Desain pembelajaran disengaja atau bahasa kerennya <strong>deliberate learning</strong> sehingga bisa menyesuaikan kemampuan lo yang baru mulai nyemplung ke dunia matematika.
         </p>
       </div>
-      
+
       {/* Footer / Profile Snippet */}
       <footer className="pt-12 flex flex-col gap-8 opacity-80">
-         <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-300 dark:border-slate-700 pt-8">
-           <div className="flex items-center gap-4">
-             <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
-               <User size={24} className="text-slate-600 dark:text-slate-300" />
-             </div>
-             <div>
-               <p className="font-bold">Rayhansamu</p>
-               <p className="text-sm">Lulusan S1 Pendidikan Matematika UNJ.</p>
-             </div>
-           </div>
-           <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:items-center">
-              <button onClick={() => navigateTo('info')} className="hover:underline flex items-center gap-2 text-sm font-medium">
-                <Book size={16}/> Info Les Private Matematika
-              </button>
-              <div className="flex items-center gap-4 border-t md:border-t-0 md:border-l border-slate-300 dark:border-slate-600 pt-4 md:pt-0 md:pl-6">
-                <a href="https://instagram.com/rayhansamu" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1.5 text-sm font-medium">
-                  <Instagram size={16}/> @rayhansamu
-                </a>
-                <a href="https://instagram.com/senimath" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1.5 text-sm font-medium">
-                  <Instagram size={16}/> @senimath
-                </a>
-              </div>
-           </div>
-         </div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-300 dark:border-slate-700 pt-8">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+              <User size={24} className="text-slate-600 dark:text-slate-300" />
+            </div>
+            <div>
+              <p className="font-bold">Rayhansamu</p>
+              <p className="text-sm">Lulusan S1 Pendidikan Matematika UNJ.</p>
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:items-center">
+            <button onClick={() => navigateTo('info')} className="hover:underline flex items-center gap-2 text-sm font-medium">
+              <Book size={16} /> Info Les Private Matematika
+            </button>
+            <div className="flex items-center gap-4 border-t md:border-t-0 md:border-l border-slate-300 dark:border-slate-600 pt-4 md:pt-0 md:pl-6">
+              <a href="https://instagram.com/rayhansamu" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1.5 text-sm font-medium">
+                <Instagram size={16} /> @rayhansamu
+              </a>
+              <a href="https://instagram.com/senimath" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1.5 text-sm font-medium">
+                <Instagram size={16} /> @senimath
+              </a>
+            </div>
+          </div>
+        </div>
 
-         {/* Link Donasi Banner */}
-         <a href="https://saweria.co/senimath" target="_blank" rel="noreferrer" className={`block p-4 rounded-xl text-center bg-[#ffb000] text-black hover:opacity-90 transition-opacity font-medium shadow-sm`}>
-            ☕ Donasi via Saweria untuk support penulis dalam pengembangan website Senimath
-         </a>
+        {/* Link Donasi Banner */}
+        <a href="https://saweria.co/senimath" target="_blank" rel="noreferrer" className={`block p-4 rounded-xl text-center bg-[#ffb000] text-black hover:opacity-90 transition-opacity font-medium shadow-sm`}>
+          ☕ Donasi via Saweria untuk support penulis dalam pengembangan website Senimath
+        </a>
       </footer>
     </div>
   );
@@ -494,7 +714,7 @@ function MockQuestionCard({ type, themeClasses }) {
           <div className="flex items-center gap-4">
             <span className="font-medium">Jawaban:</span>
             <div className="px-6 py-2 w-32 rounded-xl border border-slate-300 dark:border-slate-600 font-mono text-slate-400 flex items-center">
-               <span className="opacity-50">........</span>
+              <span className="opacity-50">........</span>
             </div>
           </div>
         )}
@@ -521,19 +741,19 @@ function PagePanduan({ navigateTo, themeClasses }) {
   return (
     <div className="max-w-3xl mx-auto space-y-8">
       <h2 className="text-3xl font-bold">Panduan Penggunaan</h2>
-      
+
       <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border}`}>
         <p className="text-lg leading-relaxed mb-4">
           Senimath merupakan website pembelajaran matematika. Desain pembelajaran menggunakan <strong>deliberate learning</strong> sehingga lo bisa menyesuaikan kemampuan. Saran gue, lo fokus tambel pada kelemahan yang lo miliki.
         </p>
         <p className="text-lg leading-relaxed mb-4">
-          Pada <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 font-bold border border-slate-300 dark:border-slate-600 shadow-sm mx-1 text-sm"><Settings size={14}/> Pengaturan</span>, lo bisa mengubah tema website menjadi gelap/terang. Lo juga bisa mengubah besar kecilnya font biar mata nggak gampang lelah.
+          Pada <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 font-bold border border-slate-300 dark:border-slate-600 shadow-sm mx-1 text-sm"><Settings size={14} /> Pengaturan</span>, lo bisa mengubah tema website menjadi gelap/terang. Lo juga bisa mengubah besar kecilnya font biar mata nggak gampang lelah.
         </p>
       </div>
 
       <div className="space-y-6">
         <h3 className="text-2xl font-bold border-b pb-2">5 Tipe Latihan Soal</h3>
-        
+
         {[
           {
             type: "Tipe 1",
@@ -593,10 +813,10 @@ function PagePanduan({ navigateTo, themeClasses }) {
         ].map((item, idx) => (
           <div key={idx} className={`p-6 md:p-8 rounded-3xl ${themeClasses.cardBg} border border-l-8 border-l-lime-500 shadow-sm`}>
             <h4 className="text-2xl font-black mb-6 uppercase tracking-wider text-lime-600 dark:text-lime-500">{item.type}</h4>
-            
+
             <MockQuestionCard type={item.typeNumber} themeClasses={themeClasses} />
 
-            <p className="mb-6 opacity-90 text-lg leading-relaxed" dangerouslySetInnerHTML={{__html: item.desc}}></p>
+            <p className="mb-6 opacity-90 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }}></p>
             <div className="flex flex-wrap gap-2">
               {item.features.map((feat, fidx) => (
                 <span key={fidx} className={`text-xs px-2.5 py-1.5 rounded-md font-bold ${feat.active ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300'}`}>
@@ -613,7 +833,7 @@ function PagePanduan({ navigateTo, themeClasses }) {
         <ShoppingBag size={40} className="mx-auto mb-4 text-emerald-600 dark:text-emerald-400" />
         <h3 className="text-2xl font-bold mb-3 text-emerald-900 dark:text-emerald-100">Merasa Masih Kurang Latihan?</h3>
         <p className="text-emerald-800 dark:text-emerald-200 mb-6 text-lg">Buat lo yang masih merasa kurang latihan soal, lo bisa kunjungi toko dan membeli paket 100 latihan soal dan jawaban pada materi yang sedang lo pelajari.</p>
-        <button 
+        <button
           onClick={() => navigateTo('toko')}
           className={`px-8 py-3 rounded-xl font-bold bg-emerald-600 text-white hover:bg-emerald-700 shadow-md transition-colors flex items-center justify-center gap-2 mx-auto`}
         >
@@ -656,14 +876,45 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
 
   if (navPath.length === 1) {
     const data = MOCK_COURSES[jenjang] || {};
+
+    // Logika Pengelompokan (Sectioning) berdasarkan Awalan "Kelas X" atau "Modul X"
+    const groups = {};
+    Object.keys(data).forEach(key => {
+      const parts = key.split(' - ');
+      const groupName = parts.length > 1 ? parts[0] : '';
+      const itemTitle = parts.length > 1 ? parts.slice(1).join(' - ') : key;
+      if (!groups[groupName]) {
+        groups[groupName] = [];
+      }
+      groups[groupName].push({ key, title: itemTitle });
+    });
+
     return (
-      <div className="max-w-3xl mx-auto space-y-6">
-        <h2 className="text-3xl font-bold mb-6">Materi {jenjang}</h2>
-        {Object.keys(data).map(b => (
-          <button key={b} onClick={() => setNavPath([...navPath, b])} className={`w-full text-left p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 shadow-sm flex justify-between items-center group`}>
-            <span className="text-xl font-bold">{b}</span>
-            <ChevronRight className="opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-          </button>
+      <div className="max-w-4xl mx-auto space-y-12 pb-12">
+        <div className="text-center space-y-4 mb-8">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight">Materi {jenjang}</h2>
+          <p className="opacity-70 text-lg">Pilih materi yang mau lo taklukkan!</p>
+        </div>
+
+        {Object.entries(groups).map(([groupName, items], gIdx) => (
+          <div key={gIdx} className="space-y-6">
+            {groupName && (
+              <div className="flex items-center gap-4">
+                <div className={`px-4 py-1.5 rounded-full text-sm font-bold bg-lime-100 text-lime-800 dark:bg-lime-900/50 dark:text-lime-400 border border-lime-200 dark:border-lime-800 uppercase tracking-wider`}>
+                  {groupName}
+                </div>
+                <div className={`flex-1 h-px bg-slate-200 dark:bg-slate-700`}></div>
+              </div>
+            )}
+            <div className="grid md:grid-cols-2 gap-4">
+              {items.map(item => (
+                <button key={item.key} onClick={() => setNavPath([...navPath, item.key])} className={`w-full text-left p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 hover:shadow-md transition-all flex justify-between items-center group`}>
+                  <span className="text-lg font-bold pr-4">{item.title}</span>
+                  <ChevronRight className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all flex-shrink-0 text-lime-500" />
+                </button>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     );
@@ -753,8 +1004,8 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
           <div className="flex items-center gap-3 w-full md:w-auto">
             <label className="font-bold opacity-70 uppercase tracking-wider text-sm flex-shrink-0">Pilih Tipe:</label>
             <div className="relative flex-1 md:w-48">
-              <select 
-                value={currentType} 
+              <select
+                value={currentType}
                 onChange={handleTypeChange}
                 className={`w-full appearance-none px-4 py-2.5 rounded-xl font-bold border ${themeClasses.border} bg-transparent focus:outline-none focus:border-lime-500 cursor-pointer`}
               >
@@ -769,7 +1020,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
               </div>
             </div>
           </div>
-          
+
           <div className="flex items-center justify-end w-full md:w-auto">
             <span className="text-sm font-medium opacity-70">
               {questionsForCurrentType.length > 0 ? `Soal ${currentQuestionIndex + 1} dari ${questionsForCurrentType.length}` : '0 Soal'}
@@ -781,23 +1032,23 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
         <div className="flex-1">
           {currentQuestion ? (
             <div className="space-y-6">
-              <QuestionCard 
-                question={currentQuestion} 
-                themeClasses={themeClasses} 
-                key={`q-${currentQuestion.id}-${currentType}`} 
+              <QuestionCard
+                question={currentQuestion}
+                themeClasses={themeClasses}
+                key={`q-${currentQuestion.id}-${currentType}`}
               />
-              
+
               {/* Navigasi Soal */}
               {questionsForCurrentType.length > 1 && (
                 <div className="flex items-center justify-between gap-4">
-                  <button 
+                  <button
                     onClick={handlePrev}
                     disabled={currentQuestionIndex === 0}
                     className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all ${currentQuestionIndex === 0 ? 'opacity-50 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400' : `border ${themeClasses.border} hover:bg-slate-100 dark:hover:bg-slate-700`}`}
                   >
                     <ChevronLeft size={20} /> Sebelumnya
                   </button>
-                  <button 
+                  <button
                     onClick={handleNext}
                     disabled={currentQuestionIndex === questionsForCurrentType.length - 1}
                     className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all ${currentQuestionIndex === questionsForCurrentType.length - 1 ? 'opacity-50 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400' : themeClasses.primary}`}
@@ -830,7 +1081,7 @@ function QuestionCard({ question, themeClasses }) {
   const [showPembahasan, setShowPembahasan] = useState(false);
 
   const { type } = question;
-  
+
   const hasIdeaBtn = type === 1 || type === 2;
   const isSelfCheck = type === 2 || type === 4;
   const isMCQ = type === 1 || type === 3;
@@ -847,7 +1098,7 @@ function QuestionCard({ question, themeClasses }) {
 
   const handleSubmit = () => {
     setIsSubmitted(true);
-    if(isSelfCheck) {
+    if (isSelfCheck) {
       setShowPembahasan(true);
     }
   };
@@ -861,11 +1112,11 @@ function QuestionCard({ question, themeClasses }) {
       <div className="flex justify-between items-start mb-6">
         <h3 className="text-xl font-bold relative z-10 flex-1 pr-4">{question.question}</h3>
         {hasIdeaBtn && (
-          <button 
+          <button
             onClick={() => setShowIdea(!showIdea)}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${showIdea ? 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}`}
           >
-            <Lightbulb size={16} className={showIdea ? "fill-current" : ""} /> 
+            <Lightbulb size={16} className={showIdea ? "fill-current" : ""} />
             Ide Menjawab
           </button>
         )}
@@ -881,21 +1132,20 @@ function QuestionCard({ question, themeClasses }) {
         {isMCQ && (
           <div className="space-y-3">
             {question.options.map((opt, idx) => (
-              <label 
-                key={idx} 
-                className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
-                  selectedOptionIndex === idx 
-                    ? `border-lime-500 bg-lime-50 dark:bg-lime-900/20` 
+              <label
+                key={idx}
+                className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all ${selectedOptionIndex === idx
+                    ? `border-lime-500 bg-lime-50 dark:bg-lime-900/20`
                     : `border-slate-200 dark:border-slate-700 hover:border-lime-300`
-                } ${isSubmitted ? 'pointer-events-none opacity-80' : ''}`}
+                  } ${isSubmitted ? 'pointer-events-none opacity-80' : ''}`}
               >
-                <input 
-                  type="radio" 
+                <input
+                  type="radio"
                   name={`question-${question.id}`}
-                  className="hidden" 
-                  checked={selectedOptionIndex === idx} 
-                  onChange={() => setSelectedOptionIndex(idx)} 
-                  disabled={isSubmitted} 
+                  className="hidden"
+                  checked={selectedOptionIndex === idx}
+                  onChange={() => setSelectedOptionIndex(idx)}
+                  disabled={isSubmitted}
                 />
                 <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedOptionIndex === idx ? 'border-lime-500' : 'border-slate-400'}`}>
                   {selectedOptionIndex === idx && <div className="w-2.5 h-2.5 rounded-full bg-lime-500"></div>}
@@ -915,8 +1165,8 @@ function QuestionCard({ question, themeClasses }) {
         {isPureEssay && (
           <div className="flex items-center gap-4">
             <span className="font-medium">Jawaban:</span>
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
               disabled={isSubmitted}
@@ -930,17 +1180,17 @@ function QuestionCard({ question, themeClasses }) {
       <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
         <div className="flex gap-4 items-center">
           {!isSubmitted && (
-             <button 
-                onClick={handleSubmit} 
-                disabled={isMCQ && selectedOptionIndex === null}
-                className={`px-6 py-2.5 rounded-xl font-bold transition-all ${themeClasses.primary} disabled:opacity-50 disabled:cursor-not-allowed`}
-              >
-                {isSelfCheck ? 'Lihat Pembahasan' : 'Simpan Jawaban'}
-              </button>
+            <button
+              onClick={handleSubmit}
+              disabled={isMCQ && selectedOptionIndex === null}
+              className={`px-6 py-2.5 rounded-xl font-bold transition-all ${themeClasses.primary} disabled:opacity-50 disabled:cursor-not-allowed`}
+            >
+              {isSelfCheck ? 'Lihat Pembahasan' : 'Simpan Jawaban'}
+            </button>
           )}
 
           {isSubmitted && !isSelfCheck && (
-            <button 
+            <button
               onClick={() => setShowPembahasan(!showPembahasan)}
               className={`px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 border ${themeClasses.border} hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors`}
             >
@@ -973,13 +1223,13 @@ function QuestionCard({ question, themeClasses }) {
 function PageInfoMaszeh({ themeClasses, navigateTo }) {
   return (
     <div className="max-w-5xl mx-auto space-y-12">
-      
+
       <section>
-        <h2 className="text-3xl font-bold mb-6 border-b pb-2 flex items-center gap-2"><BookOpen/> Artikel Senimath</h2>
+        <h2 className="text-3xl font-bold mb-6 border-b pb-2 flex items-center gap-2"><BookOpen /> Artikel Senimath</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {MOCK_ARTICLES.map(art => (
-            <div 
-              key={art.id} 
+            <div
+              key={art.id}
               onClick={() => navigateTo('artikel', [art.id])}
               className={`p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 transition-all cursor-pointer flex flex-col h-full hover:shadow-md transform hover:-translate-y-1`}
             >
@@ -992,16 +1242,16 @@ function PageInfoMaszeh({ themeClasses, navigateTo }) {
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold mb-6 border-b pb-2 flex items-center gap-2"><Book/> Info Les Private Matematika</h2>
+        <h2 className="text-3xl font-bold mb-6 border-b pb-2 flex items-center gap-2"><Book /> Info Les Private Matematika</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          
+
           <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border border-lime-200 dark:border-lime-900 shadow-sm flex flex-col`}>
             <h3 className="font-black text-2xl mb-4 text-center">Private Online</h3>
             <ul className="space-y-3 mb-8 flex-1 opacity-90">
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Waktu fleksibel</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Modul khusus PDF</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Tanya PR kapan saja</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Waktu fleksibel</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Modul khusus PDF</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Tanya PR kapan saja</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
             </ul>
             <button className={`w-full py-3 rounded-xl font-bold ${themeClasses.primary}`}>Hubungi Sekarang</button>
           </div>
@@ -1010,10 +1260,10 @@ function PageInfoMaszeh({ themeClasses, navigateTo }) {
             <h3 className="font-black text-2xl mb-2 text-center">Private Offline</h3>
             <p className="text-center text-sm opacity-70 mb-4">(Khusus Depok)</p>
             <ul className="space-y-3 mb-8 flex-1 opacity-90">
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Guru datang ke rumah</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Evaluasi tatap muka</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Bonding lebih kuat</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Guru datang ke rumah</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Evaluasi tatap muka</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Bonding lebih kuat</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
             </ul>
             <button className={`w-full py-3 rounded-xl font-bold ${themeClasses.primary}`}>Hubungi Sekarang</button>
           </div>
@@ -1022,10 +1272,10 @@ function PageInfoMaszeh({ themeClasses, navigateTo }) {
             <h3 className="font-black text-2xl mb-2 text-center">Kelas Besar</h3>
             <p className="text-center text-sm opacity-70 mb-4">(Minimal 3 orang)</p>
             <ul className="space-y-3 mb-8 flex-1 opacity-90">
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Harga lebih terjangkau</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Belajar bareng circle</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Diskusi interaktif</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5"/> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Harga lebih terjangkau</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Belajar bareng circle</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Diskusi interaktif</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
             </ul>
             <button className={`w-full py-3 rounded-xl font-bold ${themeClasses.primary}`}>Hubungi Sekarang</button>
           </div>
@@ -1048,42 +1298,42 @@ function PageToko({ themeClasses }) {
 
   const renderSection = (title, products, colorClass, bgClass, borderClass) => (
     <div className="space-y-4 mb-8">
-       <h3 className={`text-2xl font-bold ${colorClass} mb-6 border-b ${borderClass} pb-2`}>{title}</h3>
-       <div className="flex flex-col gap-4">
-          {products.map(prod => (
-            <div key={prod.id} className={`rounded-2xl ${themeClasses.cardBg} border ${borderClass} overflow-hidden shadow-sm transition-all`}>
-              <button 
-                onClick={() => toggleDropdown(prod.id)}
-                className={`w-full flex items-center justify-between p-6 hover:${bgClass} transition-colors`}
-              >
-                 <div className="flex items-center gap-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold text-white ${colorClass.replace('text-', 'bg-')}`}>{prod.category}</span>
-                    <span className="font-bold text-lg text-left">{prod.title}</span>
-                 </div>
-                 <ChevronDown className={`transform transition-transform ${openDropdown === prod.id ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {openDropdown === prod.id && (
-                <div className={`p-4 border-t ${borderClass} ${bgClass} flex flex-col md:flex-row gap-4`}>
-                   {prod.variants.map(v => (
-                     <a 
-                       key={v.id} 
-                       href={v.link} 
-                       target="_blank" 
-                       rel="noreferrer" 
-                       className={`flex-1 flex items-center justify-between px-6 py-4 rounded-xl bg-white dark:bg-slate-800 border ${borderClass} hover:shadow-md transition-all group`}
-                     >
-                       <span className="font-bold">Paket Soal {v.type}</span>
-                       <span className={`font-bold flex items-center gap-1 ${colorClass} group-hover:translate-x-1 transition-transform`}>
-                         Gass Latihan <ChevronRight size={18}/>
-                       </span>
-                     </a>
-                   ))}
-                </div>
-              )}
-            </div>
-          ))}
-       </div>
+      <h3 className={`text-2xl font-bold ${colorClass} mb-6 border-b ${borderClass} pb-2`}>{title}</h3>
+      <div className="flex flex-col gap-4">
+        {products.map(prod => (
+          <div key={prod.id} className={`rounded-2xl ${themeClasses.cardBg} border ${borderClass} overflow-hidden shadow-sm transition-all`}>
+            <button
+              onClick={() => toggleDropdown(prod.id)}
+              className={`w-full flex items-center justify-between p-6 hover:${bgClass} transition-colors`}
+            >
+              <div className="flex items-center gap-4">
+                <span className={`px-3 py-1 rounded-full text-xs font-bold text-white ${colorClass.replace('text-', 'bg-')}`}>{prod.category}</span>
+                <span className="font-bold text-lg text-left">{prod.title}</span>
+              </div>
+              <ChevronDown className={`transform transition-transform ${openDropdown === prod.id ? 'rotate-180' : ''}`} />
+            </button>
+
+            {openDropdown === prod.id && (
+              <div className={`p-4 border-t ${borderClass} ${bgClass} flex flex-col md:flex-row gap-4`}>
+                {prod.variants.map(v => (
+                  <a
+                    key={v.id}
+                    href={v.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`flex-1 flex items-center justify-between px-6 py-4 rounded-xl bg-white dark:bg-slate-800 border ${borderClass} hover:shadow-md transition-all group`}
+                  >
+                    <span className="font-bold">Paket Soal {v.type}</span>
+                    <span className={`font-bold flex items-center gap-1 ${colorClass} group-hover:translate-x-1 transition-transform`}>
+                      Gass Latihan <ChevronRight size={18} />
+                    </span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 
@@ -1105,8 +1355,8 @@ function PageToko({ themeClasses }) {
 function PagePengaturan({ theme, toggleTheme, fontSize, increaseFont, decreaseFont, themeClasses }) {
   return (
     <div className="max-w-2xl mx-auto space-y-8">
-      <h2 className="text-3xl font-bold flex items-center gap-2 border-b pb-4"><Settings/> Pengaturan</h2>
-      
+      <h2 className="text-3xl font-bold flex items-center gap-2 border-b pb-4"><Settings /> Pengaturan</h2>
+
       <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} space-y-8`}>
         <div className="flex items-center justify-between">
           <div>
@@ -1114,13 +1364,13 @@ function PagePengaturan({ theme, toggleTheme, fontSize, increaseFont, decreaseFo
             <p className="opacity-70 text-sm">Sesuaikan kenyamanan mata lo</p>
           </div>
           <div className="flex bg-slate-200 dark:bg-slate-700 p-1 rounded-xl">
-            <button 
+            <button
               onClick={() => theme !== 'light' && toggleTheme()}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${theme === 'light' ? 'bg-white text-black shadow' : 'text-slate-400 hover:text-white'}`}
             >
               Terang
             </button>
-            <button 
+            <button
               onClick={() => theme !== 'dark' && toggleTheme()}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${theme === 'dark' ? 'bg-slate-900 text-white shadow' : 'text-slate-600 hover:text-black'}`}
             >
@@ -1151,15 +1401,15 @@ function PageTentangKami({ themeClasses }) {
   return (
     <div className="max-w-4xl mx-auto space-y-12">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold flex items-center justify-center gap-2"><Info/> Tentang Pengembang</h2>
+        <h2 className="text-3xl font-bold flex items-center justify-center gap-2"><Info /> Tentang Pengembang</h2>
       </div>
 
       <div className={`p-8 md:p-12 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} relative overflow-hidden`}>
         <div className="absolute top-0 right-0 w-64 h-64 bg-lime-500 opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-        
+
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start relative z-10">
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-slate-200 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center overflow-hidden border-4 border-lime-500">
-             <User size={64} className="opacity-20 text-slate-800 dark:text-slate-200" />
+            <User size={64} className="opacity-20 text-slate-800 dark:text-slate-200" />
           </div>
           <div className="space-y-4 text-center md:text-left">
             <h3 className="text-3xl font-black tracking-tight">Rayhansamu</h3>
@@ -1170,23 +1420,23 @@ function PageTentangKami({ themeClasses }) {
               Fokus penelitian pada metode pengembangan bahan atau perangkat pembelajaran. Dibuktikan dengan skripsinya yang mengembangkan LKPD terintegrasi dengan permainan ular tangga.
             </p>
             <div className="pt-4 flex flex-wrap gap-4 justify-center md:justify-start">
-               <a href="https://saweria.co/senimath" target="_blank" rel="noreferrer" className={`px-6 py-2.5 rounded-full font-bold flex items-center gap-2 bg-[#ffb000] text-black hover:opacity-90 transition-opacity`}>
-                 ☕ Donasi Saweria
-               </a>
-               <button className={`px-6 py-2.5 rounded-full font-bold flex items-center gap-2 border ${themeClasses.border} hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors`}>
-                 <Instagram size={18}/> @rayhansamu
-               </button>
+              <a href="https://saweria.co/senimath" target="_blank" rel="noreferrer" className={`px-6 py-2.5 rounded-full font-bold flex items-center gap-2 bg-[#ffb000] text-black hover:opacity-90 transition-opacity`}>
+                ☕ Donasi Saweria
+              </a>
+              <button className={`px-6 py-2.5 rounded-full font-bold flex items-center gap-2 border ${themeClasses.border} hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors`}>
+                <Instagram size={18} /> @rayhansamu
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       <div className={`p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} border-dashed text-center opacity-70`}>
-         <h3 className="text-xl font-bold mb-2">Profile Penelaah</h3>
-         <div className="w-20 h-20 mx-auto bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center mb-4">
-           <User size={32} className="opacity-20" />
-         </div>
-         <p className="italic">Belum ada... yesss, belum ada.</p>
+        <h3 className="text-xl font-bold mb-2">Profile Penelaah</h3>
+        <div className="w-20 h-20 mx-auto bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center mb-4">
+          <User size={32} className="opacity-20" />
+        </div>
+        <p className="italic">Belum ada... yesss, belum ada.</p>
       </div>
 
     </div>
@@ -1201,7 +1451,7 @@ function PageArtikel({ navPath, navigateTo, themeClasses }) {
 
   return (
     <div className="max-w-3xl mx-auto space-y-8">
-      <button 
+      <button
         onClick={() => navigateTo('info')}
         className={`flex items-center gap-2 font-medium opacity-70 hover:opacity-100 transition-opacity`}
       >
