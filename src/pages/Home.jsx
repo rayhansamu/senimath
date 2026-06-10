@@ -14,7 +14,7 @@ export default function Home({ navigateTo, themeClasses }) {
         <div className="flex justify-center gap-4 pt-4">
           <span className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-semibold">Math is Art</span>
           <span className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-semibold">Math is Fun</span>
-          <span className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-semibold">Math is Languange</span>
+          <span className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-semibold">Math is Language</span>
         </div>
       </div>
 

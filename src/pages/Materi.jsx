@@ -14,14 +14,45 @@ export default function Materi({ navPath, setNavPath, themeClasses }) {
 
   if (navPath.length === 1) {
     const data = MOCK_COURSES[jenjang] || {};
+
+    // Logika Pengelompokan (Sectioning) berdasarkan Awalan "Kelas X" atau "Modul X"
+    const groups = {};
+    Object.keys(data).forEach(key => {
+      const parts = key.split(' - ');
+      const groupName = parts.length > 1 ? parts[0] : '';
+      const itemTitle = parts.length > 1 ? parts.slice(1).join(' - ') : key;
+      if (!groups[groupName]) {
+        groups[groupName] = [];
+      }
+      groups[groupName].push({ key, title: itemTitle });
+    });
+
     return (
-      <div className="max-w-3xl mx-auto space-y-6">
-        <h2 className="text-3xl font-bold mb-6">Materi {jenjang}</h2>
-        {Object.keys(data).map(b => (
-          <button key={b} onClick={() => setNavPath([...navPath, b])} className={`w-full text-left p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 shadow-sm flex justify-between items-center group`}>
-            <span className="text-xl font-bold">{b}</span>
-            <ChevronRight className="opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-          </button>
+      <div className="max-w-4xl mx-auto space-y-12 pb-12">
+        <div className="text-center space-y-4 mb-8">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight">Materi {jenjang}</h2>
+          <p className="opacity-70 text-lg">Pilih materi yang mau lo taklukkan!</p>
+        </div>
+
+        {Object.entries(groups).map(([groupName, items], gIdx) => (
+          <div key={gIdx} className="space-y-6">
+            {groupName && (
+              <div className="flex items-center gap-4">
+                <div className={`px-4 py-1.5 rounded-full text-sm font-bold bg-lime-100 text-lime-800 dark:bg-lime-900/50 dark:text-lime-400 border border-lime-200 dark:border-lime-800 uppercase tracking-wider`}>
+                  {groupName}
+                </div>
+                <div className={`flex-1 h-px bg-slate-200 dark:bg-slate-700`}></div>
+              </div>
+            )}
+            <div className="grid md:grid-cols-2 gap-4">
+              {items.map(item => (
+                <button key={item.key} onClick={() => setNavPath([...navPath, item.key])} className={`w-full text-left p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 hover:shadow-md transition-all flex justify-between items-center group`}>
+                  <span className="text-lg font-bold pr-4">{item.title}</span>
+                  <ChevronRight className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all flex-shrink-0 text-lime-500" />
+                </button>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     );
