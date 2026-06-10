@@ -278,3 +278,4 @@
 * Distribusi Binomial
 * Distribusi Normal
 
+* masukan ini di materi SMA, sesuaikan dengan bentuk tampilan dan tombol seperti materi SMP. tambahkan section atau pemisah jenis materi karena bentuknya modul. setiap tombol materi dipencet akan mengarahkan ke  halaman sub materi, dan ketika sub materi dipencet akan mengarahkan ke popup materi atau latihan soal 
