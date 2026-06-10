@@ -1,12 +1,41 @@
 import React, { useState } from 'react';
 import { Lightbulb, CheckCircle, XCircle, BookOpen, Lock } from 'lucide-react';
 
-export default function QuestionCard({ question, themeClasses }) {
-  const [userAnswer, setUserAnswer] = useState('');
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [showIdea, setShowIdea] = useState(false);
-  const [showPembahasan, setShowPembahasan] = useState(false);
+export default function QuestionCard({ question, themeClasses, answerState, setAnswerState }) {
+  const hasExternalState = typeof setAnswerState === 'function';
+
+  const [localUserAnswer, setLocalUserAnswer] = useState('');
+  const [localSelectedOptionIndex, setLocalSelectedOptionIndex] = useState(null);
+  const [localIsSubmitted, setLocalIsSubmitted] = useState(false);
+  const [localShowIdea, setLocalShowIdea] = useState(false);
+  const [localShowPembahasan, setLocalShowPembahasan] = useState(false);
+
+  const state = hasExternalState && answerState ? answerState : {
+    userAnswer: hasExternalState && answerState ? answerState.userAnswer : localUserAnswer,
+    selectedOptionIndex: hasExternalState && answerState ? answerState.selectedOptionIndex : localSelectedOptionIndex,
+    isSubmitted: hasExternalState && answerState ? answerState.isSubmitted : localIsSubmitted,
+    showIdea: hasExternalState && answerState ? answerState.showIdea : localShowIdea,
+    showPembahasan: hasExternalState && answerState ? answerState.showPembahasan : localShowPembahasan
+  };
+
+  const updateState = (newFields) => {
+    if (hasExternalState) {
+      setAnswerState(question.id, {
+        userAnswer: state.userAnswer,
+        selectedOptionIndex: state.selectedOptionIndex,
+        isSubmitted: state.isSubmitted,
+        showIdea: state.showIdea,
+        showPembahasan: state.showPembahasan,
+        ...newFields
+      });
+    } else {
+      if ('userAnswer' in newFields) setLocalUserAnswer(newFields.userAnswer);
+      if ('selectedOptionIndex' in newFields) setLocalSelectedOptionIndex(newFields.selectedOptionIndex);
+      if ('isSubmitted' in newFields) setLocalIsSubmitted(newFields.isSubmitted);
+      if ('showIdea' in newFields) setLocalShowIdea(newFields.showIdea);
+      if ('showPembahasan' in newFields) setLocalShowPembahasan(newFields.showPembahasan);
+    }
+  };
 
   const { type } = question;
   
@@ -16,19 +45,19 @@ export default function QuestionCard({ question, themeClasses }) {
   const isPureEssay = type === 5;
 
   let isCorrect = null;
-  if (isSubmitted && !isSelfCheck) {
+  if (state.isSubmitted && !isSelfCheck) {
     if (isMCQ) {
-      isCorrect = selectedOptionIndex === question.correctAnswer;
+      isCorrect = state.selectedOptionIndex === question.correctAnswer;
     } else if (isPureEssay) {
-      isCorrect = userAnswer.trim() === question.correctAnswer;
+      isCorrect = state.userAnswer.trim() === question.correctAnswer;
     }
   }
 
   const handleSubmit = () => {
-    setIsSubmitted(true);
-    if(isSelfCheck) {
-      setShowPembahasan(true);
-    }
+    updateState({
+      isSubmitted: true,
+      showPembahasan: isSelfCheck ? true : state.showPembahasan
+    });
   };
 
   return (
@@ -41,16 +70,16 @@ export default function QuestionCard({ question, themeClasses }) {
         <h3 className="text-xl font-bold relative z-10 flex-1 pr-4">{question.question}</h3>
         {hasIdeaBtn && (
           <button 
-            onClick={() => setShowIdea(!showIdea)}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${showIdea ? 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+            onClick={() => updateState({ showIdea: !state.showIdea })}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${state.showIdea ? 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}`}
           >
-            <Lightbulb size={16} className={showIdea ? "fill-current" : ""} /> 
+            <Lightbulb size={16} className={state.showIdea ? "fill-current" : ""} /> 
             Ide Menjawab
           </button>
         )}
       </div>
 
-      {showIdea && hasIdeaBtn && (
+      {state.showIdea && hasIdeaBtn && (
         <div className="mb-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 text-amber-900 dark:text-amber-100 text-sm italic">
           💡 {question.idea}
         </div>
@@ -63,21 +92,21 @@ export default function QuestionCard({ question, themeClasses }) {
               <label 
                 key={idx} 
                 className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
-                  selectedOptionIndex === idx 
+                  state.selectedOptionIndex === idx 
                     ? `border-lime-500 bg-lime-50 dark:bg-lime-900/20` 
                     : `border-slate-200 dark:border-slate-700 hover:border-lime-300`
-                } ${isSubmitted ? 'pointer-events-none opacity-80' : ''}`}
+                } ${state.isSubmitted ? 'pointer-events-none opacity-80' : ''}`}
               >
                 <input 
                   type="radio" 
                   name={`question-${question.id}`}
                   className="hidden" 
-                  checked={selectedOptionIndex === idx} 
-                  onChange={() => setSelectedOptionIndex(idx)} 
-                  disabled={isSubmitted} 
+                  checked={state.selectedOptionIndex === idx} 
+                  onChange={() => updateState({ selectedOptionIndex: idx })} 
+                  disabled={state.isSubmitted} 
                 />
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedOptionIndex === idx ? 'border-lime-500' : 'border-slate-400'}`}>
-                  {selectedOptionIndex === idx && <div className="w-2.5 h-2.5 rounded-full bg-lime-500"></div>}
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${state.selectedOptionIndex === idx ? 'border-lime-500' : 'border-slate-400'}`}>
+                  {state.selectedOptionIndex === idx && <div className="w-2.5 h-2.5 rounded-full bg-lime-500"></div>}
                 </div>
                 <span className="text-lg">{opt}</span>
               </label>
@@ -96,9 +125,9 @@ export default function QuestionCard({ question, themeClasses }) {
             <span className="font-medium">Jawaban:</span>
             <input 
               type="text" 
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              disabled={isSubmitted}
+              value={state.userAnswer}
+              onChange={(e) => updateState({ userAnswer: e.target.value })}
+              disabled={state.isSubmitted}
               className={`flex-1 max-w-[200px] px-4 py-2 rounded-xl border ${themeClasses.border} bg-transparent focus:outline-none focus:border-lime-500 font-mono`}
               placeholder="..."
             />
@@ -108,28 +137,28 @@ export default function QuestionCard({ question, themeClasses }) {
 
       <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
         <div className="flex gap-4 items-center">
-          {!isSubmitted && (
+          {!state.isSubmitted && (
              <button 
                 onClick={handleSubmit} 
-                disabled={isMCQ && selectedOptionIndex === null}
+                disabled={isMCQ && state.selectedOptionIndex === null}
                 className={`px-6 py-2.5 rounded-xl font-bold transition-all ${themeClasses.primary} disabled:opacity-50 disabled:cursor-not-allowed`}
               >
                 {isSelfCheck ? 'Lihat Pembahasan' : 'Simpan Jawaban'}
               </button>
           )}
 
-          {isSubmitted && !isSelfCheck && (
+          {state.isSubmitted && !isSelfCheck && (
             <button 
-              onClick={() => setShowPembahasan(!showPembahasan)}
+              onClick={() => updateState({ showPembahasan: !state.showPembahasan })}
               className={`px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 border ${themeClasses.border} hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors`}
             >
-              {showPembahasan ? <Lock size={16} /> : null}
-              {showPembahasan ? 'Tutup Pembahasan' : 'Buka Pembahasan'}
+              {state.showPembahasan ? <Lock size={16} /> : null}
+              {state.showPembahasan ? 'Tutup Pembahasan' : 'Buka Pembahasan'}
             </button>
           )}
         </div>
 
-        {isSubmitted && !isSelfCheck && isCorrect !== null && (
+        {state.isSubmitted && !isSelfCheck && isCorrect !== null && (
           <div className={`flex items-center gap-2 font-bold text-xl animate-bounce ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
             {isCorrect ? <CheckCircle size={32} /> : <XCircle size={32} />}
             {isCorrect ? 'Benar!' : 'Kurang Tepat'}
@@ -137,7 +166,7 @@ export default function QuestionCard({ question, themeClasses }) {
         )}
       </div>
 
-      {showPembahasan && (
+      {state.showPembahasan && (
         <div className="mt-8 p-6 rounded-2xl bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 animate-fade-in">
           <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
             <BookOpen size={18} /> Pembahasan

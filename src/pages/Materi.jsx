@@ -6,6 +6,177 @@ import QuestionCard from '../components/QuestionCard';
 export default function Materi({ navPath, setNavPath, themeClasses }) {
   const [currentType, setCurrentType] = useState(1);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answersState, setAnswersState] = useState({});
+
+  const handleUpdateAnswerState = (questionId, newQuestionState) => {
+    setAnswersState(prev => ({
+      ...prev,
+      [questionId]: newQuestionState
+    }));
+  };
+
+  const formatInlineText = (text) => {
+    if (typeof text !== 'string') return text;
+    
+    const parts = [];
+    let currentIndex = 0;
+    
+    const regex = /\*\*(.*?)\*\*/g;
+    let match;
+    
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > currentIndex) {
+        parts.push(text.substring(currentIndex, match.index));
+      }
+      parts.push(
+        <strong key={match.index} className="font-extrabold text-slate-900 dark:text-white">
+          {match[1]}
+        </strong>
+      );
+      currentIndex = regex.lastIndex;
+    }
+    
+    if (currentIndex < text.length) {
+      parts.push(text.substring(currentIndex));
+    }
+    
+    return parts.length > 0 ? parts : text;
+  };
+
+  const parseMateri = (text) => {
+    if (!text) return null;
+
+    const blocks = text.split('\n\n');
+
+    return blocks.map((block, index) => {
+      const trimmed = block.trim();
+      if (!trimmed) return null;
+
+      if (trimmed.startsWith('🕵️‍♂️ Misi Awal')) {
+        const lines = trimmed.split('\n');
+        const title = lines[0];
+        const content = lines.slice(1).join('\n');
+        return (
+          <div key={index} className="p-6 md:p-8 rounded-3xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/65 shadow-sm space-y-4 my-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="flex items-center gap-3 text-amber-850 dark:text-amber-400 font-extrabold text-xl md:text-2xl">
+              <span>🕵️‍♂️</span>
+              <span>{title.replace('🕵️‍♂️', '').trim()}</span>
+            </div>
+            <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+              {formatInlineText(content)}
+            </div>
+          </div>
+        );
+      }
+
+      if (trimmed.startsWith('🔑 Kesimpulan')) {
+        const lines = trimmed.split('\n');
+        const title = lines[0];
+        const content = lines.slice(1).join('\n');
+        return (
+          <div key={index} className="p-6 md:p-8 rounded-3xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/65 shadow-sm space-y-4 my-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="flex items-center gap-3 text-emerald-855 dark:text-emerald-400 font-extrabold text-xl md:text-2xl">
+              <span>🔑</span>
+              <span>{title.replace('🔑', '').trim()}</span>
+            </div>
+            <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+              {formatInlineText(content)}
+            </div>
+          </div>
+        );
+      }
+
+      if (trimmed.startsWith('🛠️ Pemodelan')) {
+        const lines = trimmed.split('\n');
+        const title = lines[0];
+        const content = lines.slice(1).join('\n');
+        return (
+          <div key={index} className="p-6 md:p-8 rounded-3xl bg-sky-50/50 dark:bg-sky-950/20 border border-sky-200 dark:border-sky-900/65 shadow-sm space-y-4 my-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="flex items-center gap-3 text-sky-850 dark:text-sky-400 font-extrabold text-xl md:text-2xl">
+              <span>🛠️</span>
+              <span>{title.replace('🛠️', '').trim()}</span>
+            </div>
+            <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+              {formatInlineText(content)}
+            </div>
+          </div>
+        );
+      }
+
+      if (trimmed.startsWith('📚')) {
+        return (
+          <h3 key={index} className="text-2xl md:text-3xl font-black tracking-tight text-slate-800 dark:text-slate-100 mt-8 mb-4 flex items-center gap-3 border-b-2 border-slate-200 dark:border-slate-800 pb-2">
+            <span>📚</span>
+            <span>{trimmed.replace('📚', '').trim()}</span>
+          </h3>
+        );
+      }
+
+      if (/^\d+\./.test(trimmed)) {
+        return (
+          <h4 key={index} className="text-xl md:text-2xl font-black text-slate-850 dark:text-slate-200 mt-6 pb-2 border-b border-slate-100 dark:border-slate-850 flex items-center gap-2">
+            <span className="w-1.5 h-6 bg-lime-500 rounded-full"></span>
+            {formatInlineText(trimmed)}
+          </h4>
+        );
+      }
+
+      if (/^[A-Z]\./.test(trimmed)) {
+        const lines = trimmed.split('\n');
+        const title = lines[0];
+        const content = lines.slice(1).join('\n');
+        return (
+          <div key={index} className={`p-6 md:p-8 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm space-y-3 mt-6 hover:shadow-md hover:border-lime-500/50 dark:hover:border-lime-500/30 transition-all`}>
+            <div className="text-lg md:text-xl font-extrabold text-lime-600 dark:text-lime-400 border-b border-slate-100 dark:border-slate-700/50 pb-2">
+              {title}
+            </div>
+            {content && (
+              <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+                {formatInlineText(content)}
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      const lines = trimmed.split('\n');
+      const isList = lines.every(line => /^[•\-\*\d)]\s*/.test(line.trim()));
+
+      if (isList) {
+        return (
+          <ul key={index} className="list-none space-y-3 my-4 pl-1">
+            {lines.map((line, lIdx) => {
+              const isNumbered = /^\d+\)/.test(line.trim());
+              const cleanLine = line.replace(/^[•\-\*\d\)]\s*/, '');
+              return (
+                <li key={lIdx} className="flex items-start gap-3">
+                  {isNumbered ? (
+                    <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-lime-100 text-lime-800 dark:bg-lime-900/50 dark:text-lime-400 text-xs font-bold mt-0.5">
+                      {line.trim().match(/^\d+/)[0]}
+                    </span>
+                  ) : (
+                    <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-lime-500 mt-2"></span>
+                  )}
+                  <span className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg">
+                    {formatInlineText(cleanLine)}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+
+      return (
+        <p key={index} className="text-slate-750 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+          {formatInlineText(trimmed)}
+        </p>
+      );
+    });
+  };
 
   const jenjang = navPath[0];
   const bab = navPath[1];
@@ -101,8 +272,8 @@ export default function Materi({ navPath, setNavPath, themeClasses }) {
     return (
       <div className="max-w-3xl mx-auto space-y-8">
         <h2 className="text-3xl font-bold border-b pb-4">{subBab} - Materi</h2>
-        <div className={`p-6 md:p-8 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm leading-relaxed whitespace-pre-wrap text-lg`}>
-          {contentData.materi}
+        <div className="space-y-6">
+          {parseMateri(contentData.materi)}
         </div>
         <div className="text-center pt-8">
           <p className="mb-4 opacity-80">Udah paham teorinya? Waktunya eksekusi!</p>
@@ -167,9 +338,11 @@ export default function Materi({ navPath, setNavPath, themeClasses }) {
           {currentQuestion ? (
             <div className="space-y-6">
               <QuestionCard 
-                key={currentQuestion.id} // force remount on new question
+                key={currentQuestion.id}
                 question={currentQuestion} 
                 themeClasses={themeClasses} 
+                answerState={answersState[currentQuestion.id]}
+                setAnswerState={handleUpdateAnswerState}
               />
               
               {questionsForCurrentType.length > 1 && (

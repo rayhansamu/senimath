@@ -1,7 +1,206 @@
 export const MOCK_COURSES = {
   SMP: {
     'Kelas VII - Bilangan Bulat dan Pecahan': {
-      'Pengertian dan pengelompokan bilangan': { materi: "Materi sedang dalam tahap pengembangan. Pantau terus update Senimath ya!", latihan: [] },
+      'Pengertian dan pengelompokan bilangan': {
+        materi: "🕵️‍♂️ Misi Awal: Memecahkan Kode Brankas\n\nBayangkan kamu menemukan sebuah brankas rahasia milik seorang detektif. Di pintunya terdapat secarik kertas berisi petunjuk sandi 3 digit untuk membukanya:\n• Digit Pertama: Bilangan prima pertama yang bernilai genap.\n• Digit Kedua: Angka pertama dari himpunan bilangan cacah.\n• Digit Ketiga: Bilangan ganjil terkecil setelah angka 5.\n\nKira-kira, berapa ya PIN brankas tersebut? Untuk bisa memecahkannya, kita harus paham dulu apa itu bilangan prima, cacah, dan ganjil. Mari kita eksplorasi materinya!\n\n📚 Eksplorasi Materi: Pengelompokan Bilangan\n\n1. Pengantar: Apa itu Bilangan Bulat?\nSebelum masuk ke pengelompokan, kita perlu tahu dulu bahwa kumpulan bilangan ini umumnya merupakan bagian dari Bilangan Bulat.\n• Bilangan bulat adalah himpunan bilangan yang utuh (tidak memiliki pecahan atau desimal).\n• Bilangan bulat terdiri dari bilangan bulat negatif (..., -3, -2, -1), nol (0), dan bilangan bulat positif (1, 2, 3, ...).\nDari himpunan bilangan bulat inilah kita bisa mengelompokkan bilangan ke dalam kelompok-kelompok yang lebih spesifik.\n\n2. Pengelompokan Bilangan\n\nA. Bilangan Asli (Natural Numbers)\n• Pengertian: Bilangan asli adalah bilangan yang biasa kita gunakan sehari-hari untuk menghitung benda (mulai dari angka 1 dan terus bertambah 1).\n• Bilangan asli tidak mencakup angka nol (0) dan bilangan negatif.\n• Anggota Himpunan: {1, 2, 3, 4, 5, 6, 7, ...}.\n\nB. Bilangan Cacah (Whole Numbers)\n• Pengertian: Bilangan cacah adalah gabungan dari himpunan bilangan asli ditambah dengan angka nol (0).\n• Bilangan ini bernilai positif dan tidak memiliki pecahan/desimal.\n• Anggota Himpunan: {0, 1, 2, 3, 4, 5, 6, ...}.\n\nC. Bilangan Genap\n• Pengertian: Bilangan genap adalah bilangan bulat yang habis dibagi 2.\n• Artinya, jika bilangan ini dibagi 2, tidak akan ada sisa.\n• Bilangan genap selalu memiliki angka satuan 0, 2, 4, 6, atau 8.\n\nD. Bilangan Ganjil\n• Pengertian: Bilangan ganjil adalah bilangan bulat yang tidak habis dibagi 2.\n• Jika dibagi 2, bilangan ini akan selalu memiliki sisa 1.\n• Bilangan ganjil selalu memiliki angka satuan 1, 3, 5, 7, atau 9.\n\nE. Bilangan Prima\n• Pengertian: Bilangan prima adalah bilangan asli lebih besar dari 1 yang hanya bisa dibagi habis oleh dua bilangan bulat positif, yaitu angka 1 dan bilangan itu sendiri.\n• Anggota Himpunan: {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ...}.\n\nFakta Penting Bilangan Prima:\n1) Angka 1 bukan bilangan prima karena hanya memiliki satu faktor pembagi (yaitu angka 1 itu sendiri).\n2) Angka 2 adalah satu-satunya bilangan prima yang bernilai genap.\n3) Semua bilangan prima lainnya (seperti 3, 5, 7, 11) adalah bilangan ganjil.\n4) Angka 9 bukan bilangan prima karena bisa dibagi 1, 3, dan 9.\n\n🛠️ Pemodelan: Menguji Sebuah Angka\nAgar lebih mudah membedakan sebuah angka, mari kita uji dengan angka 7:\n• Apakah 7 bilangan bulat? Ya (karena utuh tanpa desimal).\n• Apakah 7 bilangan asli? Ya (karena digunakan untuk menghitung benda mulai dari 1).\n• Apakah 7 bilangan cacah? Ya (karena masuk ke dalam kumpulan 0, 1, 2, 3...).\n• Apakah 7 bilangan genap atau ganjil? Ganjil (karena jika dibagi 2 bersisa 1).\n• Apakah 7 bilangan prima? Ya (karena 7 hanya bisa dibagi habis oleh 1 dan 7).\n\n🔑 Kesimpulan: Menjawab Misi Awal\nSekarang, mari kita gunakan ilmu yang sudah kita pelajari untuk memecahkan sandi brankas detektif tadi!\n• Digit Pertama (Bilangan prima pertama yang bernilai genap): Berdasarkan materi, satu-satunya bilangan prima genap adalah angka 2.\n• Digit Kedua (Angka pertama dari himpunan bilangan cacah): Titik awal himpunan bilangan cacah selalu dimulai dari angka 0.\n• Digit Ketiga (Bilangan ganjil terkecil setelah angka 5): Bilangan ganjil setelah angka 5 adalah angka 7.\n\nJadi, password brankas rahasia tersebut adalah 207!",
+        latihan: [
+          {
+            id: 1001,
+            type: 1,
+            question: "Manakah dari angka berikut yang merupakan satu-satunya bilangan prima yang bernilai genap?",
+            options: ["0", "1", "2", "4"],
+            correctAnswer: 2,
+            idea: "Ingat kembali bahwa sebagian besar bilangan prima adalah ganjil, kecuali angka terkecilnya.",
+            pembahasan: "Angka 2 adalah satu-satunya bilangan prima yang bernilai genap. Bilangan prima lainnya selalu ganjil."
+          },
+          {
+            id: 1002,
+            type: 1,
+            question: "Himpunan bilangan asli tidak mencakup angka nol dan bilangan negatif. Jika kita diminta menyebutkan bilangan asli yang kurang dari 5, maka anggotanya adalah...",
+            options: ["0, 1, 2, 3, 4", "1, 2, 3, 4", "1, 3, 5", "-1, 0, 1, 2, 3, 4"],
+            correctAnswer: 1,
+            idea: "Titik awal berhitung bilangan asli sama seperti saat pertama kali kamu belajar menghitung benda menggunakan jari.",
+            pembahasan: "Bilangan asli digunakan untuk menghitung benda mulai dari angka 1 dan terus bertambah 1. Karena diminta kurang dari 5, maka jawabannya 1, 2, 3, 4."
+          },
+          {
+            id: 1003,
+            type: 1,
+            question: "Bilangan ganjil adalah bilangan yang tidak habis dibagi 2. Di antara kelompok bilangan berikut, manakah yang semuanya merupakan bilangan ganjil?",
+            options: ["11, 13, 15, 17", "7, 9, 12, 15", "2, 3, 5, 7", "21, 23, 24, 25"],
+            correctAnswer: 0,
+            idea: "Perhatikan angka satuannya. Bilangan ganjil selalu memiliki satuan 1, 3, 5, 7, atau 9.",
+            pembahasan: "Bilangan ganjil adalah bilangan yang tidak habis dibagi 2, dan satuan angkanya adalah 1, 3, 5, 7, 9. Opsi A semuanya ganjil."
+          },
+          {
+            id: 1004,
+            type: 1,
+            question: "Angka 9 bukan merupakan bilangan prima. Alasan yang paling tepat adalah...",
+            options: ["Karena 9 adalah bilangan ganjil", "Karena 9 bisa dibagi habis oleh 1, 3, dan 9", "Karena 9 bukan bilangan genap", "Karena 9 lebih besar dari 2"],
+            correctAnswer: 1,
+            idea: "Bilangan prima hanya memiliki dua faktor pembagi. Coba cari angka berapa saja yang bisa membagi habis angka 9.",
+            pembahasan: "Syarat bilangan prima hanya bisa dibagi 1 dan angka itu sendiri. Karena 9 memiliki 3 faktor pembagi, maka 9 bukan prima."
+          },
+          {
+            id: 1005,
+            type: 1,
+            question: "Jika kita menggabungkan angka nol (0) ke dalam himpunan bilangan asli, maka himpunan baru tersebut dinamakan...",
+            options: ["Bilangan Prima", "Bilangan Ganjil", "Bilangan Cacah", "Bilangan Genap"],
+            correctAnswer: 2,
+            idea: "Perhatikan kata kunci \"tambahan angka nol\".",
+            pembahasan: "Gabungan bilangan asli dengan angka nol (0) dinamakan bilangan cacah."
+          },
+          {
+            id: 1006,
+            type: 2,
+            question: "Sebutkan bilangan prima terkecil yang lebih besar dari 10!",
+            targetAnswer: "11",
+            idea: "Uji satu per satu angka setelah 10 (yaitu 11, 12, 13). Manakah yang hanya bisa dibagi angka 1 dan angka itu sendiri?",
+            pembahasan: "Angka setelah 10 adalah 11, 12, 13. Angka 12 bisa dibagi 2. Angka 11 hanya bisa dibagi 1 and 11. Jadi prima terkecil setelah 10 adalah 11."
+          },
+          {
+            id: 1007,
+            type: 2,
+            question: "Berapakah selisih antara angka pertama pada himpunan bilangan cacah dan angka pertama pada himpunan bilangan asli?",
+            targetAnswer: "1",
+            idea: "Tentukan dulu titik awal (angka pertama) bilangan cacah, lalu tentukan angka pertama bilangan asli. Kurangkan angka yang besar dengan yang kecil.",
+            pembahasan: "Angka pertama bilangan cacah adalah 0. Angka pertama bilangan asli adalah 1. Selisihnya adalah 1 - 0 = 1."
+          },
+          {
+            id: 1008,
+            type: 2,
+            question: "Sebutkan semua bilangan genap yang ada di antara angka 7 dan 13!",
+            targetAnswer: "8, 10, 12",
+            idea: "Bilangan genap harus habis dibagi 2. Urutkan angka 8, 9, 10, 11, 12 dan pilih yang genap.",
+            pembahasan: "Urutan angka antara 7 dan 13 adalah 8, 9, 10, 11, 12. Angka yang habis dibagi 2 dari deret tersebut adalah 8, 10, 12."
+          },
+          {
+            id: 1009,
+            type: 2,
+            question: "Angka 15 merupakan bilangan ganjil sekaligus bilangan... (Sebutkan himpunan lain yang memuat angka 15)",
+            targetAnswer: "Bilangan Bulat, Asli, dan Cacah",
+            idea: "Ingat pengelompokan secara luas. Apakah 15 bernilai positif tanpa desimal? Apakah lebih dari 0?",
+            pembahasan: "Angka 15 utuh tanpa desimal (Bulat), digunakan untuk menghitung/lebih dari 0 (Asli), termasuk dalam kelompok mulai dari 0 (Cacah)."
+          },
+          {
+            id: 1010,
+            type: 2,
+            question: "Berapakah jumlah dari 3 bilangan prima pertama?",
+            targetAnswer: "10",
+            idea: "Sebutkan tiga anggota pertama himpunan bilangan prima (jangan masukkan angka 1), kemudian jumlahkan ketiganya.",
+            pembahasan: "Tiga bilangan prima pertama adalah 2, 3, dan 5. Jumlahnya: 2 + 3 + 5 = 10."
+          },
+          {
+            id: 1011,
+            type: 3,
+            question: "Bilangan bulat terdiri dari elemen-elemen berikut, KECUALI...",
+            options: ["Bilangan bulat negatif", "Angka nol (0)", "Bilangan desimal/pecahan", "Bilangan bulat positif"],
+            correctAnswer: 2,
+            pembahasan: "Bilangan bulat adalah bilangan yang utuh dan tidak memiliki pecahan atau desimal."
+          },
+          {
+            id: 1012,
+            type: 3,
+            question: "Himpunan {2, 3, 5, 7, 11, 13} merupakan anggota kelompok himpunan...",
+            options: ["Bilangan Cacah", "Bilangan Asli", "Bilangan Ganjil", "Bilangan Prima"],
+            correctAnswer: 3,
+            pembahasan: "Kumpulan angka tersebut hanya bisa dibagi oleh 1 dan bilangan itu sendiri."
+          },
+          {
+            id: 1013,
+            type: 3,
+            question: "Suatu bilangan selalu memiliki sisa 1 jika dibagi dengan 2. Bilangan tersebut dipastikan adalah...",
+            options: ["Bilangan Ganjil", "Bilangan Genap", "Bilangan Prima", "Bilangan Cacah"],
+            correctAnswer: 0,
+            pembahasan: "Definisi bilangan ganjil adalah bilangan bulat yang bersisa 1 jika dibagi 2."
+          },
+          {
+            id: 1014,
+            type: 3,
+            question: "Bilangan cacah yang kurang dari 3 adalah...",
+            options: ["1, 2", "0, 1, 2", "1, 2, 3", "0, 1, 2, 3"],
+            correctAnswer: 1,
+            pembahasan: "Bilangan cacah dimulai dari 0, yang kurang dari 3 adalah 0, 1, dan 2."
+          },
+          {
+            id: 1015,
+            type: 3,
+            question: "Pernyataan di bawah ini yang salah adalah...",
+            options: ["Angka 1 bukan bilangan prima", "Semua bilangan ganjil adalah bilangan prima", "Semua bilangan prima lebih besar dari 1", "Angka 0 termasuk bilangan bulat"],
+            correctAnswer: 1,
+            pembahasan: "Pernyataan ini salah karena angka 9 atau 15 adalah ganjil tetapi bukan prima (bisa dibagi 3)."
+          },
+          {
+            id: 1016,
+            type: 4,
+            question: "Himpunan bilangan cacah yang juga merupakan bilangan bulat positif dimulai dari angka ...",
+            targetAnswer: "1",
+            pembahasan: "Bilangan cacah positif berarti mengecualikan 0, sehingga sama dengan bilangan asli yang dimulai dari 1."
+          },
+          {
+            id: 1017,
+            type: 4,
+            question: "Jika suatu bilangan berakhiran dengan angka 6 atau 8, maka bilangan tersebut masuk ke dalam kelompok bilangan ...",
+            targetAnswer: "Bilangan Genap",
+            pembahasan: "Angka satuan genap menunjukkan bilangan genap."
+          },
+          {
+            id: 1018,
+            type: 4,
+            question: "Bilangan prima yang terletak di antara angka 15 dan 20 adalah ... dan ... (Pisahkan dengan kata 'dan')",
+            targetAnswer: "17 dan 19",
+            pembahasan: "Angka antara 15-20 adalah 16, 17, 18, 19. Yang hanya punya dua faktor adalah 17 dan 19."
+          },
+          {
+            id: 1019,
+            type: 4,
+            question: "Bilangan bulat yang posisinya berada tepat di tengah-tengah antara bilangan bulat positif and bilangan bulat negatif adalah angka ...",
+            targetAnswer: "0",
+            pembahasan: "Nol memisahkan bilangan bulat negatif dan positif."
+          },
+          {
+            id: 1020,
+            type: 4,
+            question: "Angka 1 tidak termasuk ke dalam bilangan prima karena ...",
+            targetAnswer: "Hanya memiliki satu faktor pembagi yaitu angka 1 itu sendiri",
+            pembahasan: "Faktor bilangan prima harus ada tepat 2 faktor, sedangkan 1 hanya punya 1 faktor."
+          },
+          {
+            id: 1021,
+            type: 5,
+            question: "Tuliskan semua anggota himpunan bilangan prima yang kurang dari 15! (Urutkan dari yang terkecil dan pisahkan dengan koma dan spasi, contoh: 2, 3, 5, ...)",
+            correctAnswer: "2, 3, 5, 7, 11, 13",
+            pembahasan: "Angka-angka tersebut adalah 2, 3, 5, 7, 11, dan 13. Angka tersebut adalah bilangan asli > 1 yang hanya bisa dibagi 1 dan bilangan itu sendiri."
+          },
+          {
+            id: 1022,
+            type: 5,
+            question: "Jelaskan perbedaan mendasar antara himpunan bilangan cacah dan himpunan bilangan asli! Dari angka berapakah bilangan cacah dimulai?",
+            correctAnswer: "0",
+            pembahasan: "Perbedaan mendasarnya terletak pada titik awal bilangannya. Bilangan asli dimulai dari angka 1, sedangkan bilangan cacah dimulai dari angka 0."
+          },
+          {
+            id: 1023,
+            type: 5,
+            question: "Budi mengatakan bahwa 21 adalah bilangan prima karena 21 adalah bilangan ganjil. Apakah pernyataan Budi benar? (Benar/Salah)",
+            correctAnswer: "Salah",
+            pembahasan: "Pernyataan Budi salah. Memang benar 21 adalah bilangan ganjil, namun syarat bilangan prima adalah hanya bisa dibagi oleh 1 dan angka itu sendiri. Angka 21 bisa dibagi oleh 1, 3, 7, dan 21. Karena memiliki lebih dari 2 faktor, 21 bukan bilangan prima."
+          },
+          {
+            id: 1024,
+            type: 5,
+            question: "Berapakah hasil kali dari bilangan cacah pertama dengan bilangan prima genap?",
+            correctAnswer: "0",
+            pembahasan: "Bilangan cacah pertama adalah 0. Bilangan prima genap adalah 2. Hasil kalinya adalah 0 × 2 = 0."
+          },
+          {
+            id: 1025,
+            type: 5,
+            question: "Tuliskan 3 bilangan genap berurutan yang jika dijumlahkan hasilnya adalah 30! (Urutkan dari yang terkecil, pisahkan dengan koma dan spasi, contoh: 2, 4, 6)",
+            correctAnswer: "8, 10, 12",
+            pembahasan: "Misal bilangannya x, x+2, x+4. (x) + (x+2) + (x+4) = 30 -> 3x + 6 = 30 -> 3x = 24 -> x = 8. Angkanya adalah 8, 10, 12. Semuanya bilangan genap."
+          }
+        ]
+      },
       'Mengurutkan dan membandingkan bilangan bulat': {
         materi: "Bilangan bulat terdiri dari bilangan bulat positif, nol, dan bilangan bulat negatif. Semakin ke kanan pada garis bilangan, nilainya semakin besar. Semakin ke kiri, nilainya semakin kecil.\n\nContoh: 5 > -2, karena 5 berada di sebelah kanan -2 pada garis bilangan.",
         latihan: [
