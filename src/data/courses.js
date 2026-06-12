@@ -380,7 +380,192 @@ export const MOCK_COURSES = {
   },
   SMA: {
     'Modul 1: Aljabar & Sistem Persamaan - Sistem Persamaan Linier': {
-      'Persamaan dan Fungsi Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Persamaan dan Fungsi Linier': {
+        materi: "🕵️‍♂️ Misi Awal: Menemukan Kemiringan Tebing\n\nSebuah tim penyelamat harus mengevakuasi korban di atas tebing. Koordinat awal korban adalah di P(2, -4) dan helikopter penyelamat bergerak dari titik asal (0, 0). Jalur lintasan helikopter harus mengikuti garis lurus dengan kemiringan (gradien) sebesar 3.\nApakah lintasan helikopter tersebut akan melewati posisi korban di tebing tersebut?\nMari kita temukan jawabannya setelah memahami konsep persamaan dan fungsi linier!\n\n📚 Eksplorasi Materi: Persamaan dan Fungsi Linier\n\n1. Bentuk Umum Persamaan dan Fungsi Linier\nSuatu persamaan linier dapat dinyatakan sebagai:\n**ax + by = c**\ndi mana a, b, dan c adalah konstanta, serta x dan y adalah variabel riil.\nJika persamaan tersebut diubah menjadi fungsi linier, bentuk umumnya adalah:\n**y = mx + c**\ndi mana:\n• **x** adalah variabel bebas, anggota daerah asal (domain).\n• **y** adalah variabel terikat, anggota daerah hasil (range).\n• **m** adalah gradien (kemiringan) garis.\n\n2. Konsep Gradien (Kemiringan Garis)\nGradien (m) adalah nilai kemiringan suatu garis lurus. Rumus gradien bergantung pada informasi yang diketahui:\n• Jika diketahui persamaan **ax + by = c**, maka gradiennya:\n  **m = -a/b**\n• Jika garis melalui titik **A(x1, y1)** dan **B(x2, y2)**, maka:\n  **m = (y2 - y1) / (x2 - x1) = Δy / Δx = tan α**\n\nFakta Penting tentang Gradien:\n1) Garis horizontal (sejajar sumbu-X) memiliki gradien **0**.\n2) Garis vertikal (sejajar sumbu-Y) memiliki gradien **∞ (tak terhingga)**.\n3) Jika gradien bernilai positif, arah garis naik ke kanan (semakin besar x, semakin besar y).\n4) Jika gradien bernilai negatif, arah garis turun ke kanan (semakin besar x, semakin kecil y).\n\n3. Menentukan Persamaan Garis\nKita bisa menentukan persamaan garis dengan dua cara utama:\n\nA. Melalui satu titik A(x1, y1) dengan gradien m\n• Rumus:\n  **y - y1 = m(x - x1)**\n\nB. Melalui dua titik A(x1, y1) dan B(x2, y2)\n• Rumus:\n  **(y - y1) / (y2 - y1) = (x - x1) / (x2 - x1)**\n\n4. Kedudukan Dua Garis Lurus\nDua garis y = m1 * x + c1 dan y = m2 * x + c2 memiliki hubungan kedudukan sebagai berikut:\n\nA. Dua Garis Sejajar\n• Kedua garis sejajar jika gradiennya sama:\n  **m1 = m2**\n\nB. Dua Garis Berpotongan Tegak Lurus\n• Kedua garis berpotongan tegak lurus jika hasil kali gradiennya bernilai -1:\n  **m1 * m2 = -1** (atau m2 = -1/m1)\n\nC. Dua Garis Berpotongan Biasa\n• Kedua garis berpotongan jika gradiennya tidak sama:\n  **m1 ≠ m2**\n\n🛠️ Pemodelan: Penerapan dalam Kehidupan Sehari-hari\nMari kita lihat penerapan konsep ini dalam pemodelan kecepatan mobil:\nSebuah mobil diuji kelayakannya. Pada 4 jam pertama menempuh jarak 242 km. Setelah 6 jam menempuh 362 km. Jika kecepatannya konstan, mari kita buat persamaan kecepatannya:\n• Waktu (x) dan Jarak (y) menghasilkan dua titik: (4, 242) dan (6, 362).\n• Gradien (kecepatan): m = (362 - 242) / (6 - 4) = 120 / 2 = 60 km/jam.\n• Persamaan garisnya: y - 242 = 60(x - 4) => y = 60x + 2.\nPersamaan ini menggambarkan posisi mobil (y) pada waktu (x) dengan kecepatan konstan 60 km/jam.\n\n🔑 Kesimpulan: Memecahkan Misi Awal\nKembali ke misi awal tim penyelamat:\n• Titik korban: P(2, -4).\n• Gradien helikopter: m = 3. Melalui titik asal (0, 0).\n• Persamaan lintasan helikopter: y - 0 = 3(x - 0) => y = 3x.\n• Kita uji apakah titik P(2, -4) dilewati lintasan y = 3x:\n  y = 3(2) = 6 (sedangkan koordinat y korban adalah -4, bukan 6).\nJadi, lintasan helikopter tersebut tidak melewati posisi korban di tebing (korban berada di y = -4, sedangkan lintasan berada di y = 6). Tim harus mengubah rute helikopter!",
+        latihan: [
+          {
+            id: 2001,
+            type: 1,
+            question: "Besar gradien garis 2x + 6y = 5 adalah ...",
+            options: ["-3", "-1/3", "1/3", "3", "5"],
+            correctAnswer: 1,
+            idea: "Ubah persamaan ke bentuk y = mx + c atau gunakan rumus cepat m = -a/b.",
+            pembahasan: "Persamaan garis 2x + 6y = 5 memiliki koefisien a = 2 dan b = 6. Rumus gradiennya adalah m = -a/b = -2/6 = -1/3."
+          },
+          {
+            id: 2002,
+            type: 1,
+            question: "Sebuah garis melalui titik A(–2, –3) dan B(6, –5). Besar gradien garis itu adalah ...",
+            options: ["-4", "-1/4", "1/4", "2", "4"],
+            correctAnswer: 1,
+            idea: "Gunakan rumus gradien melalui dua titik m = (y2 - y1) / (x2 - x1).",
+            pembahasan: "m = (y2 - y1) / (x2 - x1) = (-5 - (-3)) / (6 - (-2)) = -2 / 8 = -1/4."
+          },
+          {
+            id: 2003,
+            type: 1,
+            question: "Persamaan suatu garis dengan gradien 3 dan melalui titik P(2, –4) adalah ...",
+            options: ["y = 3x – 2", "y = 3x + 2", "y = 3x – 6", "y = 3x – 10", "y = 3x + 10"],
+            correctAnswer: 3,
+            idea: "Gunakan rumus persamaan garis melalui satu titik dengan gradien m: y - y1 = m(x - x1).",
+            pembahasan: "y - (-4) = 3(x - 2) => y + 4 = 3x - 6 => y = 3x - 10."
+          },
+          {
+            id: 2004,
+            type: 1,
+            question: "Persamaan suatu garis yang melalui titik P(–2, 3) dan titik Q(2, –5) adalah ...",
+            options: ["y = -2x - 6", "y = -2x - 4", "y = -2x - 1", "y = -2x + 1", "y = -2x + 6"],
+            correctAnswer: 2,
+            idea: "Gunakan rumus persamaan garis melalui dua titik: (y - y1)/(y2 - y1) = (x - x1)/(x2 - x1).",
+            pembahasan: "(y - 3) / (-5 - 3) = (x - (-2)) / (2 - (-2)) => (y - 3) / -8 = (x + 2) / 4 => 4(y - 3) = -8(x + 2) => y - 3 = -2x - 4 => y = -2x - 1."
+          },
+          {
+            id: 2005,
+            type: 2,
+            question: "Gambarlah persamaan garis y = 4x – 2 kedalam grafik Cartesius. Tentukan titik potong sumbu-X dan sumbu-Y!",
+            targetAnswer: "Titik potong sumbu-X di (1/2, 0) dan sumbu-Y di (0, -2)",
+            idea: "Titik potong sumbu-X terjadi saat y = 0, sedangkan titik potong sumbu-Y terjadi saat x = 0.",
+            pembahasan: "Untuk x = 0, y = 4(0) - 2 = -2. Diperoleh titik (0, -2).\nUntuk y = 0, 0 = 4x - 2 => 4x = 2 => x = 1/2. Diperoleh titik (1/2, 0).\nHubungkan kedua titik ini pada koordinat Cartesius."
+          },
+          {
+            id: 2006,
+            type: 3,
+            question: "Tim peneliti mengamati penurunan populasi harimau Sumatera mengikuti pola linier. Jika pada tahun ke-tiga jumlah populasi harimau sebanyak 182 ekor dan pada tahun ke-lima menjadi 170 ekor, berapakah perkiraan populasi harimau sumatera pada tahun ke-9?",
+            options: ["164 ekor", "158 ekor", "152 ekor", "146 ekor", "140 ekor"],
+            correctAnswer: 3,
+            pembahasan: "Diperoleh titik (3, 182) and (5, 170).\nGradien (laju penurunan): m = (170 - 182) / (5 - 3) = -12 / 2 = -6 ekor per tahun.\nPersamaan garis: y - 170 = -6(x - 5) => y = -6x + 200.\nUntuk tahun ke-9 (x = 9): y = -6(9) + 200 = -54 + 200 = 146 ekor."
+          },
+          {
+            id: 2007,
+            type: 3,
+            question: "Sebuah garis g melalui titik A(4, –2). Jika garis g sejajar dengan garis 3x + 2y = 6 maka persamaan garis g tersebut adalah ...",
+            options: ["3x + 2y = 8", "3x + 2y = 4", "2x + 3y = 8", "2x + 3y = 4", "3x – 2y = 8"],
+            correctAnswer: 0,
+            pembahasan: "Gradien garis 3x + 2y = 6 adalah m = -3/2. Karena sejajar, gradien garis g juga m_g = -3/2.\nPersamaan garis g: y - (-2) = -3/2(x - 4) => 2y + 4 = -3x + 12 => 3x + 2y = 8."
+          },
+          {
+            id: 2008,
+            type: 3,
+            question: "Sebuah garis melalui titik A(–3, 4). Jika garis tersebut tegak lurus dengan garis 2x – 5y = 8 maka persamaan garis itu adalah ...",
+            options: ["5x + 2y - 7 = 0", "5x - 2y + 7 = 0", "5x + 2y + 7 = 0", "2x + 5y - 7 = 0", "2x - 5y + 7 = 0"],
+            correctAnswer: 2,
+            pembahasan: "Gradien garis 2x - 5y = 8 adalah m1 = 2/5. Karena tegak lurus, m2 = -5/2.\nPersamaan garis: y - 4 = -5/2(x - (-3)) => 2y - 8 = -5x - 15 => 5x + 2y + 7 = 0."
+          },
+          {
+            id: 2009,
+            type: 3,
+            question: "Sebuah garis ax + by = c. Jika garis tersebut tegak lurus dengan garis 3x – 2y = 8 dan melalui titik (6, –2) maka persamaan garis itu adalah ...",
+            options: ["2x + 3y = 6", "2x - 3y = 6", "3x + 2y = 6", "3x - 2y = 6", "2x + 3y = -6"],
+            correctAnswer: 0,
+            pembahasan: "Gradien 3x - 2y = 8 adalah m1 = 3/2. Karena tegak lurus, gradiennya m2 = -2/3.\nPersamaan garis: y - (-2) = -2/3(x - 6) => 3y + 6 = -2x + 12 => 2x + 3y = 6."
+          },
+          {
+            id: 2010,
+            type: 3,
+            question: "Garis yang melalui titik (2, –3) dan tegak lurus dengan garis x + 2y = 14 memotong sumbu-Y di titik ...",
+            options: ["(0, -14)", "(0, 7/2)", "(0, -7)", "(0, 7)", "(11, -7/2)"],
+            correctAnswer: 2,
+            pembahasan: "Gradien x + 2y = 14 adalah m1 = -1/2. Karena tegak lurus, gradiennya m2 = 2.\nPersamaan garis: y - (-3) = 2(x - 2) => y + 3 = 2x - 4 => y = 2x - 7.\nMemotong sumbu-Y saat x = 0 => y = -7, sehingga diperoleh titik (0, -7)."
+          },
+          {
+            id: 2011,
+            type: 3,
+            question: "Jika garis g melalui titik (3, 5) dan juga melalui titik potong garis x + 5y = 0 dengan garis 3x + 7y = 8, maka persamaan garis g itu adalah ...",
+            options: ["3x + 2y - 19 = 0", "3x + 2y - 14 = 0", "3x - y - 4 = 0", "3x + y + 14 = 0", "3x + y - 14 = 0"],
+            correctAnswer: 4,
+            pembahasan: "Substitusi x = -5y ke 3x + 7y = 8 => 3(-5y) + 7y = 8 => -8y = 8 => y = -1, x = 5. Titik potongnya (5, -1).\nPersamaan garis g melalui (3, 5) dan (5, -1): y - 5 = [(-1-5)/(5-3)] * (x - 3) => y - 5 = -3(x - 3) => 3x + y - 14 = 0."
+          },
+          {
+            id: 2012,
+            type: 3,
+            question: "Sudut yang dibentuk oleh garis 3x + y = 6 dan 2x – y = 6 adalah ...",
+            options: ["135°", "90°", "60°", "45°", "30°"],
+            correctAnswer: 3,
+            pembahasan: "Gradien garis 1: m1 = -3. Gradien garis 2: m2 = 2.\ntan θ = |(m2 - m1) / (1 + m1*m2)| = |(2 - (-3)) / (1 + 2(-3))| = |5 / -5| = 1.\nKarena tan θ = 1, maka sudut θ = 45°."
+          },
+          {
+            id: 2013,
+            type: 3,
+            question: "Persamaan garis yang melalui titik potong garis 4x + 7y - 15 = 0 dan 9x – 14y – 4 = 0 serta tegak lurus pada garis 21x + 5y = 3 adalah ...",
+            options: ["21x - 5y = -11", "11x - 21y = 5", "5x - 21y = -11", "5x + 21y = -11", "5x - 21y = 11"],
+            correctAnswer: 2,
+            pembahasan: "Eliminasi 4x + 7y = 15 dan 9x - 14y = 4. Kalikan garis 1 dengan 2 => 8x + 14y = 30. Jumlahkan => 17x = 34 => x = 2, y = 1. Titik potong (2, 1).\nGradien 21x + 5y = 3 adalah m1 = -21/5. Karena tegak lurus, gradiennya m2 = 5/21.\nPersamaan garis: y - 1 = 5/21(x - 2) => 21y - 21 = 5x - 10 => 5x - 21y = -11."
+          },
+          {
+            id: 2014,
+            type: 3,
+            question: "Diketahui titik P(–1, 2), Q(3, 4) dan R(1, –1). Persamaan garis yang melalui titik tengah PQ dan sejajar QR adalah ...",
+            options: ["2y – 5x + 8 = 0", "5y – 2x – 1 = 0", "5y – 2x – 13 = 0", "5y + 2x – 11 = 0", "2y – 5x – 1 = 0"],
+            correctAnswer: 4,
+            pembahasan: "Titik tengah PQ: M = ((-1+3)/2, (2+4)/2) = (1, 3).\nGradien QR: m = (-1-4)/(1-3) = 5/2. Karena sejajar, gradiennya juga 5/2.\nPersamaan garis: y - 3 = 5/2(x - 1) => 2y - 6 = 5x - 5 => 2y - 5x - 1 = 0."
+          },
+          {
+            id: 2015,
+            type: 3,
+            question: "Garis yang melalui titik (2, 1) and (8, 4) berpotongan dengan garis yang melalui titik (1, 5) dan (5, 1) di titik ...",
+            options: ["(3, 3)", "(1, 3)", "(4, 2)", "(7, 2)", "(6, 2)"],
+            correctAnswer: 2,
+            pembahasan: "Garis 1 melalui (2, 1) dan (8, 4): y - 1 = [(4-1)/(8-2)](x - 2) => y = 1/2 x.\nGaris 2 melalui (1, 5) dan (5, 1): y - 5 = [(1-5)/(5-1)](x - 1) => y = -x + 6.\nTitik potong: 1/2 x = -x + 6 => 3/2 x = 6 => x = 4, y = 2. Diperoleh titik (4, 2)."
+          },
+          {
+            id: 2016,
+            type: 3,
+            question: "Grafik hasil produksi suatu pabrik per tahun merupakan suatu garis lurus. Jika produksi pada tahun pertama 110 unit dan pada tahun ketiga 150 unit, maka produksi tahun ke-15 adalah ...",
+            options: ["370 unit", "390 unit", "410 unit", "430 unit", "670 unit"],
+            correctAnswer: 1,
+            pembahasan: "Diperoleh titik (1, 110) dan (3, 150).\nGradien m = (150 - 110)/(3 - 1) = 20.\nPersamaan garis: y - 110 = 20(x - 1) => y = 20x + 90.\nUntuk tahun ke-15 (x = 15): y = 20(15) + 90 = 390 unit."
+          },
+          {
+            id: 2017,
+            type: 4,
+            question: "Gambarlah persamaan garis 3x + 2y = 12 kedalam grafik Cartesius. Tentukan titik potong dengan sumbu-X dan sumbu-Y!",
+            targetAnswer: "Garis memotong sumbu-X di (4, 0) dan sumbu-Y di (0, 6)",
+            pembahasan: "Titik potong sumbu-X (y = 0): 3x = 12 => x = 4, diperoleh titik (4, 0).\nTitik potong sumbu-Y (x = 0): 2y = 12 => y = 6, diperoleh titik (0, 6).\nHubungkan titik (4, 0) dan (0, 6) dengan garis lurus."
+          },
+          {
+            id: 2018,
+            type: 4,
+            question: "Tentukan kedudukan (apakah sejajar, berimpit, atau berpotongan di titik tertentu) antara garis 2x + 3y = -5 dan 3x + 4y = -6!",
+            targetAnswer: "Berpotongan di titik (2, -3)",
+            pembahasan: "Gradien m1 = -2/3 dan m2 = -3/4. Karena m1 ≠ m2, kedua garis berpotongan.\nEliminasi: 3*(2x + 3y = -5) => 6x + 9y = -15.\n2*(3x + 4y = -6) => 6x + 8y = -12.\nKurangkan => y = -3. Substitusi => 2x - 9 = -5 => x = 2. Titik potong (2, -3)."
+          },
+          {
+            id: 2019,
+            type: 5,
+            question: "Tentukanlah persamaan garis yang memotong sumbu-X di titik (-6, 0) dan memotong sumbu-Y di titik (0, 8)! Tuliskan dalam bentuk ax - by = c (contoh: 4x - 3y = -24)!",
+            correctAnswer: "4x - 3y = -24",
+            pembahasan: "Garis melalui (-6, 0) dan (0, 8). Maka (y - 0) / (8 - 0) = (x - (-6)) / (0 - (-6)) => y / 8 = (x + 6) / 6 => 6y = 8x + 48 => 8x - 6y = -48 => 4x - 3y = -24."
+          },
+          {
+            id: 2020,
+            type: 5,
+            question: "Sebuah garis y = 3x - p melalui titik A(2, q) dan B(4, 5q + 2). Tentukan nilai p!",
+            correctAnswer: "5",
+            pembahasan: "Substitusi A(2, q) => q = 3(2) - p => p = 6 - q.\nSubstitusi B(4, 5q + 2) => 5q + 2 = 3(4) - p => p = 10 - 5q.\nSamakan p: 6 - q = 10 - 5q => 4q = 4 => q = 1.\nMaka p = 6 - 1 = 5."
+          },
+          {
+            id: 2021,
+            type: 5,
+            question: "Suatu garis y = 2x + p berpotongan dengan garis y = 3x + q di titik (4, -2). Tentukan nilai p + q!",
+            correctAnswer: "-24",
+            pembahasan: "Substitusi (4, -2) ke y = 2x + p => -2 = 8 + p => p = -10.\nSubstitusi (4, -2) ke y = 3x + q => -2 = 12 + q => q = -14.\nMaka p + q = -10 + (-14) = -24."
+          },
+          {
+            id: 2022,
+            type: 5,
+            question: "Jarak titik P(3, 6) ke garis 12x + 5y – 40 = 0 sama dengan jarak P ke titik Q(a, 4). Tentukan nilai a yang bernilai positif!",
+            correctAnswer: "3",
+            pembahasan: "Jarak P ke garis: d = |12(3) + 5(6) - 40| / sqrt(12^2+5^2) = |36+30-40| / 13 = 26/13 = 2.\nJarak P ke Q: sqrt((a-3)^2 + (4-6)^2) = 2 => (a-3)^2 + 4 = 4 => (a-3)^2 = 0 => a = 3."
+          },
+          {
+            id: 2023,
+            type: 5,
+            question: "Jika dua garis yang disajikan dengan persamaan 2x + ay = 5 dan bx + 6y = 7 adalah sejajar, tentukan nilai ab!",
+            correctAnswer: "12",
+            pembahasan: "m1 = -2/a, m2 = -b/6. Karena sejajar: -2/a = -b/6 => ab = 12."
+          }
+        ]
+      },
       'Sistem Persamaan Linier dengan Dua Variabel': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
       'Sistem Persamaan Linier dengan Tiga Variabel': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
       'Penerapan Sistem Persamaan Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
