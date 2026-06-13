@@ -4,8 +4,8 @@ import { Settings } from 'lucide-react';
 export default function Pengaturan({ theme, toggleTheme, fontSize, increaseFont, decreaseFont, themeClasses }) {
   return (
     <div className="max-w-2xl mx-auto space-y-8">
-      <h2 className="text-3xl font-bold flex items-center gap-2 border-b pb-4"><Settings/> Pengaturan</h2>
-      
+      <h2 className="text-3xl font-bold flex items-center gap-2 border-b pb-4"><Settings /> Pengaturan</h2>
+
       <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} space-y-8`}>
         <div className="flex items-center justify-between">
           <div>
@@ -13,13 +13,13 @@ export default function Pengaturan({ theme, toggleTheme, fontSize, increaseFont,
             <p className="opacity-70 text-sm">Sesuaikan kenyamanan mata lo</p>
           </div>
           <div className="flex bg-slate-200 dark:bg-slate-700 p-1 rounded-xl">
-            <button 
+            <button
               onClick={() => theme !== 'light' && toggleTheme()}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${theme === 'light' ? 'bg-white text-black shadow' : 'text-slate-400 hover:text-white'}`}
             >
               Terang
             </button>
-            <button 
+            <button
               onClick={() => theme !== 'dark' && toggleTheme()}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${theme === 'dark' ? 'bg-slate-900 text-white shadow' : 'text-slate-600 hover:text-black'}`}
             >

@@ -41,8 +41,8 @@ export default function App() {
     text: theme === 'light' ? 'text-slate-800' : 'text-slate-200',
     cardBg: theme === 'light' ? 'bg-white' : 'bg-slate-800',
     border: theme === 'light' ? 'border-slate-200' : 'border-slate-700',
-    primary: theme === 'light' ? 'bg-lime-200 text-lime-900 hover:bg-lime-300' : 'bg-lime-700 text-white hover:bg-lime-600',
-    primaryGhost: theme === 'light' ? 'text-lime-700 hover:bg-lime-100' : 'text-lime-400 hover:bg-slate-700',
+    primary: theme === 'light' ? 'bg-blue-100 text-blue-900 hover:bg-blue-200' : 'bg-blue-600 text-white hover:bg-blue-500',
+    primaryGhost: theme === 'light' ? 'text-blue-700 hover:bg-blue-100' : 'text-blue-400 hover:bg-slate-700',
   };
 
   return (
@@ -57,6 +57,17 @@ export default function App() {
           display: inline-block;
           white-space: nowrap;
           animation: marquee 20s linear infinite;
+        }
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-12px); }
+        }
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float 4s ease-in-out 2s infinite;
         }
       `}</style>
 

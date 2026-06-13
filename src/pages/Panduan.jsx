@@ -1,33 +1,24 @@
 import React from 'react';
 import { Settings, ShoppingBag } from 'lucide-react';
-import QuestionCard from '../components/QuestionCard';
+import MockQuestionCard from '../components/MockQuestionCard';
 
 export default function Panduan({ navigateTo, themeClasses }) {
-  // Mock questions for the guide
-  const mockQuestions = [
-    { type: 1, question: "soal ini blablabla......", options: ["opsi 1", "opsi 2", "opsi 3"], idea: "Ini ide untuk menjawab Tipe 1", targetAnswer: "", pembahasan: "Ini pembahasan Tipe 1" },
-    { type: 2, question: "soal ini blablabla......", options: [], idea: "Ini ide untuk menjawab Tipe 2", targetAnswer: "20", pembahasan: "Ini pembahasan Tipe 2" },
-    { type: 3, question: "soal ini blablabla......", options: ["opsi 1", "opsi 2", "opsi 3"], idea: "", targetAnswer: "", pembahasan: "Ini pembahasan Tipe 3" },
-    { type: 4, question: "soal ini blablabla......", options: [], idea: "", targetAnswer: "20", pembahasan: "Ini pembahasan Tipe 4" },
-    { type: 5, question: "soal ini blablabla......", options: [], idea: "", targetAnswer: "", correctAnswer: "20", pembahasan: "Ini pembahasan Tipe 5" }
-  ];
-
   return (
     <div className="max-w-3xl mx-auto space-y-8">
       <h2 className="text-3xl font-bold">Panduan Penggunaan</h2>
-      
+
       <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border}`}>
         <p className="text-lg leading-relaxed mb-4">
           Senimath merupakan website pembelajaran matematika. Desain pembelajaran menggunakan <strong>deliberate learning</strong> sehingga lo bisa menyesuaikan kemampuan. Saran gue, lo fokus tambel pada kelemahan yang lo miliki.
         </p>
         <p className="text-lg leading-relaxed mb-4">
-          Pada <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 font-bold border border-slate-300 dark:border-slate-600 shadow-sm mx-1 text-sm"><Settings size={14}/> Pengaturan</span>, lo bisa mengubah tema website menjadi gelap/terang. Lo juga bisa mengubah besar kecilnya font biar mata nggak gampang lelah.
+          Pada <button onClick={() => navigateTo('pengaturan')} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200 dark:border-blue-800 shadow-sm mx-1 text-sm cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"><Settings size={14} /> Pengaturan</button>, lo bisa mengubah tema website menjadi gelap/terang. Lo juga bisa mengubah besar kecilnya font biar mata nggak gampang lelah.
         </p>
       </div>
 
       <div className="space-y-6">
         <h3 className="text-2xl font-bold border-b pb-2">5 Tipe Latihan Soal</h3>
-        
+
         {[
           {
             type: "Tipe 1",
@@ -85,14 +76,12 @@ export default function Panduan({ navigateTo, themeClasses }) {
             ]
           }
         ].map((item, idx) => (
-          <div key={idx} className={`p-6 md:p-8 rounded-3xl ${themeClasses.cardBg} border border-l-8 border-l-lime-500 shadow-sm`}>
-            <h4 className="text-2xl font-black mb-6 uppercase tracking-wider text-lime-600 dark:text-lime-500">{item.type}</h4>
-            
-            <div className="pointer-events-none opacity-90">
-              <QuestionCard question={mockQuestions[item.typeNumber - 1]} themeClasses={themeClasses} />
-            </div>
+          <div key={idx} className={`p-6 md:p-8 rounded-3xl ${themeClasses.cardBg} border border-l-8 border-l-blue-500 shadow-sm`}>
+            <h4 className="text-2xl font-black mb-6 uppercase tracking-wider text-blue-600 dark:text-blue-500">{item.type}</h4>
 
-            <p className="mt-6 mb-6 opacity-90 text-lg leading-relaxed" dangerouslySetInnerHTML={{__html: item.desc}}></p>
+            <MockQuestionCard type={item.typeNumber} themeClasses={themeClasses} />
+
+            <p className="mb-6 opacity-90 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }}></p>
             <div className="flex flex-wrap gap-2">
               {item.features.map((feat, fidx) => (
                 <span key={fidx} className={`text-xs px-2.5 py-1.5 rounded-md font-bold ${feat.active ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300'}`}>
@@ -104,17 +93,19 @@ export default function Panduan({ navigateTo, themeClasses }) {
         ))}
       </div>
 
-      <div className={`mt-12 p-8 rounded-3xl bg-gradient-to-br from-lime-100 to-emerald-100 dark:from-lime-900/30 dark:to-emerald-900/30 border border-lime-300 dark:border-lime-700 text-center shadow-sm`}>
-        <ShoppingBag size={40} className="mx-auto mb-4 text-emerald-600 dark:text-emerald-400" />
-        <h3 className="text-2xl font-bold mb-3 text-emerald-900 dark:text-emerald-100">Merasa Masih Kurang Latihan?</h3>
-        <p className="text-emerald-800 dark:text-emerald-200 mb-6 text-lg">Buat lo yang masih merasa kurang latihan soal, lo bisa kunjungi toko dan membeli paket 100 latihan soal dan jawaban pada materi yang sedang lo pelajari.</p>
-        <button 
+      {/* Shop Hook */}
+      <div className={`mt-12 p-8 rounded-3xl bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 border border-blue-300 dark:border-blue-700 text-center shadow-sm`}>
+        <ShoppingBag size={40} className="mx-auto mb-4 text-indigo-600 dark:text-indigo-400" />
+        <h3 className="text-2xl font-bold mb-3 text-indigo-900 dark:text-indigo-100">Merasa Masih Kurang Latihan?</h3>
+        <p className="text-indigo-800 dark:text-indigo-200 mb-6 text-lg">Buat lo yang masih merasa kurang latihan soal, lo bisa kunjungi toko dan membeli paket 100 latihan soal dan jawaban pada materi yang sedang lo pelajari.</p>
+        <button
           onClick={() => navigateTo('toko')}
-          className={`px-8 py-3 rounded-xl font-bold bg-emerald-600 text-white hover:bg-emerald-700 shadow-md transition-colors flex items-center justify-center gap-2 mx-auto`}
+          className={`px-8 py-3 rounded-xl font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-md transition-colors flex items-center justify-center gap-2 mx-auto`}
         >
           <ShoppingBag size={18} /> Kunjungi Toko
         </button>
       </div>
+
     </div>
   );
 }

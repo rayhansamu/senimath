@@ -1340,6 +1340,14 @@ function PageMulaiBelajar({ navigateTo, themeClasses }) {
 function PageMateri({ navPath, setNavPath, themeClasses }) {
   const [currentType, setCurrentType] = useState(1);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answersState, setAnswersState] = useState({});
+
+  const handleUpdateAnswerState = (questionId, newQuestionState) => {
+    setAnswersState(prev => ({
+      ...prev,
+      [questionId]: newQuestionState
+    }));
+  };
 
   const jenjang = navPath[0];
   const bab = navPath[1];
@@ -1347,6 +1355,169 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
   const mode = navPath[3];
 
   const isSMA = jenjang === 'SMA';
+
+  const formatInlineText = (text) => {
+    if (typeof text !== 'string') return text;
+    
+    const parts = [];
+    let currentIndex = 0;
+    
+    const regex = /\*\*(.*?)\*\*/g;
+    let match;
+    
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > currentIndex) {
+        parts.push(text.substring(currentIndex, match.index));
+      }
+      parts.push(
+        <strong key={match.index} className="font-extrabold text-slate-900 dark:text-white">
+          {match[1]}
+        </strong>
+      );
+      currentIndex = regex.lastIndex;
+    }
+    
+    if (currentIndex < text.length) {
+      parts.push(text.substring(currentIndex));
+    }
+    
+    return parts.length > 0 ? parts : text;
+  };
+
+  const parseMateri = (text) => {
+    if (!text) return null;
+
+    const blocks = text.split('\n\n');
+
+    return blocks.map((block, index) => {
+      const trimmed = block.trim();
+      if (!trimmed) return null;
+
+      if (trimmed.startsWith('🕵️‍♂️ Misi Awal')) {
+        const lines = trimmed.split('\n');
+        const title = lines[0];
+        const content = lines.slice(1).join('\n');
+        return (
+          <div key={index} className="p-6 md:p-8 rounded-3xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/65 shadow-sm space-y-4 my-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="flex items-center gap-3 text-amber-850 dark:text-amber-400 font-extrabold text-xl md:text-2xl">
+              <span>🕵️‍♂️</span>
+              <span>{title.replace('🕵️‍♂️', '').trim()}</span>
+            </div>
+            <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+              {formatInlineText(content)}
+            </div>
+          </div>
+        );
+      }
+
+      if (trimmed.startsWith('🔑 Kesimpulan')) {
+        const lines = trimmed.split('\n');
+        const title = lines[0];
+        const content = lines.slice(1).join('\n');
+        return (
+          <div key={index} className="p-6 md:p-8 rounded-3xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/65 shadow-sm space-y-4 my-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="flex items-center gap-3 text-emerald-855 dark:text-emerald-400 font-extrabold text-xl md:text-2xl">
+              <span>🔑</span>
+              <span>{title.replace('🔑', '').trim()}</span>
+            </div>
+            <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+              {formatInlineText(content)}
+            </div>
+          </div>
+        );
+      }
+
+      if (trimmed.startsWith('🛠️ Pemodelan')) {
+        const lines = trimmed.split('\n');
+        const title = lines[0];
+        const content = lines.slice(1).join('\n');
+        return (
+          <div key={index} className="p-6 md:p-8 rounded-3xl bg-sky-50/50 dark:bg-sky-950/20 border border-sky-200 dark:border-sky-900/65 shadow-sm space-y-4 my-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="flex items-center gap-3 text-sky-850 dark:text-sky-400 font-extrabold text-xl md:text-2xl">
+              <span>🛠️</span>
+              <span>{title.replace('🛠️', '').trim()}</span>
+            </div>
+            <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+              {formatInlineText(content)}
+            </div>
+          </div>
+        );
+      }
+
+      if (trimmed.startsWith('📚')) {
+        return (
+          <h3 key={index} className="text-2xl md:text-3xl font-black tracking-tight text-slate-800 dark:text-slate-100 mt-8 mb-4 flex items-center gap-3 border-b-2 border-slate-200 dark:border-slate-800 pb-2">
+            <span>📚</span>
+            <span>{trimmed.replace('📚', '').trim()}</span>
+          </h3>
+        );
+      }
+
+      if (/^\d+\./.test(trimmed)) {
+        return (
+          <h4 key={index} className="text-xl md:text-2xl font-black text-slate-850 dark:text-slate-200 mt-6 pb-2 border-b border-slate-100 dark:border-slate-850 flex items-center gap-2">
+            <span className={`w-1.5 h-6 rounded-full ${isSMA ? 'bg-slate-500 dark:bg-slate-400' : 'bg-blue-500'}`}></span>
+            {formatInlineText(trimmed)}
+          </h4>
+        );
+      }
+
+      if (/^[A-Z]\./.test(trimmed)) {
+        const lines = trimmed.split('\n');
+        const title = lines[0];
+        const content = lines.slice(1).join('\n');
+        return (
+          <div key={index} className={`p-6 md:p-8 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm space-y-3 mt-6 hover:shadow-md transition-all ${isSMA ? 'hover:border-slate-400 dark:hover:border-slate-500' : 'hover:border-blue-400'}`}>
+            <div className={`text-lg md:text-xl font-extrabold border-b border-slate-100 dark:border-slate-700/50 pb-2 ${isSMA ? 'text-slate-700 dark:text-slate-300' : 'text-blue-600 dark:text-blue-400'}`}>
+              {title}
+            </div>
+            {content && (
+              <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+                {formatInlineText(content)}
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      const lines = trimmed.split('\n');
+      const isList = lines.every(line => /^[•\-\*\d)]\s*/.test(line.trim()));
+
+      if (isList) {
+        return (
+          <ul key={index} className="list-none space-y-3 my-4 pl-1">
+            {lines.map((line, lIdx) => {
+              const isNumbered = /^\d+\)/.test(line.trim());
+              const cleanLine = line.replace(/^[•\-\*\d\)]\s*/, '');
+              return (
+                <li key={lIdx} className="flex items-start gap-3">
+                  {isNumbered ? (
+                    <span className={`flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold mt-0.5 ${isSMA ? 'bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-300' : 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-400'}`}>
+                      {line.trim().match(/^\d+/)[0]}
+                    </span>
+                  ) : (
+                    <span className={`flex-shrink-0 w-2.5 h-2.5 rounded-full mt-2 ${isSMA ? 'bg-slate-500 dark:bg-slate-400' : 'bg-blue-500'}`}></span>
+                  )}
+                  <span className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg">
+                    {formatInlineText(cleanLine)}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+
+      return (
+        <p key={index} className="text-slate-750 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
+          {formatInlineText(trimmed)}
+        </p>
+      );
+    });
+  };
 
   if (navPath.length === 1) {
     const data = MOCK_COURSES[jenjang] || {};
@@ -1437,8 +1608,8 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
     return (
       <div className="max-w-3xl mx-auto space-y-8">
         <h2 className="text-3xl font-bold border-b pb-4">{subBab} - Materi</h2>
-        <div className={`p-6 md:p-8 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm leading-relaxed whitespace-pre-wrap text-lg`}>
-          {contentData.materi}
+        <div className="space-y-6">
+          {parseMateri(contentData.materi)}
         </div>
         <div className="text-center pt-8">
           <p className="mb-4 opacity-80">Udah paham teorinya? Waktunya eksekusi!</p>
@@ -1510,6 +1681,8 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
                 question={currentQuestion}
                 themeClasses={themeClasses}
                 jenjang={jenjang}
+                answerState={answersState[currentQuestion.id]}
+                setAnswerState={handleUpdateAnswerState}
                 key={`q-${currentQuestion.id}-${currentType}`}
               />
 
@@ -1548,12 +1721,41 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
   return null;
 }
 
-function QuestionCard({ question, themeClasses, jenjang }) {
-  const [userAnswer, setUserAnswer] = useState('');
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [showIdea, setShowIdea] = useState(false);
-  const [showPembahasan, setShowPembahasan] = useState(false);
+function QuestionCard({ question, themeClasses, jenjang, answerState, setAnswerState }) {
+  const hasExternalState = typeof setAnswerState === 'function';
+
+  const [localUserAnswer, setLocalUserAnswer] = useState('');
+  const [localSelectedOptionIndex, setLocalSelectedOptionIndex] = useState(null);
+  const [localIsSubmitted, setLocalIsSubmitted] = useState(false);
+  const [localShowIdea, setLocalShowIdea] = useState(false);
+  const [localShowPembahasan, setLocalShowPembahasan] = useState(false);
+
+  const state = hasExternalState && answerState ? answerState : {
+    userAnswer: hasExternalState && answerState ? answerState.userAnswer : localUserAnswer,
+    selectedOptionIndex: hasExternalState && answerState ? answerState.selectedOptionIndex : localSelectedOptionIndex,
+    isSubmitted: hasExternalState && answerState ? answerState.isSubmitted : localIsSubmitted,
+    showIdea: hasExternalState && answerState ? answerState.showIdea : localShowIdea,
+    showPembahasan: hasExternalState && answerState ? answerState.showPembahasan : localShowPembahasan
+  };
+
+  const updateState = (newFields) => {
+    if (hasExternalState) {
+      setAnswerState(question.id, {
+        userAnswer: state.userAnswer,
+        selectedOptionIndex: state.selectedOptionIndex,
+        isSubmitted: state.isSubmitted,
+        showIdea: state.showIdea,
+        showPembahasan: state.showPembahasan,
+        ...newFields
+      });
+    } else {
+      if ('userAnswer' in newFields) setLocalUserAnswer(newFields.userAnswer);
+      if ('selectedOptionIndex' in newFields) setLocalSelectedOptionIndex(newFields.selectedOptionIndex);
+      if ('isSubmitted' in newFields) setLocalIsSubmitted(newFields.isSubmitted);
+      if ('showIdea' in newFields) setLocalShowIdea(newFields.showIdea);
+      if ('showPembahasan' in newFields) setLocalShowPembahasan(newFields.showPembahasan);
+    }
+  };
 
   const { type } = question;
 
@@ -1564,23 +1766,23 @@ function QuestionCard({ question, themeClasses, jenjang }) {
   const isSMA = jenjang === 'SMA';
 
   let isCorrect = null;
-  if (isSubmitted && !isSelfCheck) {
+  if (state.isSubmitted && !isSelfCheck) {
     if (isMCQ) {
-      isCorrect = selectedOptionIndex === question.correctAnswer;
+      isCorrect = state.selectedOptionIndex === question.correctAnswer;
     } else if (isPureEssay) {
-      isCorrect = userAnswer.trim() === question.correctAnswer;
+      isCorrect = state.userAnswer.trim() === question.correctAnswer;
     }
   }
 
   const handleSubmit = () => {
-    setIsSubmitted(true);
-    if (isSelfCheck) {
-      setShowPembahasan(true);
-    }
+    updateState({
+      isSubmitted: true,
+      showPembahasan: isSelfCheck ? true : state.showPembahasan
+    });
   };
 
   return (
-    <div className={`p-6 md:p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm relative overflow-hidden`}>
+    <div className={`p-6 md:p-8 rounded-3xl \${themeClasses.cardBg} border \${themeClasses.border} shadow-sm relative overflow-hidden`}>
       <div className="absolute -top-6 -right-6 text-9xl font-black opacity-5 pointer-events-none">
         {type}
       </div>
@@ -1589,16 +1791,16 @@ function QuestionCard({ question, themeClasses, jenjang }) {
         <h3 className="text-xl font-bold relative z-10 flex-1 pr-4">{question.question}</h3>
         {hasIdeaBtn && (
           <button
-            onClick={() => setShowIdea(!showIdea)}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${showIdea ? 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+            onClick={() => updateState({ showIdea: !state.showIdea })}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors \${state.showIdea ? 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}`}
           >
-            <Lightbulb size={16} className={showIdea ? "fill-current" : ""} />
+            <Lightbulb size={16} className={state.showIdea ? "fill-current" : ""} />
             Ide Menjawab
           </button>
         )}
       </div>
 
-      {showIdea && hasIdeaBtn && (
+      {state.showIdea && hasIdeaBtn && (
         <div className="mb-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 text-amber-900 dark:text-amber-100 text-sm italic">
           💡 {question.idea}
         </div>
@@ -1610,21 +1812,21 @@ function QuestionCard({ question, themeClasses, jenjang }) {
             {question.options.map((opt, idx) => (
               <label
                 key={idx}
-                className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all ${selectedOptionIndex === idx
+                className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all \${state.selectedOptionIndex === idx
                     ? (isSMA ? 'border-slate-500 bg-slate-100 dark:bg-slate-800' : 'border-blue-500 bg-blue-50 dark:bg-blue-900/20')
-                    : `border-slate-200 dark:border-slate-700 ${isSMA ? 'hover:border-slate-400' : 'hover:border-blue-300'}`
-                  } ${isSubmitted ? 'pointer-events-none opacity-80' : ''}`}
+                    : \`border-slate-200 dark:border-slate-700 \${isSMA ? 'hover:border-slate-400' : 'hover:border-blue-300'}\`
+                  } \${state.isSubmitted ? 'pointer-events-none opacity-80' : ''}`}
               >
                 <input
                   type="radio"
-                  name={`question-${question.id}`}
+                  name={`question-\${question.id}`}
                   className="hidden"
-                  checked={selectedOptionIndex === idx}
-                  onChange={() => setSelectedOptionIndex(idx)}
-                  disabled={isSubmitted}
+                  checked={state.selectedOptionIndex === idx}
+                  onChange={() => updateState({ selectedOptionIndex: idx })}
+                  disabled={state.isSubmitted}
                 />
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedOptionIndex === idx ? (isSMA ? 'border-slate-600 dark:border-slate-300' : 'border-blue-500') : 'border-slate-400'}`}>
-                  {selectedOptionIndex === idx && <div className={`w-2.5 h-2.5 rounded-full ${isSMA ? 'bg-slate-600 dark:bg-slate-300' : 'bg-blue-500'}`}></div>}
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center \${state.selectedOptionIndex === idx ? (isSMA ? 'border-slate-600 dark:border-slate-300' : 'border-blue-500') : 'border-slate-400'}`}>
+                  {state.selectedOptionIndex === idx && <div className={`w-2.5 h-2.5 rounded-full \${isSMA ? 'bg-slate-600 dark:bg-slate-300' : 'bg-blue-500'}`}></div>}
                 </div>
                 <span className="text-lg">{opt}</span>
               </label>
@@ -1634,7 +1836,7 @@ function QuestionCard({ question, themeClasses, jenjang }) {
 
         {isSelfCheck && (
           <div className="p-4 rounded-xl bg-slate-100 dark:bg-slate-700/50 inline-block font-mono text-lg border border-slate-200 dark:border-slate-600">
-            Target Jawaban: <span className={`font-bold ${isSMA ? 'text-slate-700 dark:text-slate-300' : 'text-blue-600 dark:text-blue-400'}`}>{question.targetAnswer}</span>
+            Target Jawaban: <span className={`font-bold \${isSMA ? 'text-slate-700 dark:text-slate-300' : 'text-blue-600 dark:text-blue-400'}`}>{question.targetAnswer}</span>
           </div>
         )}
 
@@ -1643,10 +1845,10 @@ function QuestionCard({ question, themeClasses, jenjang }) {
             <span className="font-medium">Jawaban:</span>
             <input
               type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              disabled={isSubmitted}
-              className={`flex-1 max-w-[200px] px-4 py-2 rounded-xl border ${themeClasses.border} bg-transparent focus:outline-none ${isSMA ? 'focus:border-slate-500' : 'focus:border-blue-500'} font-mono`}
+              value={state.userAnswer}
+              onChange={(e) => updateState({ userAnswer: e.target.value })}
+              disabled={state.isSubmitted}
+              className={`flex-1 max-w-[200px] px-4 py-2 rounded-xl border \${themeClasses.border} bg-transparent focus:outline-none \${isSMA ? 'focus:border-slate-500' : 'focus:border-blue-500'} font-mono`}
               placeholder="..."
             />
           </div>
@@ -1655,36 +1857,36 @@ function QuestionCard({ question, themeClasses, jenjang }) {
 
       <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
         <div className="flex gap-4 items-center">
-          {!isSubmitted && (
+          {!state.isSubmitted && (
             <button
               onClick={handleSubmit}
-              disabled={isMCQ && selectedOptionIndex === null}
-              className={`px-6 py-2.5 rounded-xl font-bold transition-all ${isSMA ? 'bg-slate-600 text-white hover:bg-slate-500 dark:bg-slate-300 dark:text-slate-900 dark:hover:bg-slate-200' : themeClasses.primary} disabled:opacity-50 disabled:cursor-not-allowed`}
+              disabled={isMCQ && state.selectedOptionIndex === null}
+              className={`px-6 py-2.5 rounded-xl font-bold transition-all \${isSMA ? 'bg-slate-600 text-white hover:bg-slate-500 dark:bg-slate-300 dark:text-slate-900 dark:hover:bg-slate-200' : themeClasses.primary} disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               {isSelfCheck ? 'Lihat Pembahasan' : 'Simpan Jawaban'}
             </button>
           )}
 
-          {isSubmitted && !isSelfCheck && (
+          {state.isSubmitted && !isSelfCheck && (
             <button
-              onClick={() => setShowPembahasan(!showPembahasan)}
-              className={`px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 border ${themeClasses.border} hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors`}
+              onClick={() => updateState({ showPembahasan: !state.showPembahasan })}
+              className={`px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 border \${themeClasses.border} hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors`}
             >
-              {showPembahasan ? <Lock size={16} /> : null}
-              {showPembahasan ? 'Tutup Pembahasan' : 'Buka Pembahasan'}
+              {state.showPembahasan ? <Lock size={16} /> : null}
+              {state.showPembahasan ? 'Tutup Pembahasan' : 'Buka Pembahasan'}
             </button>
           )}
         </div>
 
-        {isSubmitted && !isSelfCheck && isCorrect !== null && (
-          <div className={`flex items-center gap-2 font-bold text-xl animate-bounce ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
+        {state.isSubmitted && !isSelfCheck && isCorrect !== null && (
+          <div className={`flex items-center gap-2 font-bold text-xl animate-bounce \${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
             {isCorrect ? <CheckCircle size={32} /> : <XCircle size={32} />}
             {isCorrect ? 'Benar!' : 'Kurang Tepat'}
           </div>
         )}
       </div>
 
-      {showPembahasan && (
+      {state.showPembahasan && (
         <div className="mt-8 p-6 rounded-2xl bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 animate-fade-in">
           <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
             <BookOpen size={18} /> Pembahasan

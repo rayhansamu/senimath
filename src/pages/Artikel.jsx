@@ -10,7 +10,7 @@ export default function Artikel({ navPath, navigateTo, themeClasses }) {
 
   return (
     <div className="max-w-3xl mx-auto space-y-8">
-      <button 
+      <button
         onClick={() => navigateTo('info')}
         className={`flex items-center gap-2 font-medium opacity-70 hover:opacity-100 transition-opacity`}
       >
@@ -18,7 +18,7 @@ export default function Artikel({ navPath, navigateTo, themeClasses }) {
       </button>
 
       <div className={`p-8 md:p-12 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm`}>
-        <div className="flex items-center gap-2 text-lime-600 dark:text-lime-400 font-bold mb-4 text-sm uppercase tracking-wider">
+        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold mb-4 text-sm uppercase tracking-wider">
           <BookOpen size={16} /> Artikel Senimath
         </div>
         <h1 className="text-3xl md:text-4xl font-black mb-8 leading-tight tracking-tight">{article.title}</h1>
