@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   Menu, X, Home, BookOpen, Play, Info, ShoppingBag,
   Settings, User, CheckCircle, XCircle, Lightbulb,
-  ChevronRight, ArrowRight, Instagram, MessageCircle, Lock, ChevronLeft, Book, ChevronDown
+  ChevronRight, ArrowRight, Instagram, MessageCircle, Lock, ChevronLeft, Book, ChevronDown,
+  Sparkles, Target, TrendingUp, Zap
 } from 'lucide-react';
 
 // --- MOCK DATA ---
@@ -401,8 +402,6 @@ const MOCK_COURSES = {
       'Statistik Regresi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
     },
     'Modul 7: Statistika & Peluang - Peluang': {
-      'Rencana Pembelajaran (Mat Umum)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
-      'Rencana Pembelajaran (Mat Lanjut)': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
       'Aturan Pengisian Tempat': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
       'Aturan permutasi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
       'Aturan Kombinasi': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
@@ -482,8 +481,8 @@ export default function App() {
     text: theme === 'light' ? 'text-slate-800' : 'text-slate-200',
     cardBg: theme === 'light' ? 'bg-white' : 'bg-slate-800',
     border: theme === 'light' ? 'border-slate-200' : 'border-slate-700',
-    primary: theme === 'light' ? 'bg-lime-200 text-lime-900 hover:bg-lime-300' : 'bg-lime-700 text-white hover:bg-lime-600',
-    primaryGhost: theme === 'light' ? 'text-lime-700 hover:bg-lime-100' : 'text-lime-400 hover:bg-slate-700',
+    primary: theme === 'light' ? 'bg-blue-100 text-blue-900 hover:bg-blue-200' : 'bg-blue-600 text-white hover:bg-blue-500',
+    primaryGhost: theme === 'light' ? 'text-blue-700 hover:bg-blue-100' : 'text-blue-400 hover:bg-slate-700',
   };
 
   const MENU_ITEMS = [
@@ -499,7 +498,7 @@ export default function App() {
   return (
     <div className={`min-h-screen flex transition-colors duration-300 ${themeClasses.bg} ${themeClasses.text}`} style={{ fontSize: `${fontSize}px` }}>
 
-      {/* CSS for Marquee */}
+      {/* CSS for Animations */}
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(100%); }
@@ -509,6 +508,17 @@ export default function App() {
           display: inline-block;
           white-space: nowrap;
           animation: marquee 20s linear infinite;
+        }
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-12px); }
+        }
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float 4s ease-in-out 2s infinite;
         }
       `}</style>
 
@@ -590,48 +600,113 @@ export default function App() {
 
 function PageHome({ navigateTo, themeClasses }) {
   return (
-    <div className="max-w-4xl mx-auto space-y-12 pb-12">
+    <div className="max-w-5xl mx-auto space-y-20 pb-16 px-2 md:px-4">
+
       {/* Hero Section */}
-      <div className="text-center space-y-6 mt-8">
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter">SENIMATH</h1>
-        <div className={`overflow-hidden py-4 border-y ${themeClasses.border}`}>
-          <div className="animate-marquee italic font-medium opacity-80 text-lg">
+      <div className="relative text-center space-y-6 pt-12 md:pt-16 pb-8">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[150%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/15 via-transparent to-transparent blur-3xl -z-10 rounded-full pointer-events-none"></div>
+
+        <h1 className="text-6xl md:text-8xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 pb-2">
+          SENIMATH
+        </h1>
+
+        <div className={`overflow-hidden py-4 border-y ${themeClasses.border} relative bg-slate-50/50 dark:bg-slate-900/50 backdrop-blur-sm`}>
+          <div className="animate-marquee italic font-medium opacity-80 text-lg md:text-xl">
             “Gunakan logikamu sebagai kuas, dan biarkan angka-angka menari membentuk simfoni pemikiran yang luar biasa. Selamat belajar dan berkarya!” - Catatan Senimath (2026)
           </div>
         </div>
-        <div className="flex justify-center gap-4 pt-4">
-          <span className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-semibold">Math is Art</span>
-          <span className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-semibold">Math is Fun</span>
-          <span className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 text-sm font-semibold">Math is Languange</span>
+
+        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 pt-6 text-sm md:text-base font-black uppercase tracking-widest text-blue-600 dark:text-blue-500 opacity-90">
+          <span>Math is Art</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+          <span>Math is Fun</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+          <span>Math is Language</span>
         </div>
       </div>
 
-      <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm`}>
-        <p className="mb-4 text-lg">Buat lo yang baru mulai belajar, siapkan kopi lo. Ini akan sedikit membosankan, tapi gue yakin lo pasti bisa. Izinnn.... ☕</p>
-        <p className="italic border-l-4 border-lime-500 pl-4 opacity-80 mb-6">"Buat lo yang baca ini, lo selangkah di depan orang yang ga belajar. Pertahankanlah."</p>
-        <button onClick={() => navigateTo('panduan')} className={`px-6 py-2 rounded-xl font-medium border border-current opacity-80 hover:opacity-100 transition-opacity`}>
-          Baca Panduan
-        </button>
-      </div>
-
-      <div className="text-center space-y-6">
-        <h2 className="text-3xl font-bold">Sudah siap belajar?</h2>
-        <p className="opacity-80">Pilih jenjang lo</p>
-        <div className="flex justify-center gap-6">
-          <button onClick={() => navigateTo('materi', ['SMP'])} className={`w-32 h-32 rounded-3xl flex flex-col items-center justify-center text-2xl font-bold shadow-lg transition-transform hover:scale-105 ${themeClasses.primary}`}>
-            SMP
-          </button>
-          <button onClick={() => navigateTo('materi', ['SMA'])} className={`w-32 h-32 rounded-3xl flex flex-col items-center justify-center text-2xl font-bold shadow-lg transition-transform hover:scale-105 ${themeClasses.primary}`}>
-            SMA
-          </button>
+      {/* Welcome Card */}
+      <div className={`relative p-8 md:p-10 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-lg overflow-hidden group`}>
+        <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 relative z-10">
+          {/* Placeholder PP Kosong untuk Foto Anda */}
+          <div className="w-20 h-20 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center flex-shrink-0 border-2 border-blue-500 shadow-sm overflow-hidden">
+            <User size={40} className="text-slate-400 dark:text-slate-500" />
+          </div>
+          <div className="flex-1 space-y-5 text-center md:text-left">
+            <p className="text-xl md:text-2xl font-medium leading-relaxed">
+              Buat lo yang baru mulai belajar, siapkan kopi lo. Ini akan sedikit membosankan, tapi gue yakin lo pasti bisa. <span className="font-bold text-blue-600 dark:text-blue-400">Izinnn.... ☕</span>
+            </p>
+            <div className="p-4 md:p-5 rounded-2xl bg-slate-100 dark:bg-slate-800/50 border-l-4 border-l-blue-500 italic opacity-90 text-lg">
+              "Buat lo yang baca ini, lo selangkah di depan orang yang ga belajar. Pertahankanlah."
+            </div>
+            <div className="pt-2">
+              <button onClick={() => navigateTo('panduan')} className={`px-6 py-3 rounded-xl font-bold border-2 border-slate-300 dark:border-slate-600 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all flex items-center gap-2 mx-auto md:mx-0 shadow-sm hover:shadow-md`}>
+                <BookOpen size={18} /> Baca Panduan Penggunaan
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="space-y-4">
-        <h3 className="text-2xl font-bold border-b pb-2">Kenapa harus senimath?</h3>
-        <p className="leading-relaxed opacity-90 text-lg text-justify">
-          Senimath merupakan sebuah website pembelajaran matematika untuk jenjang SMP-SMA. Desain pembelajaran disengaja atau bahasa kerennya <strong>deliberate learning</strong> sehingga bisa menyesuaikan kemampuan lo yang baru mulai nyemplung ke dunia matematika.
-        </p>
+      {/* CTA: Pemilihan Jenjang */}
+      <div className="text-center space-y-8 py-8">
+        <div className="space-y-3">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight">Sudah siap tempur?</h2>
+          <p className="opacity-80 text-lg">Pilih jenjang penaklukan lo di bawah ini</p>
+        </div>
+        <div className="flex justify-center gap-6 md:gap-10">
+          <div className="animate-float">
+            <button onClick={() => navigateTo('materi', ['SMP'])} className={`group relative overflow-hidden w-40 h-40 md:w-48 md:h-48 rounded-[2rem] flex flex-col items-center justify-center shadow-lg transition-all hover:scale-105 hover:shadow-2xl bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-500 dark:hover:bg-blue-600`}>
+              <div className="absolute -top-2 -right-2 text-7xl md:text-8xl font-serif opacity-10 group-hover:scale-110 transition-transform pointer-events-none">π</div>
+              <div className="absolute -bottom-2 -left-2 text-7xl md:text-8xl font-serif opacity-10 group-hover:scale-110 transition-transform pointer-events-none">÷</div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-6xl md:text-7xl font-serif italic font-bold opacity-10 group-hover:scale-110 transition-transform pointer-events-none w-full text-center">a² + b²</div>
+              <span className="text-4xl md:text-5xl font-black tracking-tight relative z-10">SMP</span>
+            </button>
+          </div>
+          <div className="animate-float-delayed">
+            <button onClick={() => navigateTo('materi', ['SMA'])} className={`group relative overflow-hidden w-40 h-40 md:w-48 md:h-48 rounded-[2rem] flex flex-col items-center justify-center shadow-lg transition-all hover:scale-105 hover:shadow-2xl bg-slate-500 dark:bg-slate-300 text-white dark:text-slate-900 hover:bg-slate-400 dark:hover:bg-slate-200`}>
+              <div className="absolute -top-2 -left-2 text-7xl md:text-8xl font-serif opacity-10 group-hover:scale-110 transition-transform pointer-events-none">∑</div>
+              <div className="absolute -bottom-2 -right-2 text-7xl md:text-8xl font-serif opacity-10 group-hover:scale-110 transition-transform pointer-events-none">∞</div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-7xl md:text-8xl font-serif italic font-bold opacity-10 group-hover:scale-110 transition-transform pointer-events-none w-full text-center">∫ <span className="text-4xl md:text-5xl font-medium">dx</span></div>
+              <span className="text-4xl md:text-5xl font-black tracking-tight relative z-10">SMA</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Keunggulan Section */}
+      <div className="space-y-10 py-4">
+        <div className="text-center space-y-4">
+          <h3 className="text-3xl md:text-4xl font-black tracking-tight">Kenapa harus Senimath?</h3>
+          <p className="opacity-70 text-lg md:text-xl max-w-2xl mx-auto">
+            Senimath bukan cuma web baca teori. Kita pakai metode <strong className="text-blue-600 dark:text-blue-400">deliberate learning</strong> biar lo bisa belajar dengan efisien.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className={`p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 group`}>
+            <div className="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Target size={28} />
+            </div>
+            <h4 className="text-xl font-bold mb-3">Tepat Sasaran</h4>
+            <p className="opacity-80 leading-relaxed">Fokus nambal materi yang jadi kelemahan lo. Gausah buang waktu ngulang materi yang udah lo kuasain di luar kepala.</p>
+          </div>
+          <div className={`p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 group`}>
+            <div className="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <TrendingUp size={28} />
+            </div>
+            <h4 className="text-xl font-bold mb-3">5 Level Latihan</h4>
+            <p className="opacity-80 leading-relaxed">Dari soal pilihan ganda pakai "Ide Menjawab", sampai tantangan esai murni buat ngetes seberapa jauh nalar lo jalan.</p>
+          </div>
+          <div className={`p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 group`}>
+            <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Zap size={28} />
+            </div>
+            <h4 className="text-xl font-bold mb-3">Langsung Praktek</h4>
+            <p className="opacity-80 leading-relaxed">Teori ringkas, sisanya eksekusi. Matematika itu soal kebiasaan ngerjain masalah, bukan sekadar dibaca doang.</p>
+          </div>
+        </div>
       </div>
 
       {/* Footer / Profile Snippet */}
@@ -662,9 +737,14 @@ function PageHome({ navigateTo, themeClasses }) {
         </div>
 
         {/* Link Donasi Banner */}
-        <a href="https://saweria.co/senimath" target="_blank" rel="noreferrer" className={`block p-4 rounded-xl text-center bg-[#ffb000] text-black hover:opacity-90 transition-opacity font-medium shadow-sm`}>
-          ☕ Donasi via Saweria untuk support penulis dalam pengembangan website Senimath
-        </a>
+        <div className="flex flex-col items-center justify-center gap-2 pt-2">
+          <a href="https://saweria.co/senimath" target="_blank" rel="noreferrer" className={`w-full md:w-auto px-8 py-3.5 rounded-2xl text-center bg-[#ffb000] text-black hover:opacity-90 transition-transform hover:scale-105 shadow-sm font-bold text-lg`}>
+            ☕ Donasi via Saweria
+          </a>
+          <p className="text-sm opacity-70 font-medium text-center">
+            Untuk support penulis dalam pengembangan website Senimath
+          </p>
+        </div>
       </footer>
     </div>
   );
@@ -747,7 +827,7 @@ function PagePanduan({ navigateTo, themeClasses }) {
           Senimath merupakan website pembelajaran matematika. Desain pembelajaran menggunakan <strong>deliberate learning</strong> sehingga lo bisa menyesuaikan kemampuan. Saran gue, lo fokus tambel pada kelemahan yang lo miliki.
         </p>
         <p className="text-lg leading-relaxed mb-4">
-          Pada <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 font-bold border border-slate-300 dark:border-slate-600 shadow-sm mx-1 text-sm"><Settings size={14} /> Pengaturan</span>, lo bisa mengubah tema website menjadi gelap/terang. Lo juga bisa mengubah besar kecilnya font biar mata nggak gampang lelah.
+          Pada <button onClick={() => navigateTo('pengaturan')} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200 dark:border-blue-800 shadow-sm mx-1 text-sm cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"><Settings size={14} /> Pengaturan</button>, lo bisa mengubah tema website menjadi gelap/terang. Lo juga bisa mengubah besar kecilnya font biar mata nggak gampang lelah.
         </p>
       </div>
 
@@ -811,8 +891,8 @@ function PagePanduan({ navigateTo, themeClasses }) {
             ]
           }
         ].map((item, idx) => (
-          <div key={idx} className={`p-6 md:p-8 rounded-3xl ${themeClasses.cardBg} border border-l-8 border-l-lime-500 shadow-sm`}>
-            <h4 className="text-2xl font-black mb-6 uppercase tracking-wider text-lime-600 dark:text-lime-500">{item.type}</h4>
+          <div key={idx} className={`p-6 md:p-8 rounded-3xl ${themeClasses.cardBg} border border-l-8 border-l-blue-500 shadow-sm`}>
+            <h4 className="text-2xl font-black mb-6 uppercase tracking-wider text-blue-600 dark:text-blue-500">{item.type}</h4>
 
             <MockQuestionCard type={item.typeNumber} themeClasses={themeClasses} />
 
@@ -829,13 +909,13 @@ function PagePanduan({ navigateTo, themeClasses }) {
       </div>
 
       {/* Shop Hook */}
-      <div className={`mt-12 p-8 rounded-3xl bg-gradient-to-br from-lime-100 to-emerald-100 dark:from-lime-900/30 dark:to-emerald-900/30 border border-lime-300 dark:border-lime-700 text-center shadow-sm`}>
-        <ShoppingBag size={40} className="mx-auto mb-4 text-emerald-600 dark:text-emerald-400" />
-        <h3 className="text-2xl font-bold mb-3 text-emerald-900 dark:text-emerald-100">Merasa Masih Kurang Latihan?</h3>
-        <p className="text-emerald-800 dark:text-emerald-200 mb-6 text-lg">Buat lo yang masih merasa kurang latihan soal, lo bisa kunjungi toko dan membeli paket 100 latihan soal dan jawaban pada materi yang sedang lo pelajari.</p>
+      <div className={`mt-12 p-8 rounded-3xl bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 border border-blue-300 dark:border-blue-700 text-center shadow-sm`}>
+        <ShoppingBag size={40} className="mx-auto mb-4 text-indigo-600 dark:text-indigo-400" />
+        <h3 className="text-2xl font-bold mb-3 text-indigo-900 dark:text-indigo-100">Merasa Masih Kurang Latihan?</h3>
+        <p className="text-indigo-800 dark:text-indigo-200 mb-6 text-lg">Buat lo yang masih merasa kurang latihan soal, lo bisa kunjungi toko dan membeli paket 100 latihan soal dan jawaban pada materi yang sedang lo pelajari.</p>
         <button
           onClick={() => navigateTo('toko')}
-          className={`px-8 py-3 rounded-xl font-bold bg-emerald-600 text-white hover:bg-emerald-700 shadow-md transition-colors flex items-center justify-center gap-2 mx-auto`}
+          className={`px-8 py-3 rounded-xl font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-md transition-colors flex items-center justify-center gap-2 mx-auto`}
         >
           <ShoppingBag size={18} /> Kunjungi Toko
         </button>
@@ -850,16 +930,24 @@ function PageMulaiBelajar({ navigateTo, themeClasses }) {
     <div className="max-w-4xl mx-auto text-center space-y-12 mt-12">
       <h2 className="text-4xl font-bold mb-8">Pilih Jenjang Penaklukanmu</h2>
       <div className="grid md:grid-cols-2 gap-8">
-        <button onClick={() => navigateTo('materi', ['SMP'])} className={`group relative p-12 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 transition-all shadow-md hover:shadow-xl`}>
-          <div className="absolute inset-0 bg-lime-500 opacity-0 group-hover:opacity-5 transition-opacity rounded-3xl"></div>
-          <h3 className="text-5xl font-extrabold tracking-tighter mb-4">SMP</h3>
-          <p className="opacity-70 text-lg">Mulai bangun pondasi logikamu di sini.</p>
-        </button>
-        <button onClick={() => navigateTo('materi', ['SMA'])} className={`group relative p-12 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 transition-all shadow-md hover:shadow-xl`}>
-          <div className="absolute inset-0 bg-lime-500 opacity-0 group-hover:opacity-5 transition-opacity rounded-3xl"></div>
-          <h3 className="text-5xl font-extrabold tracking-tighter mb-4">SMA</h3>
-          <p className="opacity-70 text-lg">Bentuk simfoni pemikiran yang lebih kompleks.</p>
-        </button>
+        <div className="animate-float h-full">
+          <button onClick={() => navigateTo('materi', ['SMP'])} className={`w-full h-full group relative overflow-hidden p-12 rounded-3xl shadow-lg transition-all hover:scale-105 hover:shadow-2xl bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-500 dark:hover:bg-blue-600 flex flex-col items-center justify-center text-center`}>
+            <div className="absolute -top-4 -right-4 text-9xl font-serif opacity-10 group-hover:scale-110 transition-transform pointer-events-none">π</div>
+            <div className="absolute -bottom-4 -left-4 text-9xl font-serif opacity-10 group-hover:scale-110 transition-transform pointer-events-none">÷</div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-8xl md:text-9xl font-serif italic font-bold opacity-10 group-hover:scale-110 transition-transform pointer-events-none w-full text-center">a² + b²</div>
+            <h3 className="text-6xl font-extrabold tracking-tighter mb-2 relative z-10">SMP</h3>
+            <p className="opacity-90 text-lg relative z-10">Mulai bangun pondasi logikamu di sini.</p>
+          </button>
+        </div>
+        <div className="animate-float-delayed h-full">
+          <button onClick={() => navigateTo('materi', ['SMA'])} className={`w-full h-full group relative overflow-hidden p-12 rounded-3xl shadow-lg transition-all hover:scale-105 hover:shadow-2xl bg-slate-500 dark:bg-slate-300 text-white dark:text-slate-900 hover:bg-slate-400 dark:hover:bg-slate-200 flex flex-col items-center justify-center text-center`}>
+            <div className="absolute -top-4 -left-4 text-9xl font-serif opacity-10 group-hover:scale-110 transition-transform pointer-events-none">∑</div>
+            <div className="absolute -bottom-4 -right-4 text-9xl font-serif opacity-10 group-hover:scale-110 transition-transform pointer-events-none">∞</div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-9xl font-serif italic font-bold opacity-10 group-hover:scale-110 transition-transform pointer-events-none w-full text-center">∫ <span className="text-5xl font-medium">dx</span></div>
+            <h3 className="text-6xl font-extrabold tracking-tighter mb-2 relative z-10">SMA</h3>
+            <p className="opacity-90 text-lg relative z-10">Bentuk simfoni pemikiran yang lebih kompleks.</p>
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -873,6 +961,8 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
   const bab = navPath[1];
   const subBab = navPath[2];
   const mode = navPath[3];
+
+  const isSMA = jenjang === 'SMA';
 
   if (navPath.length === 1) {
     const data = MOCK_COURSES[jenjang] || {};
@@ -900,7 +990,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
           <div key={gIdx} className="space-y-6">
             {groupName && (
               <div className="flex items-center gap-4">
-                <div className={`px-4 py-1.5 rounded-full text-sm font-bold bg-lime-100 text-lime-800 dark:bg-lime-900/50 dark:text-lime-400 border border-lime-200 dark:border-lime-800 uppercase tracking-wider`}>
+                <div className={`px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider ${isSMA ? 'bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700' : 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-400 border border-blue-200 dark:border-blue-800'}`}>
                   {groupName}
                 </div>
                 <div className={`flex-1 h-px bg-slate-200 dark:bg-slate-700`}></div>
@@ -908,9 +998,9 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
             )}
             <div className="grid md:grid-cols-2 gap-4">
               {items.map(item => (
-                <button key={item.key} onClick={() => setNavPath([...navPath, item.key])} className={`w-full text-left p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 hover:shadow-md transition-all flex justify-between items-center group`}>
+                <button key={item.key} onClick={() => setNavPath([...navPath, item.key])} className={`w-full text-left p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:shadow-md transition-all flex justify-between items-center group ${isSMA ? 'hover:border-slate-500 dark:hover:border-slate-400' : 'hover:border-blue-500'}`}>
                   <span className="text-lg font-bold pr-4">{item.title}</span>
-                  <ChevronRight className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all flex-shrink-0 text-lime-500" />
+                  <ChevronRight className={`opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all flex-shrink-0 ${isSMA ? 'text-slate-600 dark:text-slate-400' : 'text-blue-500'}`} />
                 </button>
               ))}
             </div>
@@ -926,7 +1016,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
       <div className="max-w-3xl mx-auto space-y-6">
         <h2 className="text-3xl font-bold mb-6">{bab}</h2>
         {Object.keys(data).map(sb => (
-          <button key={sb} onClick={() => setNavPath([...navPath, sb])} className={`w-full text-left p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 shadow-sm flex justify-between items-center group`}>
+          <button key={sb} onClick={() => setNavPath([...navPath, sb])} className={`w-full text-left p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm flex justify-between items-center group ${isSMA ? 'hover:border-slate-500 dark:hover:border-slate-400' : 'hover:border-blue-500'}`}>
             <span className="text-xl font-medium">{sb}</span>
             <ChevronRight className="opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
           </button>
@@ -941,15 +1031,15 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
         <h2 className="text-4xl font-bold mb-2">{subBab}</h2>
         <p className="opacity-70 text-lg mb-8">Pilih mode belajarmu hari ini</p>
         <div className="grid md:grid-cols-2 gap-8">
-          <button onClick={() => setNavPath([...navPath, 'Materi'])} className={`group relative p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 shadow-sm hover:shadow-md transition-all`}>
-            <BookOpen size={48} className="mx-auto mb-4 opacity-80 group-hover:text-lime-500 transition-colors" />
+          <button onClick={() => setNavPath([...navPath, 'Materi'])} className={`group relative p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm hover:shadow-md transition-all ${isSMA ? 'hover:border-slate-500 dark:hover:border-slate-400' : 'hover:border-blue-500'}`}>
+            <BookOpen size={48} className={`mx-auto mb-4 opacity-80 transition-colors ${isSMA ? 'group-hover:text-slate-500 dark:group-hover:text-slate-300' : 'group-hover:text-blue-500'}`} />
             <h3 className="text-2xl font-bold">Materi</h3>
           </button>
           <button onClick={() => {
             setNavPath([...navPath, 'Latihan']);
             setCurrentQuestionIndex(0);
-          }} className={`group relative p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 shadow-sm hover:shadow-md transition-all`}>
-            <CheckCircle size={48} className="mx-auto mb-4 opacity-80 group-hover:text-lime-500 transition-colors" />
+          }} className={`group relative p-8 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm hover:shadow-md transition-all ${isSMA ? 'hover:border-slate-500 dark:hover:border-slate-400' : 'hover:border-blue-500'}`}>
+            <CheckCircle size={48} className={`mx-auto mb-4 opacity-80 transition-colors ${isSMA ? 'group-hover:text-slate-500 dark:group-hover:text-slate-300' : 'group-hover:text-blue-500'}`} />
             <h3 className="text-2xl font-bold">Latihan Soal</h3>
           </button>
         </div>
@@ -971,7 +1061,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
           <button onClick={() => {
             setNavPath([...navPath.slice(0, 3), 'Latihan']);
             setCurrentQuestionIndex(0);
-          }} className={`px-8 py-4 rounded-full font-bold text-lg shadow-lg transform transition-transform hover:scale-105 flex items-center justify-center gap-2 mx-auto ${themeClasses.primary}`}>
+          }} className={`px-8 py-4 rounded-full font-bold text-lg shadow-lg transform transition-transform hover:scale-105 flex items-center justify-center gap-2 mx-auto ${isSMA ? 'bg-slate-600 text-white hover:bg-slate-500 dark:bg-slate-300 dark:text-slate-900 dark:hover:bg-slate-200' : themeClasses.primary}`}>
             Gas Latihan Soal <ArrowRight size={20} />
           </button>
         </div>
@@ -999,7 +1089,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
 
     return (
       <div className="max-w-3xl mx-auto space-y-6">
-        {/* Header Control: Dropdown & Status - (Download PDF dihapus sesuai request) */}
+        {/* Header Control: Dropdown & Status */}
         <div className={`p-4 md:p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm flex flex-col md:flex-row justify-between items-center gap-4`}>
           <div className="flex items-center gap-3 w-full md:w-auto">
             <label className="font-bold opacity-70 uppercase tracking-wider text-sm flex-shrink-0">Pilih Tipe:</label>
@@ -1007,7 +1097,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
               <select
                 value={currentType}
                 onChange={handleTypeChange}
-                className={`w-full appearance-none px-4 py-2.5 rounded-xl font-bold border ${themeClasses.border} bg-transparent focus:outline-none focus:border-lime-500 cursor-pointer`}
+                className={`w-full appearance-none px-4 py-2.5 rounded-xl font-bold border ${themeClasses.border} bg-transparent focus:outline-none cursor-pointer ${isSMA ? 'focus:border-slate-500' : 'focus:border-blue-500'}`}
               >
                 {[1, 2, 3, 4, 5].map(t => (
                   <option key={t} value={t} className={themeClasses.text === 'text-slate-200' ? 'text-black' : ''}>
@@ -1035,6 +1125,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
               <QuestionCard
                 question={currentQuestion}
                 themeClasses={themeClasses}
+                jenjang={jenjang}
                 key={`q-${currentQuestion.id}-${currentType}`}
               />
 
@@ -1051,7 +1142,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
                   <button
                     onClick={handleNext}
                     disabled={currentQuestionIndex === questionsForCurrentType.length - 1}
-                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all ${currentQuestionIndex === questionsForCurrentType.length - 1 ? 'opacity-50 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400' : themeClasses.primary}`}
+                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all ${currentQuestionIndex === questionsForCurrentType.length - 1 ? 'opacity-50 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400' : (isSMA ? 'bg-slate-600 text-white hover:bg-slate-500 dark:bg-slate-300 dark:text-slate-900 dark:hover:bg-slate-200' : themeClasses.primary)}`}
                   >
                     Selanjutnya <ChevronRight size={20} />
                   </button>
@@ -1073,7 +1164,7 @@ function PageMateri({ navPath, setNavPath, themeClasses }) {
   return null;
 }
 
-function QuestionCard({ question, themeClasses }) {
+function QuestionCard({ question, themeClasses, jenjang }) {
   const [userAnswer, setUserAnswer] = useState('');
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -1086,6 +1177,7 @@ function QuestionCard({ question, themeClasses }) {
   const isSelfCheck = type === 2 || type === 4;
   const isMCQ = type === 1 || type === 3;
   const isPureEssay = type === 5;
+  const isSMA = jenjang === 'SMA';
 
   let isCorrect = null;
   if (isSubmitted && !isSelfCheck) {
@@ -1135,8 +1227,8 @@ function QuestionCard({ question, themeClasses }) {
               <label
                 key={idx}
                 className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all ${selectedOptionIndex === idx
-                    ? `border-lime-500 bg-lime-50 dark:bg-lime-900/20`
-                    : `border-slate-200 dark:border-slate-700 hover:border-lime-300`
+                    ? (isSMA ? 'border-slate-500 bg-slate-100 dark:bg-slate-800' : 'border-blue-500 bg-blue-50 dark:bg-blue-900/20')
+                    : `border-slate-200 dark:border-slate-700 ${isSMA ? 'hover:border-slate-400' : 'hover:border-blue-300'}`
                   } ${isSubmitted ? 'pointer-events-none opacity-80' : ''}`}
               >
                 <input
@@ -1147,8 +1239,8 @@ function QuestionCard({ question, themeClasses }) {
                   onChange={() => setSelectedOptionIndex(idx)}
                   disabled={isSubmitted}
                 />
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedOptionIndex === idx ? 'border-lime-500' : 'border-slate-400'}`}>
-                  {selectedOptionIndex === idx && <div className="w-2.5 h-2.5 rounded-full bg-lime-500"></div>}
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedOptionIndex === idx ? (isSMA ? 'border-slate-600 dark:border-slate-300' : 'border-blue-500') : 'border-slate-400'}`}>
+                  {selectedOptionIndex === idx && <div className={`w-2.5 h-2.5 rounded-full ${isSMA ? 'bg-slate-600 dark:bg-slate-300' : 'bg-blue-500'}`}></div>}
                 </div>
                 <span className="text-lg">{opt}</span>
               </label>
@@ -1158,7 +1250,7 @@ function QuestionCard({ question, themeClasses }) {
 
         {isSelfCheck && (
           <div className="p-4 rounded-xl bg-slate-100 dark:bg-slate-700/50 inline-block font-mono text-lg border border-slate-200 dark:border-slate-600">
-            Target Jawaban: <span className="font-bold text-lime-600 dark:text-lime-400">{question.targetAnswer}</span>
+            Target Jawaban: <span className={`font-bold ${isSMA ? 'text-slate-700 dark:text-slate-300' : 'text-blue-600 dark:text-blue-400'}`}>{question.targetAnswer}</span>
           </div>
         )}
 
@@ -1170,7 +1262,7 @@ function QuestionCard({ question, themeClasses }) {
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
               disabled={isSubmitted}
-              className={`flex-1 max-w-[200px] px-4 py-2 rounded-xl border ${themeClasses.border} bg-transparent focus:outline-none focus:border-lime-500 font-mono`}
+              className={`flex-1 max-w-[200px] px-4 py-2 rounded-xl border ${themeClasses.border} bg-transparent focus:outline-none ${isSMA ? 'focus:border-slate-500' : 'focus:border-blue-500'} font-mono`}
               placeholder="..."
             />
           </div>
@@ -1183,7 +1275,7 @@ function QuestionCard({ question, themeClasses }) {
             <button
               onClick={handleSubmit}
               disabled={isMCQ && selectedOptionIndex === null}
-              className={`px-6 py-2.5 rounded-xl font-bold transition-all ${themeClasses.primary} disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`px-6 py-2.5 rounded-xl font-bold transition-all ${isSMA ? 'bg-slate-600 text-white hover:bg-slate-500 dark:bg-slate-300 dark:text-slate-900 dark:hover:bg-slate-200' : themeClasses.primary} disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               {isSelfCheck ? 'Lihat Pembahasan' : 'Simpan Jawaban'}
             </button>
@@ -1231,7 +1323,7 @@ function PageInfoMaszeh({ themeClasses, navigateTo }) {
             <div
               key={art.id}
               onClick={() => navigateTo('artikel', [art.id])}
-              className={`p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-lime-500 transition-all cursor-pointer flex flex-col h-full hover:shadow-md transform hover:-translate-y-1`}
+              className={`p-6 rounded-2xl ${themeClasses.cardBg} border ${themeClasses.border} hover:border-blue-500 transition-all cursor-pointer flex flex-col h-full hover:shadow-md transform hover:-translate-y-1`}
             >
               <h3 className="font-bold text-lg mb-2">{art.title}</h3>
               <p className="opacity-70 text-sm mb-4 flex-1">{art.snippet}</p>
@@ -1245,37 +1337,37 @@ function PageInfoMaszeh({ themeClasses, navigateTo }) {
         <h2 className="text-3xl font-bold mb-6 border-b pb-2 flex items-center gap-2"><Book /> Info Les Private Matematika</h2>
         <div className="grid md:grid-cols-3 gap-6">
 
-          <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border border-lime-200 dark:border-lime-900 shadow-sm flex flex-col`}>
+          <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border border-blue-200 dark:border-blue-900 shadow-sm flex flex-col`}>
             <h3 className="font-black text-2xl mb-4 text-center">Private Online</h3>
             <ul className="space-y-3 mb-8 flex-1 opacity-90">
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Waktu fleksibel</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Modul khusus PDF</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Tanya PR kapan saja</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Waktu fleksibel</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Modul khusus PDF</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Tanya PR kapan saja</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
             </ul>
             <button className={`w-full py-3 rounded-xl font-bold ${themeClasses.primary}`}>Hubungi Sekarang</button>
           </div>
 
-          <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border border-lime-200 dark:border-lime-900 shadow-sm flex flex-col`}>
+          <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border border-blue-200 dark:border-blue-900 shadow-sm flex flex-col`}>
             <h3 className="font-black text-2xl mb-2 text-center">Private Offline</h3>
             <p className="text-center text-sm opacity-70 mb-4">(Khusus Depok)</p>
             <ul className="space-y-3 mb-8 flex-1 opacity-90">
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Guru datang ke rumah</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Evaluasi tatap muka</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Bonding lebih kuat</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Guru datang ke rumah</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Evaluasi tatap muka</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Bonding lebih kuat</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
             </ul>
             <button className={`w-full py-3 rounded-xl font-bold ${themeClasses.primary}`}>Hubungi Sekarang</button>
           </div>
 
-          <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border border-lime-200 dark:border-lime-900 shadow-sm flex flex-col`}>
+          <div className={`p-6 rounded-2xl ${themeClasses.cardBg} border border-blue-200 dark:border-blue-900 shadow-sm flex flex-col`}>
             <h3 className="font-black text-2xl mb-2 text-center">Kelas Besar</h3>
             <p className="text-center text-sm opacity-70 mb-4">(Minimal 3 orang)</p>
             <ul className="space-y-3 mb-8 flex-1 opacity-90">
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Harga lebih terjangkau</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Belajar bareng circle</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Diskusi interaktif</li>
-              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-lime-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Harga lebih terjangkau</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Belajar bareng circle</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Diskusi interaktif</li>
+              <li className="flex items-start gap-2"><CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" /> Free akses ke 100 latihan soal dan pembahasan pada materi yang sedang dipelajari</li>
             </ul>
             <button className={`w-full py-3 rounded-xl font-bold ${themeClasses.primary}`}>Hubungi Sekarang</button>
           </div>
@@ -1296,7 +1388,7 @@ function PageToko({ themeClasses }) {
   const smpProducts = MOCK_PRODUCTS.filter(p => p.category === 'SMP');
   const smaProducts = MOCK_PRODUCTS.filter(p => p.category === 'SMA');
 
-  const renderSection = (title, products, colorClass, bgClass, borderClass) => (
+  const renderSection = (title, products, colorClass, bgClass, borderClass, badgeClass) => (
     <div className="space-y-4 mb-8">
       <h3 className={`text-2xl font-bold ${colorClass} mb-6 border-b ${borderClass} pb-2`}>{title}</h3>
       <div className="flex flex-col gap-4">
@@ -1307,7 +1399,7 @@ function PageToko({ themeClasses }) {
               className={`w-full flex items-center justify-between p-6 hover:${bgClass} transition-colors`}
             >
               <div className="flex items-center gap-4">
-                <span className={`px-3 py-1 rounded-full text-xs font-bold text-white ${colorClass.replace('text-', 'bg-')}`}>{prod.category}</span>
+                <span className={`px-3 py-1 rounded-full text-xs font-bold ${badgeClass}`}>{prod.category}</span>
                 <span className="font-bold text-lg text-left">{prod.title}</span>
               </div>
               <ChevronDown className={`transform transition-transform ${openDropdown === prod.id ? 'rotate-180' : ''}`} />
@@ -1345,8 +1437,8 @@ function PageToko({ themeClasses }) {
         <p className="opacity-70 text-lg">Amunisi tambahan buat lo yang mau latihan ekstra.</p>
       </div>
 
-      {renderSection("Materi SMP", smpProducts, "text-blue-600 dark:text-blue-400", "bg-blue-50 dark:bg-blue-900/20", "border-blue-200 dark:border-blue-800")}
-      {renderSection("Materi SMA", smaProducts, "text-amber-600 dark:text-amber-400", "bg-amber-50 dark:bg-amber-900/20", "border-amber-200 dark:border-amber-800")}
+      {renderSection("Materi SMP", smpProducts, "text-blue-600 dark:text-blue-400", "bg-blue-50 dark:bg-blue-900/20", "border-blue-200 dark:border-blue-800", "bg-blue-600 text-white dark:bg-blue-500")}
+      {renderSection("Materi SMA", smaProducts, "text-slate-600 dark:text-slate-300", "bg-slate-100 dark:bg-slate-800/40", "border-slate-300 dark:border-slate-600", "bg-slate-500 dark:bg-slate-300 text-white dark:text-slate-900")}
 
     </div>
   );
@@ -1405,10 +1497,10 @@ function PageTentangKami({ themeClasses }) {
       </div>
 
       <div className={`p-8 md:p-12 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} relative overflow-hidden`}>
-        <div className="absolute top-0 right-0 w-64 h-64 bg-lime-500 opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
 
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start relative z-10">
-          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-slate-200 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center overflow-hidden border-4 border-lime-500">
+          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-slate-200 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center overflow-hidden border-4 border-blue-500">
             <User size={64} className="opacity-20 text-slate-800 dark:text-slate-200" />
           </div>
           <div className="space-y-4 text-center md:text-left">
@@ -1459,7 +1551,7 @@ function PageArtikel({ navPath, navigateTo, themeClasses }) {
       </button>
 
       <div className={`p-8 md:p-12 rounded-3xl ${themeClasses.cardBg} border ${themeClasses.border} shadow-sm`}>
-        <div className="flex items-center gap-2 text-lime-600 dark:text-lime-400 font-bold mb-4 text-sm uppercase tracking-wider">
+        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold mb-4 text-sm uppercase tracking-wider">
           <BookOpen size={16} /> Artikel Senimath
         </div>
         <h1 className="text-3xl md:text-4xl font-black mb-8 leading-tight tracking-tight">{article.title}</h1>
