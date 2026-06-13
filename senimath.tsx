@@ -11,7 +11,206 @@ import {
 const MOCK_COURSES = {
   SMP: {
     'Kelas VII - Bilangan Bulat dan Pecahan': {
-      'Pengertian dan pengelompokan bilangan': { materi: "Materi sedang dalam tahap pengembangan. Pantau terus update Senimath ya!", latihan: [] },
+      'Pengertian dan pengelompokan bilangan': {
+        materi: "🕵️‍♂️ Misi Awal: Memecahkan Kode Brankas\n\nBayangkan kamu menemukan sebuah brankas rahasia milik seorang detektif. Di pintunya terdapat secarik kertas berisi petunjuk sandi 3 digit untuk membukanya:\n• Digit Pertama: Bilangan prima pertama yang bernilai genap.\n• Digit Kedua: Angka pertama dari himpunan bilangan cacah.\n• Digit Ketiga: Bilangan ganjil terkecil setelah angka 5.\n\nKira-kira, berapa ya PIN brankas tersebut? Untuk bisa memecahkannya, kita harus paham dulu apa itu bilangan prima, cacah, dan ganjil. Mari kita eksplorasi materinya!\n\n📚 Eksplorasi Materi: Pengelompokan Bilangan\n\n1. Pengantar: Apa itu Bilangan Bulat?\nSebelum masuk ke pengelompokan, kita perlu tahu dulu bahwa kumpulan bilangan ini umumnya merupakan bagian dari Bilangan Bulat.\n• Bilangan bulat adalah himpunan bilangan yang utuh (tidak memiliki pecahan atau desimal).\n• Bilangan bulat terdiri dari bilangan bulat negatif (..., -3, -2, -1), nol (0), dan bilangan bulat positif (1, 2, 3, ...).\nDari himpunan bilangan bulat inilah kita bisa mengelompokkan bilangan ke dalam kelompok-kelompok yang lebih spesifik.\n\n2. Pengelompokan Bilangan\n\nA. Bilangan Asli (Natural Numbers)\n• Pengertian: Bilangan asli adalah bilangan yang biasa kita gunakan sehari-hari untuk menghitung benda (mulai dari angka 1 dan terus bertambah 1).\n• Bilangan asli tidak mencakup angka nol (0) dan bilangan negatif.\n• Anggota Himpunan: {1, 2, 3, 4, 5, 6, 7, ...}.\n\nB. Bilangan Cacah (Whole Numbers)\n• Pengertian: Bilangan cacah adalah gabungan dari himpunan bilangan asli ditambah dengan angka nol (0).\n• Bilangan ini bernilai positif dan tidak memiliki pecahan/desimal.\n• Anggota Himpunan: {0, 1, 2, 3, 4, 5, 6, ...}.\n\nC. Bilangan Genap\n• Pengertian: Bilangan genap adalah bilangan bulat yang habis dibagi 2.\n• Artinya, jika bilangan ini dibagi 2, tidak akan ada sisa.\n• Bilangan genap selalu memiliki angka satuan 0, 2, 4, 6, atau 8.\n\nD. Bilangan Ganjil\n• Pengertian: Bilangan ganjil adalah bilangan bulat yang tidak habis dibagi 2.\n• Jika dibagi 2, bilangan ini akan selalu memiliki sisa 1.\n• Bilangan ganjil selalu memiliki angka satuan 1, 3, 5, 7, atau 9.\n\nE. Bilangan Prima\n• Pengertian: Bilangan prima adalah bilangan asli lebih besar dari 1 yang hanya bisa dibagi habis oleh dua bilangan bulat positif, yaitu angka 1 dan bilangan itu sendiri.\n• Anggota Himpunan: {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ...}.\n\nFakta Penting Bilangan Prima:\n1) Angka 1 bukan bilangan prima karena hanya memiliki satu faktor pembagi (yaitu angka 1 itu sendiri).\n2) Angka 2 adalah satu-satunya bilangan prima yang bernilai genap.\n3) Semua bilangan prima lainnya (seperti 3, 5, 7, 11) adalah bilangan ganjil.\n4) Angka 9 bukan bilangan prima karena bisa dibagi 1, 3, dan 9.\n\n🛠️ Pemodelan: Menguji Sebuah Angka\nAgar lebih mudah membedakan sebuah angka, mari kita uji dengan angka 7:\n• Apakah 7 bilangan bulat? Ya (karena utuh tanpa desimal).\n• Apakah 7 bilangan asli? Ya (karena digunakan untuk menghitung benda mulai dari 1).\n• Apakah 7 bilangan cacah? Ya (karena masuk ke dalam kumpulan 0, 1, 2, 3...).\n• Apakah 7 bilangan genap atau ganjil? Ganjil (karena jika dibagi 2 bersisa 1).\n• Apakah 7 bilangan prima? Ya (karena 7 hanya bisa dibagi habis oleh 1 dan 7).\n\n🔑 Kesimpulan: Menjawab Misi Awal\nSekarang, mari kita gunakan ilmu yang sudah kita pelajari untuk memecahkan sandi brankas detektif tadi!\n• Digit Pertama (Bilangan prima pertama yang bernilai genap): Berdasarkan materi, satu-satunya bilangan prima genap adalah angka 2.\n• Digit Kedua (Angka pertama dari himpunan bilangan cacah): Titik awal himpunan bilangan cacah selalu dimulai dari angka 0.\n• Digit Ketiga (Bilangan ganjil terkecil setelah angka 5): Bilangan ganjil setelah angka 5 adalah angka 7.\n\nJadi, password brankas rahasia tersebut adalah 207!",
+        latihan: [
+          {
+            id: 1001,
+            type: 1,
+            question: "Manakah dari angka berikut yang merupakan satu-satunya bilangan prima yang bernilai genap?",
+            options: ["0", "1", "2", "4"],
+            correctAnswer: 2,
+            idea: "Ingat kembali bahwa sebagian besar bilangan prima adalah ganjil, kecuali angka terkecilnya.",
+            pembahasan: "Angka 2 adalah satu-satunya bilangan prima yang bernilai genap. Bilangan prima lainnya selalu ganjil."
+          },
+          {
+            id: 1002,
+            type: 1,
+            question: "Himpunan bilangan asli tidak mencakup angka nol dan bilangan negatif. Jika kita diminta menyebutkan bilangan asli yang kurang dari 5, maka anggotanya adalah...",
+            options: ["0, 1, 2, 3, 4", "1, 2, 3, 4", "1, 3, 5", "-1, 0, 1, 2, 3, 4"],
+            correctAnswer: 1,
+            idea: "Titik awal berhitung bilangan asli sama seperti saat pertama kali kamu belajar menghitung benda menggunakan jari.",
+            pembahasan: "Bilangan asli digunakan untuk menghitung benda mulai dari angka 1 dan terus bertambah 1. Karena diminta kurang dari 5, maka jawabannya 1, 2, 3, 4."
+          },
+          {
+            id: 1003,
+            type: 1,
+            question: "Bilangan ganjil adalah bilangan yang tidak habis dibagi 2. Di antara kelompok bilangan berikut, manakah yang semuanya merupakan bilangan ganjil?",
+            options: ["11, 13, 15, 17", "7, 9, 12, 15", "2, 3, 5, 7", "21, 23, 24, 25"],
+            correctAnswer: 0,
+            idea: "Perhatikan angka satuannya. Bilangan ganjil selalu memiliki satuan 1, 3, 5, 7, atau 9.",
+            pembahasan: "Bilangan ganjil adalah bilangan yang tidak habis dibagi 2, dan satuan angkanya adalah 1, 3, 5, 7, 9. Opsi A semuanya ganjil."
+          },
+          {
+            id: 1004,
+            type: 1,
+            question: "Angka 9 bukan merupakan bilangan prima. Alasan yang paling tepat adalah...",
+            options: ["Karena 9 adalah bilangan ganjil", "Karena 9 bisa dibagi habis oleh 1, 3, dan 9", "Karena 9 bukan bilangan genap", "Karena 9 lebih besar dari 2"],
+            correctAnswer: 1,
+            idea: "Bilangan prima hanya memiliki dua faktor pembagi. Coba cari angka berapa saja yang bisa membagi habis angka 9.",
+            pembahasan: "Syarat bilangan prima hanya bisa dibagi 1 dan angka itu sendiri. Karena 9 memiliki 3 faktor pembagi, maka 9 bukan prima."
+          },
+          {
+            id: 1005,
+            type: 1,
+            question: "Jika kita menggabungkan angka nol (0) ke dalam himpunan bilangan asli, maka himpunan baru tersebut dinamakan...",
+            options: ["Bilangan Prima", "Bilangan Ganjil", "Bilangan Cacah", "Bilangan Genap"],
+            correctAnswer: 2,
+            idea: "Perhatikan kata kunci \"tambahan angka nol\".",
+            pembahasan: "Gabungan bilangan asli dengan angka nol (0) dinamakan bilangan cacah."
+          },
+          {
+            id: 1006,
+            type: 2,
+            question: "Sebutkan bilangan prima terkecil yang lebih besar dari 10!",
+            targetAnswer: "11",
+            idea: "Uji satu per satu angka setelah 10 (yaitu 11, 12, 13). Manakah yang hanya bisa dibagi angka 1 dan angka itu sendiri?",
+            pembahasan: "Angka setelah 10 adalah 11, 12, 13. Angka 12 bisa dibagi 2. Angka 11 hanya bisa dibagi 1 and 11. Jadi prima terkecil setelah 10 adalah 11."
+          },
+          {
+            id: 1007,
+            type: 2,
+            question: "Berapakah selisih antara angka pertama pada himpunan bilangan cacah dan angka pertama pada himpunan bilangan asli?",
+            targetAnswer: "1",
+            idea: "Tentukan dulu titik awal (angka pertama) bilangan cacah, lalu tentukan angka pertama bilangan asli. Kurangkan angka yang besar dengan yang kecil.",
+            pembahasan: "Angka pertama bilangan cacah adalah 0. Angka pertama bilangan asli adalah 1. Selisihnya adalah 1 - 0 = 1."
+          },
+          {
+            id: 1008,
+            type: 2,
+            question: "Sebutkan semua bilangan genap yang ada di antara angka 7 dan 13!",
+            targetAnswer: "8, 10, 12",
+            idea: "Bilangan genap harus habis dibagi 2. Urutkan angka 8, 9, 10, 11, 12 dan pilih yang genap.",
+            pembahasan: "Urutan angka antara 7 dan 13 adalah 8, 9, 10, 11, 12. Angka yang habis dibagi 2 dari deret tersebut adalah 8, 10, 12."
+          },
+          {
+            id: 1009,
+            type: 2,
+            question: "Angka 15 merupakan bilangan ganjil sekaligus bilangan... (Sebutkan himpunan lain yang memuat angka 15)",
+            targetAnswer: "Bilangan Bulat, Asli, dan Cacah",
+            idea: "Ingat pengelompokan secara luas. Apakah 15 bernilai positif tanpa desimal? Apakah lebih dari 0?",
+            pembahasan: "Angka 15 utuh tanpa desimal (Bulat), digunakan untuk menghitung/lebih dari 0 (Asli), termasuk dalam kelompok mulai dari 0 (Cacah)."
+          },
+          {
+            id: 1010,
+            type: 2,
+            question: "Berapakah jumlah dari 3 bilangan prima pertama?",
+            targetAnswer: "10",
+            idea: "Sebutkan tiga anggota pertama himpunan bilangan prima (jangan masukkan angka 1), kemudian jumlahkan ketiganya.",
+            pembahasan: "Tiga bilangan prima pertama adalah 2, 3, dan 5. Jumlahnya: 2 + 3 + 5 = 10."
+          },
+          {
+            id: 1011,
+            type: 3,
+            question: "Bilangan bulat terdiri dari elemen-elemen berikut, KECUALI...",
+            options: ["Bilangan bulat negatif", "Angka nol (0)", "Bilangan desimal/pecahan", "Bilangan bulat positif"],
+            correctAnswer: 2,
+            pembahasan: "Bilangan bulat adalah bilangan yang utuh dan tidak memiliki pecahan atau desimal."
+          },
+          {
+            id: 1012,
+            type: 3,
+            question: "Himpunan {2, 3, 5, 7, 11, 13} merupakan anggota kelompok himpunan...",
+            options: ["Bilangan Cacah", "Bilangan Asli", "Bilangan Ganjil", "Bilangan Prima"],
+            correctAnswer: 3,
+            pembahasan: "Kumpulan angka tersebut hanya bisa dibagi oleh 1 dan bilangan itu sendiri."
+          },
+          {
+            id: 1013,
+            type: 3,
+            question: "Suatu bilangan selalu memiliki sisa 1 jika dibagi dengan 2. Bilangan tersebut dipastikan adalah...",
+            options: ["Bilangan Ganjil", "Bilangan Genap", "Bilangan Prima", "Bilangan Cacah"],
+            correctAnswer: 0,
+            pembahasan: "Definisi bilangan ganjil adalah bilangan bulat yang bersisa 1 jika dibagi 2."
+          },
+          {
+            id: 1014,
+            type: 3,
+            question: "Bilangan cacah yang kurang dari 3 adalah...",
+            options: ["1, 2", "0, 1, 2", "1, 2, 3", "0, 1, 2, 3"],
+            correctAnswer: 1,
+            pembahasan: "Bilangan cacah dimulai dari 0, yang kurang dari 3 adalah 0, 1, dan 2."
+          },
+          {
+            id: 1015,
+            type: 3,
+            question: "Pernyataan di bawah ini yang salah adalah...",
+            options: ["Angka 1 bukan bilangan prima", "Semua bilangan ganjil adalah bilangan prima", "Semua bilangan prima lebih besar dari 1", "Angka 0 termasuk bilangan bulat"],
+            correctAnswer: 1,
+            pembahasan: "Pernyataan ini salah karena angka 9 atau 15 adalah ganjil tetapi bukan prima (bisa dibagi 3)."
+          },
+          {
+            id: 1016,
+            type: 4,
+            question: "Himpunan bilangan cacah yang juga merupakan bilangan bulat positif dimulai dari angka ...",
+            targetAnswer: "1",
+            pembahasan: "Bilangan cacah positif berarti mengecualikan 0, sehingga sama dengan bilangan asli yang dimulai dari 1."
+          },
+          {
+            id: 1017,
+            type: 4,
+            question: "Jika suatu bilangan berakhiran dengan angka 6 or 8, maka bilangan tersebut masuk ke dalam kelompok bilangan ...",
+            targetAnswer: "Bilangan Genap",
+            pembahasan: "Angka satuan genap menunjukkan bilangan genap."
+          },
+          {
+            id: 1018,
+            type: 4,
+            question: "Bilangan prima yang terletak di antara angka 15 dan 20 adalah ... dan ... (Pisahkan dengan kata 'dan')",
+            targetAnswer: "17 dan 19",
+            pembahasan: "Angka antara 15-20 adalah 16, 17, 18, 19. Yang hanya punya dua faktor adalah 17 dan 19."
+          },
+          {
+            id: 1019,
+            type: 4,
+            question: "Bilangan bulat yang posisinya berada tepat di tengah-tengah antara bilangan bulat positif and bilangan bulat negatif adalah angka ...",
+            targetAnswer: "0",
+            pembahasan: "Nol memisahkan bilangan bulat negatif dan positif."
+          },
+          {
+            id: 1020,
+            type: 4,
+            question: "Angka 1 tidak termasuk ke dalam bilangan prima karena ...",
+            targetAnswer: "Hanya memiliki satu faktor pembagi yaitu angka 1 itu sendiri",
+            pembahasan: "Faktor bilangan prima harus ada tepat 2 faktor, sedangkan 1 hanya punya 1 faktor."
+          },
+          {
+            id: 1021,
+            type: 5,
+            question: "Tuliskan semua anggota himpunan bilangan prima yang kurang dari 15! (Urutkan dari yang terkecil dan pisahkan dengan koma dan spasi, contoh: 2, 3, 5, ...)",
+            correctAnswer: "2, 3, 5, 7, 11, 13",
+            pembahasan: "Angka-angka tersebut adalah 2, 3, 5, 7, 11, dan 13. Angka tersebut adalah bilangan asli > 1 yang hanya bisa dibagi 1 dan bilangan itu sendiri."
+          },
+          {
+            id: 1022,
+            type: 5,
+            question: "Jelaskan perbedaan mendasar antara himpunan bilangan cacah dan himpunan bilangan asli! Dari angka berapakah bilangan cacah dimulai?",
+            correctAnswer: "0",
+            pembahasan: "Perbedaan mendasarnya terletak pada titik awal bilangannya. Bilangan asli dimulai dari angka 1, sedangkan bilangan cacah dimulai dari angka 0."
+          },
+          {
+            id: 1023,
+            type: 5,
+            question: "Budi mengatakan bahwa 21 adalah bilangan prima karena 21 adalah bilangan ganjil. Apakah pernyataan Budi benar? (Benar/Salah)",
+            correctAnswer: "Salah",
+            pembahasan: "Pernyataan Budi salah. Memang benar 21 adalah bilangan ganjil, namun syarat bilangan prima adalah hanya bisa dibagi oleh 1 dan angka itu sendiri. Angka 21 bisa dibagi oleh 1, 3, 7, dan 21. Karena memiliki lebih dari 2 faktor, 21 bukan bilangan prima."
+          },
+          {
+            id: 1024,
+            type: 5,
+            question: "Berapakah hasil kali dari bilangan cacah pertama dengan bilangan prima genap?",
+            correctAnswer: "0",
+            pembahasan: "Bilangan cacah pertama adalah 0. Bilangan prima genap adalah 2. Hasil kalinya adalah 0 × 2 = 0."
+          },
+          {
+            id: 1025,
+            type: 5,
+            question: "Tuliskan 3 bilangan genap berurutan yang jika dijumlahkan hasilnya adalah 30! (Urutkan dari yang terkecil, pisahkan dengan koma dan spasi, contoh: 2, 4, 6)",
+            correctAnswer: "8, 10, 12",
+            pembahasan: "Misal bilangannya x, x+2, x+4. (x) + (x+2) + (x+4) = 30 -> 3x + 6 = 30 -> 3x = 24 -> x = 8. Angkanya adalah 8, 10, 12. Semuanya bilangan genap."
+          }
+        ]
+      },
       'Mengurutkan dan membandingkan bilangan bulat': {
         materi: "Bilangan bulat terdiri dari bilangan bulat positif, nol, dan bilangan bulat negatif. Semakin ke kanan pada garis bilangan, nilainya semakin besar. Semakin ke kiri, nilainya semakin kecil.\n\nContoh: 5 > -2, karena 5 berada di sebelah kanan -2 pada garis bilangan.",
         latihan: [
@@ -191,7 +390,192 @@ const MOCK_COURSES = {
   },
   SMA: {
     'Modul 1: Aljabar & Sistem Persamaan - Sistem Persamaan Linier': {
-      'Persamaan dan Fungsi Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
+      'Persamaan dan Fungsi Linier': {
+        materi: "🕵️‍♂️ Misi Awal: Menemukan Kemiringan Tebing\n\nSebuah tim penyelamat harus mengevakuasi korban di atas tebing. Koordinat awal korban adalah di P(2, -4) dan helikopter penyelamat bergerak dari titik asal (0, 0). Jalur lintasan helikopter harus mengikuti garis lurus dengan kemiringan (gradien) sebesar 3.\nApakah lintasan helikopter tersebut akan melewati posisi korban di tebing tersebut?\nMari kita temukan jawabannya setelah memahami konsep persamaan dan fungsi linier!\n\n📚 Eksplorasi Materi: Persamaan dan Fungsi Linier\n\n1. Bentuk Umum Persamaan dan Fungsi Linier\nSuatu persamaan linier dapat dinyatakan sebagai:\n**ax + by = c**\ndi mana a, b, dan c adalah konstanta, serta x dan y adalah variabel riil.\nJika persamaan tersebut diubah menjadi fungsi linier, bentuk umumnya adalah:\n**y = mx + c**\ndi mana:\n• **x** adalah variabel bebas, anggota daerah asal (domain).\n• **y** adalah variabel terikat, anggota daerah hasil (range).\n• **m** adalah gradien (kemiringan) garis.\n\n2. Konsep Gradien (Kemiringan Garis)\nGradien (m) adalah nilai kemiringan suatu garis lurus. Rumus gradien bergantung pada informasi yang diketahui:\n• Jika diketahui persamaan **ax + by = c**, maka gradiennya:\n  **m = -a/b**\n• Jika garis melalui titik **A(x1, y1)** dan **B(x2, y2)**, maka:\n  **m = (y2 - y1) / (x2 - x1) = Δy / Δx = tan α**\n\nFakta Penting tentang Gradien:\n1) Garis horizontal (sejajar sumbu-X) memiliki gradien **0**.\n2) Garis vertikal (sejajar sumbu-Y) memiliki gradien **∞ (tak terhingga)**.\n3) Jika gradien bernilai positif, arah garis naik ke kanan (semakin besar x, semakin besar y).\n4) Jika gradien bernilai negatif, arah garis turun ke kanan (semakin besar x, semakin kecil y).\n\n3. Menentukan Persamaan Garis\nKita bisa menentukan persamaan garis dengan dua cara utama:\n\nA. Melalui satu titik A(x1, y1) dengan gradien m\n• Rumus:\n  **y - y1 = m(x - x1)**\n\nB. Melalui dua titik A(x1, y1) dan B(x2, y2)\n• Rumus:\n  **(y - y1) / (y2 - y1) = (x - x1) / (x2 - x1)**\n\n4. Kedudukan Dua Garis Lurus\nDua garis y = m1 * x + c1 dan y = m2 * x + c2 memiliki hubungan kedudukan sebagai berikut:\n\nA. Dua Garis Sejajar\n• Kedua garis sejajar jika gradiennya sama:\n  **m1 = m2**\n\nB. Dua Garis Berpotongan Tegak Lurus\n• Kedua garis berpotongan tegak lurus jika hasil kali gradiennya bernilai -1:\n  **m1 * m2 = -1** (atau m2 = -1/m1)\n\nC. Dua Garis Berpotongan Biasa\n• Kedua garis berpotongan jika gradiennya tidak sama:\n  **m1 ≠ m2**\n\n🛠️ Pemodelan: Penerapan dalam Kehidupan Sehari-hari\nMari kita lihat penerapan konsep ini dalam pemodelan kecepatan mobil:\nSebuah mobil diuji kelayakannya. Pada 4 jam pertama menempuh jarak 242 km. Setelah 6 jam menempuh 362 km. Jika kecepatannya konstan, mari kita buat persamaan kecepatannya:\n• Waktu (x) dan Jarak (y) menghasilkan dua titik: (4, 242) dan (6, 362).\n• Gradien (kecepatan): m = (362 - 242) / (6 - 4) = 120 / 2 = 60 km/jam.\n• Persamaan garisnya: y - 242 = 60(x - 4) => y = 60x + 2.\nPersamaan ini menggambarkan posisi mobil (y) pada waktu (x) dengan kecepatan konstan 60 km/jam.\n\n🔑 Kesimpulan: Memecahkan Misi Awal\nKembali ke misi awal tim penyelamat:\n• Titik korban: P(2, -4).\n• Gradien helikopter: m = 3. Melalui titik asal (0, 0).\n• Persamaan lintasan helikopter: y - 0 = 3(x - 0) => y = 3x.\n• Kita uji apakah titik P(2, -4) dilewati lintasan y = 3x:\n  y = 3(2) = 6 (sedangkan koordinat y korban adalah -4, bukan 6).\nJadi, lintasan helikopter tersebut tidak melewati posisi korban di tebing (korban berada di y = -4, sedangkan lintasan berada di y = 6). Tim harus mengubah rute helikopter!",
+        latihan: [
+          {
+            id: 2001,
+            type: 1,
+            question: "Besar gradien garis 2x + 6y = 5 adalah ...",
+            options: ["-3", "-1/3", "1/3", "3", "5"],
+            correctAnswer: 1,
+            idea: "Ubah persamaan ke bentuk y = mx + c atau gunakan rumus cepat m = -a/b.",
+            pembahasan: "Persamaan garis 2x + 6y = 5 memiliki koefisien a = 2 dan b = 6. Rumus gradiennya adalah m = -a/b = -2/6 = -1/3."
+          },
+          {
+            id: 2002,
+            type: 1,
+            question: "Sebuah garis melalui titik A(–2, –3) dan B(6, –5). Besar gradien garis itu adalah ...",
+            options: ["-4", "-1/4", "1/4", "2", "4"],
+            correctAnswer: 1,
+            idea: "Gunakan rumus gradien melalui dua titik m = (y2 - y1) / (x2 - x1).",
+            pembahasan: "m = (y2 - y1) / (x2 - x1) = (-5 - (-3)) / (6 - (-2)) = -2 / 8 = -1/4."
+          },
+          {
+            id: 2003,
+            type: 1,
+            question: "Persamaan suatu garis dengan gradien 3 dan melalui titik P(2, –4) adalah ...",
+            options: ["y = 3x – 2", "y = 3x + 2", "y = 3x – 6", "y = 3x – 10", "y = 3x + 10"],
+            correctAnswer: 3,
+            idea: "Gunakan rumus persamaan garis melalui satu titik dengan gradien m: y - y1 = m(x - x1).",
+            pembahasan: "y - (-4) = 3(x - 2) => y + 4 = 3x - 6 => y = 3x - 10."
+          },
+          {
+            id: 2004,
+            type: 1,
+            question: "Persamaan suatu garis yang melalui titik P(–2, 3) dan titik Q(2, –5) adalah ...",
+            options: ["y = -2x - 6", "y = -2x - 4", "y = -2x - 1", "y = -2x + 1", "y = -2x + 6"],
+            correctAnswer: 2,
+            idea: "Gunakan rumus persamaan garis melalui dua titik: (y - y1)/(y2 - y1) = (x - x1)/(x2 - x1).",
+            pembahasan: "(y - 3) / (-5 - 3) = (x - (-2)) / (2 - (-2)) => (y - 3) / -8 = (x + 2) / 4 => 4(y - 3) = -8(x + 2) => y - 3 = -2x - 4 => y = -2x - 1."
+          },
+          {
+            id: 2005,
+            type: 2,
+            question: "Gambarlah persamaan garis y = 4x – 2 kedalam grafik Cartesius. Tentukan titik potong sumbu-X dan sumbu-Y!",
+            targetAnswer: "Titik potong sumbu-X di (1/2, 0) dan sumbu-Y di (0, -2)",
+            idea: "Titik potong sumbu-X terjadi saat y = 0, sedangkan titik potong sumbu-Y terjadi saat x = 0.",
+            pembahasan: "Untuk x = 0, y = 4(0) - 2 = -2. Diperoleh titik (0, -2).\nUntuk y = 0, 0 = 4x - 2 => 4x = 2 => x = 1/2. Diperoleh titik (1/2, 0).\nHubungkan kedua titik ini pada koordinat Cartesius."
+          },
+          {
+            id: 2006,
+            type: 3,
+            question: "Tim peneliti mengamati penurunan populasi harimau Sumatera mengikuti pola linier. Jika pada tahun ke-tiga jumlah populasi harimau sebanyak 182 ekor dan pada tahun ke-lima menjadi 170 ekor, berapakah perkiraan populasi harimau sumatera pada tahun ke-9?",
+            options: ["164 ekor", "158 ekor", "152 ekor", "146 ekor", "140 ekor"],
+            correctAnswer: 3,
+            pembahasan: "Diperoleh titik (3, 182) and (5, 170).\nGradien (laju penurunan): m = (170 - 182) / (5 - 3) = -12 / 2 = -6 ekor per tahun.\nPersamaan garis: y - 170 = -6(x - 5) => y = -6x + 200.\nUntuk tahun ke-9 (x = 9): y = -6(9) + 200 = -54 + 200 = 146 ekor."
+          },
+          {
+            id: 2007,
+            type: 3,
+            question: "Sebuah garis g melalui titik A(4, –2). Jika garis g sejajar dengan garis 3x + 2y = 6 maka persamaan garis g tersebut adalah ...",
+            options: ["3x + 2y = 8", "3x + 2y = 4", "2x + 3y = 8", "2x + 3y = 4", "3x – 2y = 8"],
+            correctAnswer: 0,
+            pembahasan: "Gradien garis 3x + 2y = 6 adalah m = -3/2. Karena sejajar, gradien garis g juga m_g = -3/2.\nPersamaan garis g: y - (-2) = -3/2(x - 4) => 2y + 4 = -3x + 12 => 3x + 2y = 8."
+          },
+          {
+            id: 2008,
+            type: 3,
+            question: "Sebuah garis melalui titik A(–3, 4). Jika garis tersebut tegak lurus dengan garis 2x – 5y = 8 maka persamaan garis itu adalah ...",
+            options: ["5x + 2y - 7 = 0", "5x - 2y + 7 = 0", "5x + 2y + 7 = 0", "2x + 5y - 7 = 0", "2x - 5y + 7 = 0"],
+            correctAnswer: 2,
+            pembahasan: "Gradien garis 2x - 5y = 8 adalah m1 = 2/5. Karena tegak lurus, m2 = -5/2.\nPersamaan garis: y - 4 = -5/2(x - (-3)) => 2y - 8 = -5x - 15 => 5x + 2y + 7 = 0."
+          },
+          {
+            id: 2009,
+            type: 3,
+            question: "Sebuah garis ax + by = c. Jika garis tersebut tegak lurus dengan garis 3x – 2y = 8 dan melalui titik (6, –2) maka persamaan garis itu adalah ...",
+            options: ["2x + 3y = 6", "2x - 3y = 6", "3x + 2y = 6", "3x - 2y = 6", "2x + 3y = -6"],
+            correctAnswer: 0,
+            pembahasan: "Gradien 3x - 2y = 8 adalah m1 = 3/2. Karena tegak lurus, gradiennya m2 = -2/3.\nPersamaan garis: y - (-2) = -2/3(x - 6) => 3y + 6 = -2x + 12 => 2x + 3y = 6."
+          },
+          {
+            id: 2010,
+            type: 3,
+            question: "Garis yang melalui titik (2, –3) dan tegak lurus dengan garis x + 2y = 14 memotong sumbu-Y di titik ...",
+            options: ["(0, -14)", "(0, 7/2)", "(0, -7)", "(0, 7)", "(11, -7/2)"],
+            correctAnswer: 2,
+            pembahasan: "Gradien x + 2y = 14 adalah m1 = -1/2. Karena tegak lurus, gradiennya m2 = 2.\nPersamaan garis: y - (-3) = 2(x - 2) => y + 3 = 2x - 4 => y = 2x - 7.\nMemotong sumbu-Y saat x = 0 => y = -7, sehingga diperoleh titik (0, -7)."
+          },
+          {
+            id: 2011,
+            type: 3,
+            question: "Jika garis g melalui titik (3, 5) dan juga melalui titik potong garis x + 5y = 0 dengan garis 3x + 7y = 8, maka persamaan garis g itu adalah ...",
+            options: ["3x + 2y - 19 = 0", "3x + 2y - 14 = 0", "3x - y - 4 = 0", "3x + y + 14 = 0", "3x + y - 14 = 0"],
+            correctAnswer: 4,
+            pembahasan: "Substitusi x = -5y ke 3x + 7y = 8 => 3(-5y) + 7y = 8 => -8y = 8 => y = -1, x = 5. Titik potongnya (5, -1).\nPersamaan garis g melalui (3, 5) dan (5, -1): y - 5 = [(-1-5)/(5-3)] * (x - 3) => y - 5 = -3(x - 3) => 3x + y - 14 = 0."
+          },
+          {
+            id: 2012,
+            type: 3,
+            question: "Sudut yang dibentuk oleh garis 3x + y = 6 dan 2x – y = 6 adalah ...",
+            options: ["135°", "90°", "60°", "45°", "30°"],
+            correctAnswer: 3,
+            pembahasan: "Gradien garis 1: m1 = -3. Gradien garis 2: m2 = 2.\ntan θ = |(m2 - m1) / (1 + m1*m2)| = |(2 - (-3)) / (1 + 2(-3))| = |5 / -5| = 1.\nKarena tan θ = 1, maka sudut θ = 45°."
+          },
+          {
+            id: 2013,
+            type: 3,
+            question: "Persamaan garis yang melalui titik potong garis 4x + 7y - 15 = 0 dan 9x – 14y – 4 = 0 serta tegak lurus pada garis 21x + 5y = 3 adalah ...",
+            options: ["21x - 5y = -11", "11x - 21y = 5", "5x - 21y = -11", "5x + 21y = -11", "5x - 21y = 11"],
+            correctAnswer: 2,
+            pembahasan: "Eliminasi 4x + 7y = 15 dan 9x - 14y = 4. Kalikan garis 1 dengan 2 => 8x + 14y = 30. Jumlahkan => 17x = 34 => x = 2, y = 1. Titik potong (2, 1).\nGradien 21x + 5y = 3 adalah m1 = -21/5. Karena tegak lurus, gradiennya m2 = 5/21.\nPersamaan garis: y - 1 = 5/21(x - 2) => 21y - 21 = 5x - 10 => 5x - 21y = -11."
+          },
+          {
+            id: 2014,
+            type: 3,
+            question: "Diketahui titik P(–1, 2), Q(3, 4) dan R(1, –1). Persamaan garis yang melalui titik tengah PQ dan sejajar QR adalah ...",
+            options: ["2y – 5x + 8 = 0", "5y – 2x – 1 = 0", "5y – 2x – 13 = 0", "5y + 2x – 11 = 0", "2y – 5x – 1 = 0"],
+            correctAnswer: 4,
+            pembahasan: "Titik tengah PQ: M = ((-1+3)/2, (2+4)/2) = (1, 3).\nGradien QR: m = (-1-4)/(1-3) = 5/2. Karena sejajar, gradiennya juga 5/2.\nPersamaan garis: y - 3 = 5/2(x - 1) => 2y - 6 = 5x - 5 => 2y - 5x - 1 = 0."
+          },
+          {
+            id: 2015,
+            type: 3,
+            question: "Garis yang melalui titik (2, 1) and (8, 4) berpotongan dengan garis yang melalui titik (1, 5) dan (5, 1) di titik ...",
+            options: ["(3, 3)", "(1, 3)", "(4, 2)", "(7, 2)", "(6, 2)"],
+            correctAnswer: 2,
+            pembahasan: "Garis 1 melalui (2, 1) dan (8, 4): y - 1 = [(4-1)/(8-2)](x - 2) => y = 1/2 x.\nGaris 2 melalui (1, 5) dan (5, 1): y - 5 = [(1-5)/(5-1)](x - 1) => y = -x + 6.\nTitik potong: 1/2 x = -x + 6 => 3/2 x = 6 => x = 4, y = 2. Diperoleh titik (4, 2)."
+          },
+          {
+            id: 2016,
+            type: 3,
+            question: "Grafik hasil produksi suatu pabrik per tahun merupakan suatu garis lurus. Jika produksi pada tahun pertama 110 unit dan pada tahun ketiga 150 unit, maka produksi tahun ke-15 adalah ...",
+            options: ["370 unit", "390 unit", "410 unit", "430 unit", "670 unit"],
+            correctAnswer: 1,
+            pembahasan: "Diperoleh titik (1, 110) dan (3, 150).\nGradien m = (150 - 110)/(3 - 1) = 20.\nPersamaan garis: y - 110 = 20(x - 1) => y = 20x + 90.\nUntuk tahun ke-15 (x = 15): y = 20(15) + 90 = 390 unit."
+          },
+          {
+            id: 2017,
+            type: 4,
+            question: "Gambarlah persamaan garis 3x + 2y = 12 kedalam grafik Cartesius. Tentukan titik potong dengan sumbu-X dan sumbu-Y!",
+            targetAnswer: "Garis memotong sumbu-X di (4, 0) dan sumbu-Y di (0, 6)",
+            pembahasan: "Titik potong sumbu-X (y = 0): 3x = 12 => x = 4, diperoleh titik (4, 0).\nTitik potong sumbu-Y (x = 0): 2y = 12 => y = 6, diperoleh titik (0, 6).\nHubungkan titik (4, 0) dan (0, 6) dengan garis lurus."
+          },
+          {
+            id: 2018,
+            type: 4,
+            question: "Tentukan kedudukan (apakah sejajar, berimpit, atau berpotongan di titik tertentu) antara garis 2x + 3y = -5 dan 3x + 4y = -6!",
+            targetAnswer: "Berpotongan di titik (2, -3)",
+            pembahasan: "Gradien m1 = -2/3 dan m2 = -3/4. Karena m1 ≠ m2, kedua garis berpotongan.\nEliminasi: 3*(2x + 3y = -5) => 6x + 9y = -15.\n2*(3x + 4y = -6) => 6x + 8y = -12.\nKurangkan => y = -3. Substitusi => 2x - 9 = -5 => x = 2. Titik potong (2, -3)."
+          },
+          {
+            id: 2019,
+            type: 5,
+            question: "Tentukanlah persamaan garis yang memotong sumbu-X di titik (-6, 0) dan memotong sumbu-Y di titik (0, 8)! Tuliskan dalam bentuk ax - by = c (contoh: 4x - 3y = -24)!",
+            correctAnswer: "4x - 3y = -24",
+            pembahasan: "Garis melalui (-6, 0) dan (0, 8). Maka (y - 0) / (8 - 0) = (x - (-6)) / (0 - (-6)) => y / 8 = (x + 6) / 6 => 6y = 8x + 48 => 8x - 6y = -48 => 4x - 3y = -24."
+          },
+          {
+            id: 2020,
+            type: 5,
+            question: "Sebuah garis y = 3x - p melalui titik A(2, q) dan B(4, 5q + 2). Tentukan nilai p!",
+            correctAnswer: "5",
+            pembahasan: "Substitusi A(2, q) => q = 3(2) - p => p = 6 - q.\nSubstitusi B(4, 5q + 2) => 5q + 2 = 3(4) - p => p = 10 - 5q.\nSamakan p: 6 - q = 10 - 5q => 4q = 4 => q = 1.\nMaka p = 6 - 1 = 5."
+          },
+          {
+            id: 2021,
+            type: 5,
+            question: "Suatu garis y = 2x + p berpotongan dengan garis y = 3x + q di titik (4, -2). Tentukan nilai p + q!",
+            correctAnswer: "-24",
+            pembahasan: "Substitusi (4, -2) ke y = 2x + p => -2 = 8 + p => p = -10.\nSubstitusi (4, -2) ke y = 3x + q => -2 = 12 + q => q = -14.\nMaka p + q = -10 + (-14) = -24."
+          },
+          {
+            id: 2022,
+            type: 5,
+            question: "Jarak titik P(3, 6) ke garis 12x + 5y – 40 = 0 sama dengan jarak P ke titik Q(a, 4). Tentukan nilai a yang bernilai positif!",
+            correctAnswer: "3",
+            pembahasan: "Jarak P ke garis: d = |12(3) + 5(6) - 40| / sqrt(12^2+5^2) = |36+30-40| / 13 = 26/13 = 2.\nJarak P ke Q: sqrt((a-3)^2 + (4-6)^2) = 2 => (a-3)^2 + 4 = 4 => (a-3)^2 = 0 => a = 3."
+          },
+          {
+            id: 2023,
+            type: 5,
+            question: "Jika dua garis yang disajikan dengan persamaan 2x + ay = 5 dan bx + 6y = 7 adalah sejajar, tentukan nilai ab!",
+            correctAnswer: "12",
+            pembahasan: "m1 = -2/a, m2 = -b/6. Karena sejajar: -2/a = -b/6 => ab = 12."
+          }
+        ]
+      },
       'Sistem Persamaan Linier dengan Dua Variabel': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
       'Sistem Persamaan Linier dengan Tiga Variabel': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] },
       'Penerapan Sistem Persamaan Linier': { materi: "Materi sedang dalam tahap pengembangan.", latihan: [] }
