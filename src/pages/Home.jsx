@@ -3,10 +3,10 @@ import { User, BookOpen, Book, Instagram, Target, TrendingUp, Zap } from 'lucide
 
 export default function Home({ navigateTo, themeClasses }) {
   return (
-    <div className="max-w-5xl mx-auto space-y-20 pb-16 px-2 md:px-4">
+    <div className="max-w-5xl mx-auto space-y-12 md:space-y-16 pb-12 px-2 md:px-4">
 
       {/* Hero Section */}
-      <div className="relative text-center space-y-6 pt-12 md:pt-16 pb-8">
+      <div className="relative text-center space-y-6 pt-2 md:pt-4 pb-4">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[150%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/15 via-transparent to-transparent blur-3xl -z-10 rounded-full pointer-events-none"></div>
 
         <h1 className="text-6xl md:text-8xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 pb-2">
@@ -53,7 +53,7 @@ export default function Home({ navigateTo, themeClasses }) {
       </div>
 
       {/* CTA: Pemilihan Jenjang */}
-      <div className="text-center space-y-8 py-8">
+      <div className="text-center space-y-8 py-4">
         <div className="space-y-3">
           <h2 className="text-4xl md:text-5xl font-black tracking-tight">Sudah siap tempur?</h2>
           <p className="opacity-80 text-lg">Pilih jenjang penaklukan lo di bawah ini</p>
@@ -113,7 +113,7 @@ export default function Home({ navigateTo, themeClasses }) {
       </div>
 
       {/* Footer / Profile Snippet */}
-      <footer className="pt-12 flex flex-col gap-8 opacity-80">
+      <footer className="pt-8 flex flex-col gap-8 opacity-80">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-300 dark:border-slate-700 pt-8">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
